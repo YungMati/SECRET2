@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Admina</title>
+  <style>
+    body { font-family: sans-serif; max-width: 500px; margin: 40px auto; }
+    input, select, textarea { width: 100%; margin: 10px 0; padding: 10px; }
+    button { padding: 10px; background-color: red; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Dodaj Produkt</h2>
+  <form id="form">
+    <input name="name" placeholder="Nazwa" required />
+    <input name="price" placeholder="Cena" required />
+    <select name="batch" required>
+      <option value="best">Best</option>
+      <option value="budget">Budżet</option>
+    </select>
+    <input name="image" placeholder="Link do zdjęcia" required />
+    <textarea name="description" placeholder="Opis" required></textarea>
+    <button type="submit">Dodaj</button>
+  </form>
+
+  <script>
+    document.getElementById('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        price: form.price.value,
+        batch: form.batch.value,
+        image: form.image.value,
+        description: form.description.value
+      };
+      const res = await fetch('https://admin-shop-backend.onrender.com/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        alert('Dodano produkt!');
+        form.reset();
+      } else {
+        alert('Błąd!');
+      }
+    });
+  </script>
+</body>
+</html>
