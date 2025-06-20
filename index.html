@@ -19,4 +19,18 @@
     const products = JSON.parse(localStorage.getItem("products") || "[]");
     const container = document.getElementById("productList");
 
-    function createPr
+    function createProductCard(prod) {
+      return `
+        <div class="product">
+          <img src="${prod.image}" alt="produkt">
+          <h3>${prod.name}</h3>
+          <p>${prod.desc}</p>
+          <p><b>${prod.price} PLN</b></p>
+          <span class="badge">${prod.batch}</span>
+        </div>`;
+    }
+
+    container.innerHTML = products.map(createProductCard).join('');
+  </script>
+</body>
+</html>
