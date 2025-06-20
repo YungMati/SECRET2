@@ -2,31 +2,21 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Chińskie Produkty</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sklep z Chin</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div id="logo" onclick="window.location.href='admin.html'">LOGO</div>
-  </header>
-
-  <div id="filterToggle" onclick="toggleFilters()">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
+  <div class="header">
+    <div class="logo" onclick="location.href='admin.html'">Twoje Logo</div>
   </div>
 
-  <div id="filters" class="hidden">
-    <select id="batchFilter">
-      <option value="">Wszystkie</option>
-      <option value="best">Best</option>
-      <option value="budget">Budżet</option>
-    </select>
-    <button onclick="loadProducts()">Zatwierdź</button>
+  <div class="product-list" id="productList">
+    <!-- Produkty będą dodawane dynamicznie przez JS -->
   </div>
 
-  <main id="products"></main>
+  <script>
+    const products = JSON.parse(localStorage.getItem("products") || "[]");
+    const container = document.getElementById("productList");
 
-  <script src="script.js"></script>
-</body>
-</html>
+    function createPr
