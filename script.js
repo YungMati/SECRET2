@@ -9,7 +9,7 @@ async function loadProducts() {
   filtered.forEach(p => {
     container.innerHTML += `
       <div class="product">
-        <img src="${p.image}" alt="${p.name}" />
+        <img src="${p.image}" alt="${p.name}">
         <h3>${p.name}</h3>
         <p>${p.description}</p>
         <strong>${p.price} zł</strong>
