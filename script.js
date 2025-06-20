@@ -8,13 +8,18 @@ async function loadProducts() {
   container.innerHTML = '';
   filtered.forEach(p => {
     container.innerHTML += `
-      <div>
-        <img src="${p.image}" />
+      <div class="product">
+        <img src="${p.image}" alt="${p.name}" />
         <h3>${p.name}</h3>
         <p>${p.description}</p>
-        <b>${p.price} zł</b>
+        <strong>${p.price} zł</strong>
       </div>
     `;
   });
 }
+
+function toggleFilters() {
+  document.getElementById('filters').classList.toggle('hidden');
+}
+
 loadProducts();
