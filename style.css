@@ -11,6 +11,7 @@ body {
   font-size: 22px;
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,20 +27,24 @@ body {
 
 #searchInput {
   padding: 8px;
-  font-size: 14px;
   border-radius: 5px;
   border: none;
+  background: #222;
+  color: white;
   width: 50%;
+  margin-left: 20px;
 }
 
 .product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   padding: 20px;
   gap: 15px;
+  justify-content: center;
 }
 
 .product {
+  width: 160px;
   background: #222;
   border-radius: 10px;
   padding: 10px;
@@ -66,49 +71,15 @@ body {
 }
 
 .link-btn {
-  margin-top: 10px;
+  margin-top: 8px;
+  padding: 6px;
   background: red;
-  border: none;
   color: white;
-  padding: 6px 10px;
-  border-radius: 5px;
-  cursor: pointer;
+  border: none;
   width: 100%;
-}
-
-.filters {
-  background: #1f1f1f;
-  padding: 20px;
-  box-shadow: 0 0 10px red;
-  margin: 20px;
-}
-
-.hidden {
-  display: none;
-}
-
-.filter-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: red;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  box-shadow: 0 0 10px red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 5px;
+  font-weight: bold;
   cursor: pointer;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.filter-btn .bar {
-  width: 25px;
-  height: 3px;
-  background: white;
-  border-radius: 2px;
 }
 
 .admin-panel {
@@ -138,15 +109,69 @@ body {
   font-weight: bold;
   box-shadow: 0 0 10px red;
 }
-.logo-img {
-  height: 40px;
-  cursor: pointer;
+
+.hidden {
+  display: none;
 }
 
-.shop-name {
-  font-size: 22px;
-  font-weight: bold;
-  margin-left: 10px;
+.filter-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background: red;
+  border-radius: 50%;
+  box-shadow: 0 0 10px red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.filter-btn .bar {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 2px 0;
+  border-radius: 3px;
+}
+
+.filter-panel {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  background: #1a1a1a;
+  padding: 20px;
+  border-right: 2px solid red;
+  display: none;
+  z-index: 998;
+}
+.admin-panel .product {
+  background: #2c2c2c;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px red;
+}
+
+.admin-panel .product img {
+  width: 100%;
+  max-width: 120px;
+  border-radius: 5px;
+}
+
+.admin-panel .product button {
+  margin-top: 10px;
+  background: red;
+  border: none;
+  padding: 5px 10px;
   color: white;
-  flex-grow: 1;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.filter-panel.visible {
+  display: block;
 }
