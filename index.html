@@ -4,85 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YUNG R3ps</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="header">
-    <div class="logo" onclick="location.href='admin.html'">
-      <img src="logo.png" alt="Logo" style="height: 70px;">
-    </div>
-      <div class="filter-btn" onclick="toggleFilters()">
+    <img src="logo.png" class="logo-img" onclick="location.href='admin.html'" alt="Logo">
+    <div class="shop-name">YUNG R3ps</div>
+    <input type="text" id="searchInput" placeholder="Search products...">
+  </div>
+
+  <div class="filter-toggle" onclick="toggleFilters()">
     <div class="bar"></div>
     <div class="bar"></div>
     <div class="bar"></div>
   </div>
-    
+
   <div id="filters" class="filters hidden">
-    <h3>Filters</h3>
-    <label>Min Price</label>
-    <input type="number" id="minPrice">
-    <label>Max Price</label>
-    <input type="number" id="maxPrice">
-    <label>Category</label>
-    <select id="categoryFilter">
-      <option value="">All categories</option>
-      <option value="Shoes">Shoes</option>
-      <option value="Socks">Socks</option>
-      <option value="Pants">Pants</option>
-      <option value="T-Shirts">T-Shirts</option>
-      <option value="Jackets">Jackets</option>
-      <option value="Hats">Hats</option>
-      <option value="Underwear">Underwear</option>
-      <option value="Shorts">Shorts</option>
-      <option value="Hoodies">Hoodies</option>
-      <option value="Accessories">Accessories</option>
-    </select>
-    <button onclick="applyFilters()">Apply</button>
+    <h3>Filter by Category</h3>
+    <div class="filter-buttons">
+      <button onclick="filterCategory('All')">All</button>
+      <button onclick="filterCategory('Shoes')">Shoes</button>
+      <button onclick="filterCategory('Socks')">Socks</button>
+      <button onclick="filterCategory('Pants')">Pants</button>
+      <button onclick="filterCategory('T-Shirts')">T-Shirts</button>
+      <button onclick="filterCategory('Hoodies')">Hoodies</button>
+      <button onclick="filterCategory('Caps')">Caps</button>
+    </div>
+    <div class="price-range">
+      <input type="number" id="minPrice" placeholder="Min price">
+      <input type="number" id="maxPrice" placeholder="Max price">
+      <button onclick="applyFilters()">Apply</button>
+    </div>
   </div>
 
   <div class="product-list" id="productList"></div>
 
   <script>
+    const products = JSON.parse(localStorage.getItem("products") || "[]");
     const container = document.getElementById("productList");
-    let products = JSON.parse(localStorage.getItem("products") || "[]");
 
-    function createProductCard(prod) {
-      return `
+    function renderProducts(list) {
+      container.innerHTML = list.map(prod => `
         <div class="product">
           <img src="${prod.image}" alt="produkt">
           <h3>${prod.name}</h3>
           <p>${prod.desc}</p>
           <p><b>${prod.price} PLN</b></p>
           <span class="badge">${prod.batch}</span>
-          <a href="${prod.link}" target="_blank"><button class="link-btn">LINK</button></a>
-        </div>`;
-    }
-
-    function showProducts(filtered = products) {
-      container.innerHTML = filtered.map(createProductCard).join('');
+          <a class="link-button" href="${prod.link}" target="_blank">LINK</a>
+        </div>
+      `).join('');
     }
 
     function toggleFilters() {
       document.getElementById("filters").classList.toggle("hidden");
     }
 
+    function filterCategory(cat) {
+      if (cat === 'All') {
+        renderProducts(products);
+      } else {
+        renderProducts(products.filter(p => p.category === cat));
+      }
+    }
+
     function applyFilters() {
       const min = parseFloat(document.getElementById("minPrice").value) || 0;
       const max = parseFloat(document.getElementById("maxPrice").value) || Infinity;
-      const cat = document.getElementById("categoryFilter").value;
-      const filtered = products.filter(p => {
-        return p.price >= min && p.price <= max && (!cat || p.category === cat);
-      });
-      showProducts(filtered);
+      const filtered = products.filter(p => parseFloat(p.price) >= min && parseFloat(p.price) <= max);
+      renderProducts(filtered);
     }
 
-    document.getElementById("searchInput").addEventListener("input", e => {
-      const val = e.target.value.toLowerCase();
-      const result = products.filter(p => p.name.toLowerCase().includes(val));
-      showProducts(result);
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const val = this.value.toLowerCase();
+      renderProducts(products.filter(p => p.name.toLowerCase().includes(val) || p.desc.toLowerCase().includes(val)));
     });
 
-    showProducts();
+    renderProducts(products);
   </script>
 </body>
 </html>
