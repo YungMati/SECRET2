@@ -4,53 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Panel admina</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="header">
-    <div class="logo" onclick="location.href='index.html'">← Back</div>
+    <div class="logo" onclick="location.href='index.html'">← Wróć</div>
   </div>
 
   <div id="loginPanel" class="admin-panel">
-    <h2>Log in</h2>
+    <h2>Zaloguj się</h2>
     <input type="text" id="username" placeholder="Login">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Log in</button>
+    <input type="password" id="password" placeholder="Hasło">
+    <button onclick="login()">Zaloguj</button>
   </div>
 
   <div id="adminPanel" class="admin-panel hidden">
-    <h2>Add Product</h2>
-    <input id="link" placeholder="Link to product (image will load automatically)">
-    <input id="name" placeholder="Name">
-    <input id="desc" placeholder="Description">
-    <input id="price" placeholder="Price (PLN)" type="number">
-    <input id="image" placeholder="Image URL (optional)">
+    <h2>Dodaj produkt</h2>
+    <input id="link" placeholder="Link do aukcji (AliExpress)">
+    <input id="image" placeholder="(opcjonalnie) Link do zdjęcia">
+    <input id="name" placeholder="Nazwa">
+    <input id="desc" placeholder="Opis">
+    <input id="price" placeholder="Cena (PLN)">
     <select id="batch">
       <option>best</option>
       <option>budżet</option>
     </select>
-    <select id="category">
-      <option value="Shoes">Shoes</option>
-      <option value="Socks">Socks</option>
-      <option value="Pants">Pants</option>
-      <option value="T-Shirts">T-Shirts</option>
-      <option value="Jackets">Jackets</option>
-      <option value="Hats">Hats</option>
-      <option value="Underwear">Underwear</option>
-      <option value="Shorts">Shorts</option>
-      <option value="Hoodies">Hoodies</option>
-      <option value="Accessories">Accessories</option>
-    </select>
-    <button onclick="addProduct()">Add</button>
-    <hr>
-    <h3>Products</h3>
+    <button onclick="addProduct()">Dodaj</button>
+
+    <h3 style="margin-top:40px;">Twoje produkty:</h3>
     <div id="productList"></div>
   </div>
 
   <script>
     const loginPanel = document.getElementById("loginPanel");
     const adminPanel = document.getElementById("adminPanel");
-    const list = document.getElementById("productList");
+    const productList = document.getElementById("productList");
 
     function login() {
       const u = document.getElementById("username").value;
@@ -58,18 +46,60 @@
       if (u === "admin" && p === "1234") {
         loginPanel.classList.add("hidden");
         adminPanel.classList.remove("hidden");
-        loadProducts();
+        renderAdminProducts();
       } else {
-        alert("Invalid login");
+        alert("Błędny login lub hasło");
       }
     }
 
-    function loadProducts() {
+    function extractImage(link) {
+      const custom = document.getElementById("image").value;
+      if (custom) return custom;
+      // Przykładowy link do obrazka z Ali
+      const match = link.match(/https?:\/\/[^"]+\.jpg/);
+      return match ? match[0] : "https://via.placeholder.com/150";
+    }
+
+    function addProduct() {
       const products = JSON.parse(localStorage.getItem("products") || "[]");
-      list.innerHTML = products.map((p, i) => `
+      const link = document.getElementById("link").value;
+      const image = extractImage(link);
+      const prod = {
+        link,
+        image,
+        name: document.getElementById("name").value,
+        desc: document.getElementById("desc").value,
+        price: document.getElementById("price").value,
+        batch: document.getElementById("batch").value
+      };
+      products.push(prod);
+      localStorage.setItem("products", JSON.stringify(products));
+      alert("Dodano!");
+      clearInputs();
+      renderAdminProducts();
+    }
+
+    function clearInputs() {
+      document.getElementById("link").value = "";
+      document.getElementById("image").value = "";
+      document.getElementById("name").value = "";
+      document.getElementById("desc").value = "";
+      document.getElementById("price").value = "";
+    }
+
+    function renderAdminProducts() {
+      const products = JSON.parse(localStorage.getItem("products") || "[]");
+      if (products.length === 0) {
+        productList.innerHTML = "<p>Brak produktów</p>";
+        return;
+      }
+
+      productList.innerHTML = products.map((p, i) => `
         <div class="product">
+          <img src="${p.image}" />
           <h4>${p.name}</h4>
-          <button onclick="removeProduct(${i})">Remove</button>
+          <p>${p.price} PLN</p>
+          <button onclick="removeProduct(${i})">Usuń</button>
         </div>
       `).join('');
     }
@@ -78,33 +108,7 @@
       const products = JSON.parse(localStorage.getItem("products") || "[]");
       products.splice(index, 1);
       localStorage.setItem("products", JSON.stringify(products));
-      loadProducts();
-    }
-
-    function addProduct() {
-      const products = JSON.parse(localStorage.getItem("products") || "[]");
-      const link = document.getElementById("link").value;
-      let image = document.getElementById("image").value;
-
-      if (!image) {
-        // próbuj pobrać miniaturę z allegro/aliexpress
-        image = link.includes("allegro") ? link.replace(".html", ".jpg") : "https://via.placeholder.com/150";
-      }
-
-      const prod = {
-        link,
-        image,
-        name: document.getElementById("name").value,
-        desc: document.getElementById("desc").value,
-        price: parseFloat(document.getElementById("price").value),
-        batch: document.getElementById("batch").value,
-        category: document.getElementById("category").value
-      };
-
-      products.push(prod);
-      localStorage.setItem("products", JSON.stringify(products));
-      alert("Added!");
-      loadProducts();
+      renderAdminProducts();
     }
   </script>
 </body>
