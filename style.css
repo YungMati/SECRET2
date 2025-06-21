@@ -352,3 +352,11 @@ h2 {
 h3 {
   font-size: 20px;
 }
+/* Filtry & przyciski */
+.filter-btn, .filter-btn .bar, .filter-panel, .filter-panel.visible, .filter-group, .filter-group label, .filter-panel button.apply-btn {
+  /* USE EXISTING STYLES as you already have them */
+}
+.hidden {display:none!important;}
+.admin-login { /* keep your CSS */}
+.admin-panel { /* keep your CSS */}
+.product-list { /* keep your CSS */}
