@@ -8,29 +8,68 @@
 </head>
 <body>
   <div class="admin-login" id="loginForm">
-    <h2>Zaloguj się</h2>
-    <input type="text" id="username" placeholder="Login" />
+    <h2>Logowanie admina</h2>
+    <input type="text" id="login" placeholder="Login" />
     <input type="password" id="password" placeholder="Hasło" />
-    <button onclick="login()">Zaloguj</button>
-    <p id="loginError" style="color:red; display:none;">Niepoprawny login lub hasło</p>
+    <button onclick="checkLogin()">Zaloguj</button>
   </div>
 
   <div class="admin-panel hidden" id="adminPanel">
-    <h2>Panel Admina</h2>
-    <!-- tu możesz dodać pola dodawania produktów -->
-    <p>Witaj w panelu administratora!</p>
+    <h2>Dodaj produkt</h2>
+    <input type="text" id="name" placeholder="Nazwa produktu" />
+    <input type="text" id="desc" placeholder="Opis" />
+    <input type="text" id="price" placeholder="Cena" />
+    <input type="text" id="image" placeholder="Link do zdjęcia" />
+    <input type="text" id="link" placeholder="Link do zakupu" />
+    <select id="batch">
+      <option value="">Wybierz batch</option>
+      <option value="best">Best</option>
+      <option value="budżet">Budżet</option>
+    </select>
+    <select id="category">
+      <option value="">Wybierz kategorię</option>
+      <option value="shoes">Buty</option>
+      <option value="socks">Skarpetki</option>
+      <option value="pants">Spodnie</option>
+      <option value="jackets">Kurtki</option>
+      <option value="t-shirts">Koszulki</option>
+      <option value="hoodies">Bluzy</option>
+      <option value="shorts">Szorty</option>
+      <option value="accessories">Akcesoria</option>
+    </select>
+    <button onclick="addProduct()">Dodaj produkt</button>
   </div>
 
   <script>
-    function login() {
-      const username = document.getElementById("username").value;
+    const LOGIN = "YungMati";
+    const PASSWORD = "vawjej-fetfuq-gIqwy5";
+
+    function checkLogin() {
+      const login = document.getElementById("login").value;
       const password = document.getElementById("password").value;
-      if (username === "YungMati" && password === "vawjej-fetfuq-gIqwy5") {
+      if (login === LOGIN && password === PASSWORD) {
         document.getElementById("loginForm").classList.add("hidden");
         document.getElementById("adminPanel").classList.remove("hidden");
       } else {
-        document.getElementById("loginError").style.display = "block";
+        alert("Błędny login lub hasło");
       }
+    }
+
+    function addProduct() {
+      const newProduct = {
+        name: document.getElementById("name").value,
+        desc: document.getElementById("desc").value,
+        price: document.getElementById("price").value,
+        image: document.getElementById("image").value,
+        link: document.getElementById("link").value,
+        batch: document.getElementById("batch").value,
+        category: document.getElementById("category").value
+      };
+
+      const products = JSON.parse(localStorage.getItem("products") || "[]");
+      products.push(newProduct);
+      localStorage.setItem("products", JSON.stringify(products));
+      alert("Produkt dodany!");
     }
   </script>
 </body>
