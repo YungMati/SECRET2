@@ -44,7 +44,8 @@ body {
 }
 
 .product {
-  width: 160px;
+  width: 45%;
+  min-width: 160px;
   background: #222;
   border-radius: 10px;
   padding: 10px;
