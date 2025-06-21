@@ -1,33 +1,29 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
+  margin: 0;
   font-family: sans-serif;
   background-color: #121212;
   color: white;
-  overflow-x: hidden;
 }
 
 /* HEADER */
 .header {
   background: black;
   padding: 15px 20px;
+  font-size: 22px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.6);
 }
 
 .logo {
   cursor: pointer;
 }
 
-.logo img {
-  height: 70px;
+.logo:hover {
+  text-decoration: underline;
 }
 
 #searchInput {
@@ -40,13 +36,12 @@ body {
   margin-left: 20px;
 }
 
-/* PRODUKTY - 2 KOLUMNY Z NAPRAWIONYM UKŁADEM */
+/* PRODUKTY - NOWY UKŁAD 2 KOLUMNY */
 .product-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   padding: 15px;
-  width: 100%;
 }
 
 .product {
@@ -54,8 +49,12 @@ body {
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 10px rgba(255,0,0,0.2);
-  width: 100%;
-  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.product:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 5px rgba(255,0,0,0.1);
 }
 
 .product img {
@@ -101,7 +100,7 @@ body {
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.1s;
+  transition: all 0.2s;
 }
 
 .link-btn:active {
@@ -174,12 +173,10 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.1s;
-  position: relative;
-  top: 0;
 }
 
 .filter-panel button:active {
-  top: 3px;
+  transform: scale(0.95);
   background: #cc0000;
 }
 
@@ -224,7 +221,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
-  transition: all 0.1s;
+  transition: all 0.2s;
 }
 
 .admin-login button:active {
@@ -251,7 +248,7 @@ body {
   padding: 8px 15px;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.1s;
+  transition: all 0.3s;
 }
 
 .back-btn:active {
@@ -293,7 +290,7 @@ body {
   cursor: pointer;
   font-weight: bold;
   margin-top: 10px;
-  transition: all 0.1s;
+  transition: all 0.2s;
 }
 
 .add-btn:active {
@@ -360,14 +357,14 @@ body {
   padding: 8px 15px;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.1s;
+  transition: all 0.3s;
 }
 
 .delete-btn:active {
   transform: scale(0.95);
 }
 
-/* KATEGORIA AKCESORIA - DODANA DO FILTRÓW */
-.filter-panel button[onclick*="accessories"] {
-  /* Specjalny styl dla przycisku Akcesoria jeśli potrzebny */
+/* UTILITY */
+.hidden {
+  display: none !important;
 }
