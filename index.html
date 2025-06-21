@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YUNG R3PS</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="header">
     <div class="logo" onclick="location.href='admin.html'">
-      <img src="logo.png" alt="Logo" style="height: 70px;">
+      <img src="logo.png" alt="Logo">
     </div>
     <input type="text" id="searchInput" placeholder="Szukaj produktów...">
   </div>
@@ -22,82 +22,103 @@
 
   <div class="filter-panel" id="filters">
     <h3>Filtry</h3>
-    <label>Batch:</label>
-    <button onclick="setFilter('batch', 'best')">Best</button>
-    <button onclick="setFilter('batch', 'budżet')">Budżet</button>
     
-    <label>Kategoria:</label>
-    <button onclick="setFilter('category', 'shoes')">Shoes</button>
-    <button onclick="setFilter('category', 'socks')">Socks</button>
-    <button onclick="setFilter('category', 'pants')">Pants</button>
-    <button onclick="setFilter('category', 'jackets')">Jackets</button>
-    <button onclick="setFilter('category', 'T-Shirts')">T-Shirts</button>
-    <button onclick="setFilter('category', 'Hoodies')">Hoodies</button>
-    <button onclick="setFilter('category', 'Shorts')">Shorts</button>
-    <button onclick="setFilter('category', 'Accessories')">Accessories</button>
-    
-    <label>Cena:</label>
-    <input type="number" id="minPrice" placeholder="Min">
-    <input type="number" id="maxPrice" placeholder="Max">
-    <button onclick="applyFilters()">Zatwierdź</button>
+    <div class="filter-section">
+      <div class="filter-header" onclick="toggleFilterSection('batch')">
+        <span>Batch</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="filter-options" id="batch-options">
+        <button onclick="setFilter('batch', 'best')">Best</button>
+        <button onclick="setFilter('batch', 'budżet')">Budżet</button>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-header" onclick="toggleFilterSection('category')">
+        <span>Kategoria</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="filter-options" id="category-options">
+        <button onclick="setFilter('category', 'shoes')">Buty</button>
+        <button onclick="setFilter('category', 'socks')">Skarpetki</button>
+        <button onclick="setFilter('category', 'pants')">Spodnie</button>
+        <button onclick="setFilter('category', 'jackets')">Kurtki</button>
+        <button onclick="setFilter('category', 't-shirts')">Koszulki</button>
+        <button onclick="setFilter('category', 'hoodies')">Bluzy</button>
+        <button onclick="setFilter('category', 'shorts')">Szorty</button>
+        <button onclick="setFilter('category', 'accessories')">Akcesoria</button>
+      </div>
+    </div>
+
+    <button class="apply-btn" onclick="applyFilters()">Zatwierdź</button>
   </div>
 
-  <div class="product-list" id="productList"></div>
+  <div class="product-list" id="productList">
+    <!-- Produkty będą renderowane tutaj -->
+  </div>
 
   <script>
     let allProducts = JSON.parse(localStorage.getItem("products") || "[]");
-    const container = document.getElementById("productList");
-    const searchInput = document.getElementById("searchInput");
     let activeFilters = {};
-
-    function createProductCard(prod) {
-      return `
-        <div class="product">
-          <img src="${prod.image}" alt="produkt">
-          <h3>${prod.name}</h3>
-          <p>${prod.desc}</p>
-          <p><b>${prod.price} PLN</b></p>
-          <span class="badge">${prod.batch}</span>
-          <a href="${prod.link}" target="_blank"><button class="link-btn">LINK</button></a>
-        </div>`;
-    }
-
-    function renderProducts(products) {
-      container.innerHTML = products.map(createProductCard).join('');
-    }
-
-    function applyFilters() {
-      let filtered = [...allProducts];
-
-      const query = searchInput.value.toLowerCase();
-      if (query) filtered = filtered.filter(p => p.name.toLowerCase().includes(query));
-
-      if (activeFilters.batch) {
-        filtered = filtered.filter(p => p.batch === activeFilters.batch);
-      }
-
-      if (activeFilters.category) {
-        filtered = filtered.filter(p => p.category === activeFilters.category);
-      }
-
-      const min = parseFloat(document.getElementById('minPrice').value);
-      const max = parseFloat(document.getElementById('maxPrice').value);
-      if (!isNaN(min)) filtered = filtered.filter(p => parseFloat(p.price) >= min);
-      if (!isNaN(max)) filtered = filtered.filter(p => parseFloat(p.price) <= max);
-
-      renderProducts(filtered);
-    }
-
-    function setFilter(type, value) {
-      activeFilters[type] = value;
-      applyFilters();
-    }
 
     function toggleFilters() {
       document.getElementById("filters").classList.toggle("visible");
     }
 
-    searchInput.addEventListener("input", applyFilters);
+    function toggleFilterSection(section) {
+      const options = document.getElementById(`${section}-options`);
+      const arrow = document.querySelector(`#${section}-options`).previousElementSibling.querySelector('.arrow');
+      options.classList.toggle("visible");
+      arrow.textContent = options.classList.contains("visible") ? "▲" : "▼";
+    }
+
+    function setFilter(type, value) {
+      activeFilters[type] = value;
+    }
+
+    function applyFilters() {
+      let filtered = [...allProducts];
+      
+      // Filtrowanie po batchu
+      if (activeFilters.batch) {
+        filtered = filtered.filter(p => p.batch === activeFilters.batch);
+      }
+      
+      // Filtrowanie po kategorii
+      if (activeFilters.category) {
+        filtered = filtered.filter(p => p.category === activeFilters.category);
+      }
+      
+      // Filtrowanie po wyszukiwarce
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      if (query) {
+        filtered = filtered.filter(p => 
+          p.name.toLowerCase().includes(query) || 
+          p.desc.toLowerCase().includes(query)
+        );
+      }
+      
+      renderProducts(filtered);
+      toggleFilters();
+    }
+
+    function renderProducts(products) {
+      const container = document.getElementById("productList");
+      container.innerHTML = products.map(product => `
+        <div class="product">
+          <img src="${product.image || 'placeholder.jpg'}" alt="${product.name}">
+          <h3>${product.name}</h3>
+          <p>${product.desc}</p>
+          <span class="price">${product.price} PLN</span>
+          <span class="badge ${product.batch}">${product.batch}</span>
+          <a href="${product.link}" target="_blank" class="link-btn">LINK</a>
+        </div>
+      `).join('');
+    }
+
+    // Inicjalizacja
+    document.getElementById("searchInput").addEventListener("input", applyFilters);
     renderProducts(allProducts);
   </script>
 </body>
