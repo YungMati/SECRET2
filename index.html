@@ -22,7 +22,7 @@
 
   <div class="filter-panel" id="filters">
     <h3>Filtry</h3>
-    
+
     <div class="filter-section">
       <div class="filter-header" onclick="toggleFilterSection('batch')">
         <span>Batch</span>
@@ -54,9 +54,7 @@
     <button class="apply-btn" onclick="applyFilters()">Zatwierdź</button>
   </div>
 
-  <div class="product-list" id="productList">
-    <!-- Produkty będą renderowane tutaj -->
-  </div>
+  <div class="product-list" id="productList"></div>
 
   <script>
     let allProducts = JSON.parse(localStorage.getItem("products") || "[]");
@@ -79,26 +77,23 @@
 
     function applyFilters() {
       let filtered = [...allProducts];
-      
-      // Filtrowanie po batchu
+
       if (activeFilters.batch) {
         filtered = filtered.filter(p => p.batch === activeFilters.batch);
       }
-      
-      // Filtrowanie po kategorii
+
       if (activeFilters.category) {
         filtered = filtered.filter(p => p.category === activeFilters.category);
       }
-      
-      // Filtrowanie po wyszukiwarce
+
       const query = document.getElementById("searchInput").value.toLowerCase();
       if (query) {
-        filtered = filtered.filter(p => 
-          p.name.toLowerCase().includes(query) || 
+        filtered = filtered.filter(p =>
+          p.name.toLowerCase().includes(query) ||
           p.desc.toLowerCase().includes(query)
         );
       }
-      
+
       renderProducts(filtered);
       toggleFilters();
     }
@@ -117,7 +112,6 @@
       `).join('');
     }
 
-    // Inicjalizacja
     document.getElementById("searchInput").addEventListener("input", applyFilters);
     renderProducts(allProducts);
   </script>
