@@ -1,108 +1,52 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YUNG R3PS - Sklep</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YUNG R3PS</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="header">
-    <div class="logo" onclick="location.href='admin.html'">
-      <img src="logo.png" alt="Logo">
-    </div>
-    <input type="text" id="searchInput" placeholder="Szukaj produktów...">
-  </div>
+  <header>
+    <div class="logo" onclick="window.location.href='admin.html'">YUNG R3PS</div>
+    <input type="text" id="search" placeholder="Search products..." />
+  </header>
 
-  <div class="filter-btn" onclick="toggleFilters()">
+  <div id="filter-toggle" onclick="toggleFilterPanel()">
     <div class="bar"></div>
     <div class="bar"></div>
     <div class="bar"></div>
   </div>
 
-  <div class="filter-panel" id="filters">
-    <h3>Filtry ▼</h3>
-    
-    <div class="filter-group">
-      <label>Batch:</label>
-      <button onclick="setFilter('batch', 'best')" class="active-filter">Best</button>
-      <button onclick="setFilter('batch', 'budżet')">Budżet</button>
+  <aside id="filter-panel">
+    <h2>Filters</h2>
+    <div class="filter-section">
+      <h3 onclick="toggleSubfilter(this)">Category</h3>
+      <div class="filter-options">
+        <button onclick="filterByCategory('Clothes')">Clothes</button>
+        <button onclick="filterByCategory('Accessories')">Accessories</button>
+        <button onclick="filterByCategory('Tech')">Tech</button>
+      </div>
     </div>
-
-    <div class="filter-group">
-      <label>Kategorie:</label>
-      <button onclick="setFilter('category', 'shoes')">Buty</button>
-      <button onclick="setFilter('category', 'socks')">Skarpety</button>
-      <button onclick="setFilter('category', 'pants')">Spodnie</button>
-      <button onclick="setFilter('category', 'jackets')">Kurtki</button>
-      <button onclick="setFilter('category', 't-shirts')">T-shirty</button>
-      <button onclick="setFilter('category', 'hoodies')">Bluzy</button>
-      <button onclick="setFilter('category', 'shorts')">Szorty</button>
-      <button onclick="setFilter('category', 'accessories')" class="accessory-btn">Akcesoria</button>
+    <div class="filter-section">
+      <h3 onclick="toggleSubfilter(this)">Batch</h3>
+      <div class="filter-options">
+        <button onclick="filterByBatch('Best')">Best</button>
+        <button onclick="filterByBatch('Budget')">Budget</button>
+      </div>
     </div>
+    <div class="filter-section">
+      <h3 onclick="toggleSubfilter(this)">Price</h3>
+      <div class="filter-options">
+        <input type="number" id="minPrice" placeholder="Min" />
+        <input type="number" id="maxPrice" placeholder="Max" />
+      </div>
+    </div>
+    <button onclick="applyFilters()">Apply</button>
+  </aside>
 
-    <button class="apply-btn" onclick="applyFilters()">Zatwierdź</button>
-  </div>
+  <main id="products"></main>
 
-  <div class="product-list" id="productList">
-    <!-- Produkty będą renderowane tutaj -->
-  </div>
-
-  <script>
-    let allProducts = JSON.parse(localStorage.getItem("products") || "[]");
-    let activeFilters = {};
-
-    function toggleFilters() {
-      document.getElementById("filters").classList.toggle("visible");
-    }
-
-    function setFilter(type, value) {
-      activeFilters[type] = value;
-    }
-
-    function applyFilters() {
-      let filtered = [...allProducts];
-      
-      // Filtrowanie po batchu
-      if (activeFilters.batch) {
-        filtered = filtered.filter(p => p.batch === activeFilters.batch);
-      }
-      
-      // Filtrowanie po kategorii
-      if (activeFilters.category) {
-        filtered = filtered.filter(p => p.category === activeFilters.category);
-      }
-      
-      // Filtrowanie po wyszukiwarce
-      const query = document.getElementById("searchInput").value.toLowerCase();
-      if (query) {
-        filtered = filtered.filter(p => 
-          p.name.toLowerCase().includes(query) || 
-          p.desc.toLowerCase().includes(query)
-        );
-      }
-      
-      renderProducts(filtered);
-      toggleFilters();
-    }
-
-    function renderProducts(products) {
-      const container = document.getElementById("productList");
-      container.innerHTML = products.map(product => `
-        <div class="product">
-          <img src="${product.image || 'placeholder.jpg'}" alt="${product.name}">
-          <h3>${product.name}</h3>
-          <p>${product.desc}</p>
-          <span class="price">${product.price} PLN</span>
-          <span class="badge ${product.batch}">${product.batch}</span>
-          <a href="${product.link}" target="_blank" class="link-btn">LINK</a>
-        </div>
-      `).join('');
-    }
-
-    // Inicjalizacja
-    document.getElementById("searchInput").addEventListener("input", applyFilters);
-    renderProducts(allProducts);
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
