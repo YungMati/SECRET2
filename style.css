@@ -149,6 +149,10 @@ body {
   display: none;
   z-index: 998;
 }
+
+.filter-panel.visible {
+  display: block;
+}
 .admin-panel .product {
   background: #2c2c2c;
   margin: 10px 0;
@@ -171,7 +175,4 @@ body {
   color: white;
   border-radius: 5px;
   cursor: pointer;
-}
-.filter-panel.visible {
-  display: block;
 }
