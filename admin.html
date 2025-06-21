@@ -1,152 +1,36 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel Admina - YUNG R3PS</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Admina</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="admin-login" id="loginBox">
-    <h2>Panel logowania</h2>
-    <input type="text" id="login" placeholder="Login">
-    <input type="password" id="password" placeholder="Hasło">
-    <button onclick="checkLogin()">Zaloguj</button>
+  <div class="admin-login" id="loginForm">
+    <h2>Zaloguj się</h2>
+    <input type="text" id="username" placeholder="Login" />
+    <input type="password" id="password" placeholder="Hasło" />
+    <button onclick="login()">Zaloguj</button>
+    <p id="loginError" style="color:red; display:none;">Niepoprawny login lub hasło</p>
   </div>
-  
+
   <div class="admin-panel hidden" id="adminPanel">
-    <div class="admin-header">
-      <button class="back-btn" onclick="window.location.href='index.html'">← Powrót do sklepu</button>
-      <h2>Dodaj produkt</h2>
-    </div>
-    
-    <div class="admin-form">
-      <input type="text" id="name" placeholder="Nazwa produktu">
-      <input type="text" id="desc" placeholder="Opis produktu">
-      <input type="number" id="price" placeholder="Cena (PLN)">
-      
-      <div class="form-grid">
-        <select id="batch">
-          <option value="best">Best</option>
-          <option value="budżet">Budżet</option>
-        </select>
-        
-        <select id="category">
-          <option value="shoes">Shoes</option>
-          <option value="socks">Socks</option>
-          <option value="pants">Pants</option>
-          <option value="jackets">Jackets</option>
-          <option value="t-shirts">T-Shirts</option>
-          <option value="hoodies">Hoodies</option>
-          <option value="shorts">Shorts</option>
-          <option value="accessories">Accessories</option>
-        </select>
-      </div>
-      
-      <input type="text" id="link" placeholder="Link do produktu">
-      <input type="text" id="imageUrl" placeholder="Link do zdjęcia (opcjonalnie)">
-      <button class="add-btn" onclick="addProduct()">Dodaj produkt</button>
-    </div>
-    
-    <hr>
-    
-    <div class="admin-products" id="adminProductList"></div>
+    <h2>Panel Admina</h2>
+    <!-- tu możesz dodać pola dodawania produktów -->
+    <p>Witaj w panelu administratora!</p>
   </div>
 
   <script>
-    // Dane logowania
-    const ADMIN_CREDENTIALS = {
-      login: "admin",
-      password: "yung123"
-    };
-
-    function checkLogin() {
-      const login = document.getElementById("login").value;
+    function login() {
+      const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
-      
-      if(login === ADMIN_CREDENTIALS.login && password === ADMIN_CREDENTIALS.password) {
-        document.getElementById("loginBox").style.display = "none";
+      if (username === "YungMati" && password === "vawjej-fetfuq-gIqwy5") {
+        document.getElementById("loginForm").classList.add("hidden");
         document.getElementById("adminPanel").classList.remove("hidden");
-        renderAdminProducts();
       } else {
-        alert("Nieprawidłowe dane logowania!");
+        document.getElementById("loginError").style.display = "block";
       }
-    }
-
-    // Zarządzanie produktami
-    let products = JSON.parse(localStorage.getItem("products") || "[]");
-
-    function addProduct() {
-      const name = document.getElementById("name").value;
-      const desc = document.getElementById("desc").value;
-      const price = document.getElementById("price").value;
-      const batch = document.getElementById("batch").value;
-      const category = document.getElementById("category").value;
-      const link = document.getElementById("link").value;
-      const imageUrl = document.getElementById("imageUrl").value;
-
-      // Walidacja
-      if(!name || !desc || !price || !link) {
-        return alert("Wypełnij wymagane pola!");
-      }
-
-      // Dodanie produktu
-      const newProduct = {
-        name, 
-        desc,
-        price,
-        batch,
-        category,
-        link,
-        image: imageUrl || null
-      };
-
-      products.push(newProduct);
-      saveProducts();
-      clearForm();
-      renderAdminProducts();
-    }
-
-    function deleteProduct(index) {
-      if(confirm("Czy na pewno chcesz usunąć ten produkt?")) {
-        products.splice(index, 1);
-        saveProducts();
-        renderAdminProducts();
-      }
-    }
-
-    function saveProducts() {
-      localStorage.setItem("products", JSON.stringify(products));
-    }
-
-    function clearForm() {
-      document.getElementById("name").value = "";
-      document.getElementById("desc").value = "";
-      document.getElementById("price").value = "";
-      document.getElementById("link").value = "";
-      document.getElementById("imageUrl").value = "";
-    }
-
-    function renderAdminProducts() {
-      const container = document.getElementById("adminProductList");
-      container.innerHTML = products.map((product, index) => `
-        <div class="admin-product">
-          <div class="product-image">
-            ${product.image ? `<img src="${product.image}" alt="${product.name}">` : '<div class="no-image">Brak zdjęcia</div>'}
-          </div>
-          <div class="product-details">
-            <h3>${product.name}</h3>
-            <p>${product.desc}</p>
-            <div class="product-meta">
-              <span class="price">${product.price} PLN</span>
-              <span class="batch">${product.batch}</span>
-              <span class="category">${product.category}</span>
-            </div>
-            <a href="${product.link}" target="_blank">Link do produktu</a>
-          </div>
-          <button class="delete-btn" onclick="deleteProduct(${index})">Usuń</button>
-        </div>
-      `).join("");
     }
   </script>
 </body>
