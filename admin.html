@@ -1,30 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Login</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="admin-login-body">
-  <div class="admin-login">
+<html lang="pl">
+<head><meta charset="UTF‑8"><meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+<title>YUNG R3PS Admin</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <div class="admin-login" id="loginBox">
     <h2>Admin Login</h2>
-    <input type="text" id="username" placeholder="Username" />
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-    <p id="error-msg"></p>
+    <input id="user" type="text" placeholder="Login">
+    <input id="pass" type="password" placeholder="Hasło">
+    <button onclick="login()">Zaloguj</button>
+  </div>
+
+  <div class="admin-panel hidden" id="adminPanel">
+    <h2>Panel Admina</h2>
+    <input id="name" placeholder="Nazwa produktu">
+    <input id="desc" placeholder="Opis">
+    <input id="price" placeholder="Cena">
+    <input id="image" placeholder="Link zdjęcia">
+    <input id="link" placeholder="Link produktu">
+    <select id="batch">
+      <option value="best">Best</option>
+      <option value="budżet">Budżet</option>
+    </select>
+    <input id="category" placeholder="Kategoria">
+    <button onclick="add()">Dodaj produkt</button>
+    <div id="adminList"></div>
+    <button onclick="logout()">Wyloguj</button>
   </div>
 
   <script>
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      if (user === "YungMati" && pass === "vawjej-fetfuq-gIqwy5") {
-        window.location.href = "panel.html";
-      } else {
-        document.getElementById("error-msg").textContent = "Invalid login.";
-      }
+    const U='YungMati',P='vawjej-fetfuq-gIqwy5';
+    function login(){
+      if(document.getElementById('user').value===U&&document.getElementById('pass').value===P){
+        loginBox.classList.add('hidden'); adminPanel.classList.remove('hidden'); adminRender();
+      } else alert('Złe dane');
     }
+    function logout(){loginBox.classList.remove('hidden'); adminPanel.classList.add('hidden');}
+    function add(){
+      data.push({
+        name:name.value,desc:desc.value,price:price.value,
+        image:image.value,link:link.value,batch:batch.value,
+        category:category.value
+      });
+      localStorage.setItem('products',JSON.stringify(data));
+      adminRender();
+    }
+    function adminRender(){
+      adminList.innerHTML = data.map((p,i)=>`
+        <div class="admin-product">
+          <img src="${p.image}" alt="">
+          <div class="info">
+            <div>${p.name}</div><div>${p.price} PLN</div>
+            <div>${p.batch} / ${p.category}</div>
+          </div>
+          <button class="delete-btn" onclick="del(${i})">Usuń</button>
+        </div>`).join('')
+    }
+    function del(i){data.splice(i,1); localStorage.setItem('products',JSON.stringify(data)); adminRender();}
+    window.data = JSON.parse(localStorage.getItem('products')||'[]');
   </script>
 </body>
 </html>
