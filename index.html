@@ -1,67 +1,103 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF‑8">
-  <meta name="viewport" content="width=device‑width, initial‑scale=1.0">
-  <title>YUNG R3PS</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUNG R3PS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="header">
-    <div class="logo"><img src="logo.png" alt="YUNG R3PS"></div>
-    <input id="search" type="text" placeholder="Szukaj produktów..." oninput="render()" />
-  </header>
+    <header class="header">
+        <div class="logo" onclick="location.href='admin.html'">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <input type="text" id="searchInput" placeholder="Szukaj produktów...">
+    </header>
 
-  <div class="filter-btn" onclick="toggleFilters()">
-    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-  </div>
-  <aside id="filters" class="filter-panel">
-    <div class="filter-group">
-      <label>Batch</label>
-      <button onclick="setFilter('batch','best')">Best</button>
-      <button onclick="setFilter('batch','budżet')">Budżet</button>
+    <div class="filters-btn" onclick="toggleFilters()">☰ Filtry</div>
+
+    <div class="filter-panel">
+        <h3>Filtry</h3>
+        
+        <div class="filter-group">
+            <label>Batch:</label>
+            <button onclick="setFilter('batch', 'best')">Best</button>
+            <button onclick="setFilter('batch', 'budżet')">Budżet</button>
+        </div>
+
+        <div class="filter-group">
+            <label>Kategoria:</label>
+            <button onclick="setFilter('category', 'shoes')">Buty</button>
+            <button onclick="setFilter('category', 'socks')">Skarpety</button>
+            <button onclick="setFilter('category', 'pants')">Spodnie</button>
+            <button onclick="setFilter('category', 'jackets')">Kurtki</button>
+            <button onclick="setFilter('category', 't-shirts')">T-shirty</button>
+            <button onclick="setFilter('category', 'hoodies')">Bluzy</button>
+            <button onclick="setFilter('category', 'shorts')">Szorty</button>
+            <button onclick="setFilter('category', 'accessories')">Akcesoria</button>
+        </div>
+
+        <button class="apply-btn" onclick="applyFilters()">Zatwierdź</button>
     </div>
-    <div class="filter-group">
-      <label>Kategoria</label>
-      <button onclick="setFilter('category','shoes')">Buty</button>
-      <button onclick="setFilter('category','socks')">Skarpety</button>
-      <button onclick="setFilter('category','pants')">Spodnie</button>
+
+    <div class="product-grid">
+        <!-- Produkty będą tutaj -->
     </div>
-    <button class="apply-btn" onclick="applyFilters()">Zatwierdź</button>
-  </aside>
 
-  <div class="product-list" id="productList"></div>
+    <script>
+        // Dane produktów
+        let products = JSON.parse(localStorage.getItem("products") || "[]");
+        let activeFilters = {};
 
-  <script>
-    let data = JSON.parse(localStorage.getItem('products')||'[]');
-    let filter = {};
-    function toggleFilters(){ document.getElementById('filters').classList.toggle('visible'); }
-    function setFilter(k,v){
-      filter[k] = (filter[k]===v)?delete filter[k]:v;
-      document.querySelectorAll('.filter-group button')
-        .forEach(btn=>{btn.classList.toggle('active', filter[btn.getAttribute('onclick').split("'")[3]]===btn.getAttribute('onclick').split("'")[5])});
-    }
-    function applyFilters(){
-      toggleFilters(); render();
-    }
-    function render(){
-      const search = document.getElementById('search').value.toLowerCase();
-      let arr = data.filter(p=>{
-        if(filter.batch && p.batch!==filter.batch)return false;
-        if(filter.category && p.category!==filter.category)return false;
-        if(search && !p.name.toLowerCase().includes(search)&&!p.desc.toLowerCase().includes(search))return false;
-        return true;
-      });
-      document.getElementById('productList').innerHTML=arr.map(p=>`
-        <div class="product">
-          <img src="${p.image}" alt=""><h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <span class="price">${p.price} PLN</span>
-          <span class="badge ${p.batch}">${p.batch}</span>
-          <a href="${p.link}" class="link-btn" target="_blank">LINK</a>
-        </div>`).join('');
-    }
-    window.onload = render;
-  </script>
+        // Funkcje filtrowania
+        function toggleFilters() {
+            document.querySelector('.filter-panel').classList.toggle('active');
+        }
+
+        function setFilter(type, value) {
+            activeFilters[type] = value;
+        }
+
+        function applyFilters() {
+            let filtered = [...products];
+            
+            if (activeFilters.batch) {
+                filtered = filtered.filter(p => p.batch === activeFilters.batch);
+            }
+            
+            if (activeFilters.category) {
+                filtered = filtered.filter(p => p.category === activeFilters.category);
+            }
+            
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            if (searchQuery) {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(searchQuery) || 
+                    p.desc.toLowerCase().includes(searchQuery)
+                );
+            }
+            
+            renderProducts(filtered);
+        }
+
+        // Renderowanie produktów
+        function renderProducts(productsToRender) {
+            const grid = document.querySelector('.product-grid');
+            grid.innerHTML = productsToRender.map(product => `
+                <div class="product-card">
+                    <img src="${product.image || 'placeholder.jpg'}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>${product.desc}</p>
+                    <span class="price">${product.price} PLN</span>
+                    <span class="badge ${product.batch}">${product.batch}</span>
+                    <a href="${product.link}" target="_blank" class="product-link">LINK</a>
+                </div>
+            `).join('');
+        }
+
+        // Inicjalizacja
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        renderProducts(products);
+    </script>
 </body>
 </html>
