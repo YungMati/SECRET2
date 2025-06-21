@@ -172,12 +172,19 @@ body {
   width: 100%;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.1s;
+  transition: all 0.1s ease;
+  position: relative; /* Potrzebne do efektu "wciśnięcia" */
+  box-shadow: 0 4px 0 #cc0000; /* Cień dla przycisku */
+}
+
+.filter-panel button:hover {
+  background: #ff3333; /* Zmiana koloru przy najechaniu */
 }
 
 .filter-panel button:active {
-  transform: scale(0.95);
-  background: #cc0000;
+  transform: translateY(4px); /* Efekt wciśnięcia */
+  box-shadow: 0 1px 0 #cc0000; /* Zmiana cienia przy kliknięciu */
+  background: #990000; /* Ciemniejszy kolor przy kliknięciu */
 }
 
 .filter-panel input {
