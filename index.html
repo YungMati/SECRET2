@@ -22,22 +22,19 @@
 
   <div class="filter-panel" id="filters">
     <h3>Filtry</h3>
-
     <label>Batch:</label>
     <button onclick="setFilter('batch', 'best')">Best</button>
     <button onclick="setFilter('batch', 'budżet')">Budżet</button>
     
     <label>Kategoria:</label>
-    <button onclick="setFilter('category', 'Shoes')">Shoes</button>
-    <button onclick="setFilter('category', 'Socks')">Socks</button>
-    <button onclick="setFilter('category', 'Pants')">Pants</button>
-    <button onclick="setFilter('category', 'Shirts')">Shirts</button>
-    <button onclick="setFilter('category', 'Jackets')">Jackets</button>
+    <button onclick="setFilter('category', 'shoes')">Shoes</button>
+    <button onclick="setFilter('category', 'socks')">Socks</button>
+    <button onclick="setFilter('category', 'pants')">Pants</button>
+    <button onclick="setFilter('category', 'jackets')">Jackets</button>
     
     <label>Cena:</label>
     <input type="number" id="minPrice" placeholder="Min">
     <input type="number" id="maxPrice" placeholder="Max">
-
     <button onclick="applyFilters()">Zatwierdź</button>
   </div>
 
