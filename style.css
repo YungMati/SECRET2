@@ -44,12 +44,17 @@ body {
 }
 
 .product {
-  width: 45%;
-  min-width: 160px;
+  width: 48%;
+  min-width: 150px;
   background: #222;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: 0 2px 10px rgba(255,0,0,0.2);
+  box-shadow: 0 2px 10px rgba(255, 0, 0, 0.2);
+}
+@media (min-width: 768px) {
+  .product {
+    width: 30%;
+  }
 }
 
 .product img {
