@@ -4,20 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sklep z Chin</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="header">
     <div class="logo" onclick="location.href='admin.html'">Twoje Logo</div>
+    <input type="text" id="searchInput" placeholder="Szukaj produktów...">
   </div>
 
-  <div class="product-list" id="productList">
-    <!-- Produkty będą dodawane dynamicznie przez JS -->
+  <div class="filter-btn" onclick="toggleFilters()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
   </div>
+
+  <div class="filter-panel" id="filters">
+    <h3>Filtry</h3>
+    <select id="batchFilter">
+      <option value="">Wszystkie</option>
+      <option value="best">Best</option>
+      <option value="budżet">Budżet</option>
+    </select>
+    <button onclick="applyFilters()">Zatwierdź</button>
+  </div>
+
+  <div class="product-list" id="productList"></div>
 
   <script>
-    const products = JSON.parse(localStorage.getItem("products") || "[]");
+    let allProducts = JSON.parse(localStorage.getItem("products") || "[]");
     const container = document.getElementById("productList");
+    const searchInput = document.getElementById("searchInput");
 
     function createProductCard(prod) {
       return `
@@ -27,10 +43,30 @@
           <p>${prod.desc}</p>
           <p><b>${prod.price} PLN</b></p>
           <span class="badge">${prod.batch}</span>
+          <a href="${prod.link}" target="_blank"><button class="link-btn">LINK</button></a>
         </div>`;
     }
 
-    container.innerHTML = products.map(createProductCard).join('');
+    function renderProducts(products) {
+      container.innerHTML = products.map(createProductCard).join('');
+    }
+
+    function applyFilters() {
+      const batch = document.getElementById("batchFilter").value;
+      let filtered = [...allProducts];
+      if (batch) filtered = filtered.filter(p => p.batch === batch);
+      const query = searchInput.value.toLowerCase();
+      if (query) filtered = filtered.filter(p => p.name.toLowerCase().includes(query));
+      renderProducts(filtered);
+    }
+
+    function toggleFilters() {
+      document.getElementById("filters").classList.toggle("visible");
+    }
+
+    searchInput.addEventListener("input", applyFilters);
+
+    renderProducts(allProducts);
   </script>
 </body>
 </html>
