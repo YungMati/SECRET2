@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Panel admina</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="header">
@@ -20,13 +20,13 @@
 
   <div id="adminPanel" class="admin-panel hidden">
     <h2>Dodaj produkt</h2>
-    <input id="img" placeholder="Link do zdjęcia">
+    <input id="link" placeholder="Link do aukcji (z Ali)">
     <input id="name" placeholder="Nazwa">
     <input id="desc" placeholder="Opis">
     <input id="price" placeholder="Cena (PLN)">
     <select id="batch">
-      <option value="best">best</option>
-      <option value="budżet">budżet</option>
+      <option>best</option>
+      <option>budżet</option>
     </select>
     <button onclick="addProduct()">Dodaj</button>
     <p><a href="index.html">Zobacz stronę</a></p>
@@ -47,10 +47,17 @@
       }
     }
 
+    function extractImageFromAli(link) {
+      const match = link.match(/https?:\/\/[^?]+\.jpg/);
+      return match ? match[0] : "https://via.placeholder.com/150";
+    }
+
     function addProduct() {
       const products = JSON.parse(localStorage.getItem("products") || "[]");
+      const link = document.getElementById("link").value;
       const prod = {
-        image: document.getElementById("img").value,
+        link,
+        image: extractImageFromAli(link),
         name: document.getElementById("name").value,
         desc: document.getElementById("desc").value,
         price: document.getElementById("price").value,
