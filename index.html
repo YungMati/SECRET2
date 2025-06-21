@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YUNG R3PS</title>
+  <title>YUNG R3PS - Sklep</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,34 +21,24 @@
   </div>
 
   <div class="filter-panel" id="filters">
-    <h3>Filtry</h3>
-
-    <div class="filter-section">
-      <div class="filter-header" onclick="toggleFilterSection('batch')">
-        <span>Batch</span>
-        <span class="arrow">▼</span>
-      </div>
-      <div class="filter-options" id="batch-options">
-        <button onclick="setFilter('batch', 'best')">Best</button>
-        <button onclick="setFilter('batch', 'budżet')">Budżet</button>
-      </div>
+    <h3>Filtry ▼</h3>
+    
+    <div class="filter-group">
+      <label>Batch:</label>
+      <button onclick="setFilter('batch', 'best')" class="active-filter">Best</button>
+      <button onclick="setFilter('batch', 'budżet')">Budżet</button>
     </div>
 
-    <div class="filter-section">
-      <div class="filter-header" onclick="toggleFilterSection('category')">
-        <span>Kategoria</span>
-        <span class="arrow">▼</span>
-      </div>
-      <div class="filter-options" id="category-options">
-        <button onclick="setFilter('category', 'shoes')">Buty</button>
-        <button onclick="setFilter('category', 'socks')">Skarpetki</button>
-        <button onclick="setFilter('category', 'pants')">Spodnie</button>
-        <button onclick="setFilter('category', 'jackets')">Kurtki</button>
-        <button onclick="setFilter('category', 't-shirts')">Koszulki</button>
-        <button onclick="setFilter('category', 'hoodies')">Bluzy</button>
-        <button onclick="setFilter('category', 'shorts')">Szorty</button>
-        <button onclick="setFilter('category', 'accessories')">Akcesoria</button>
-      </div>
+    <div class="filter-group">
+      <label>Kategorie:</label>
+      <button onclick="setFilter('category', 'shoes')">Buty</button>
+      <button onclick="setFilter('category', 'socks')">Skarpety</button>
+      <button onclick="setFilter('category', 'pants')">Spodnie</button>
+      <button onclick="setFilter('category', 'jackets')">Kurtki</button>
+      <button onclick="setFilter('category', 't-shirts')">T-shirty</button>
+      <button onclick="setFilter('category', 'hoodies')">Bluzy</button>
+      <button onclick="setFilter('category', 'shorts')">Szorty</button>
+      <button onclick="setFilter('category', 'accessories')" class="accessory-btn">Akcesoria</button>
     </div>
 
     <button class="apply-btn" onclick="applyFilters()">Zatwierdź</button>
@@ -66,34 +56,32 @@
       document.getElementById("filters").classList.toggle("visible");
     }
 
-    function toggleFilterSection(section) {
-      const options = document.getElementById(`${section}-options`);
-      const arrow = options.previousElementSibling.querySelector('.arrow');
-      options.classList.toggle("visible");
-      arrow.textContent = options.classList.contains("visible") ? "▲" : "▼";
-    }
-
     function setFilter(type, value) {
       activeFilters[type] = value;
     }
 
     function applyFilters() {
       let filtered = [...allProducts];
-      const query = document.getElementById("searchInput").value.toLowerCase();
-
+      
+      // Filtrowanie po batchu
       if (activeFilters.batch) {
         filtered = filtered.filter(p => p.batch === activeFilters.batch);
       }
+      
+      // Filtrowanie po kategorii
       if (activeFilters.category) {
         filtered = filtered.filter(p => p.category === activeFilters.category);
       }
+      
+      // Filtrowanie po wyszukiwarce
+      const query = document.getElementById("searchInput").value.toLowerCase();
       if (query) {
         filtered = filtered.filter(p => 
           p.name.toLowerCase().includes(query) || 
           p.desc.toLowerCase().includes(query)
         );
       }
-
+      
       renderProducts(filtered);
       toggleFilters();
     }
@@ -112,6 +100,7 @@
       `).join('');
     }
 
+    // Inicjalizacja
     document.getElementById("searchInput").addEventListener("input", applyFilters);
     renderProducts(allProducts);
   </script>
