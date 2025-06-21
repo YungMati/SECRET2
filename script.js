@@ -1,40 +1,115 @@
-async function loadProducts() {
-  const batch = document.getElementById('batchFilter').value;
-  const res = await fetch('https://admin-shop-backend.onrender.com/api/products');
-  const data = await res.json();
-  const filtered = batch ? data.filter(p => p.batch === batch) : data;
+const products = [
+  {
+    name: "Xiaomi Watch",
+    description: "Smartwatch z GPS",
+    price: "129 zł",
+    category: "electronics",
+    batch: "best",
+    image: "https://via.placeholder.com/300"
+  },
+  {
+    name: "Kabel USB-C",
+    description: "Szybkie ładowanie",
+    price: "15 zł",
+    category: "accessories",
+    batch: "budżet",
+    image: "https://via.placeholder.com/300"
+  }
+];
 
-  const container = document.getElementById('products');
-  container.innerHTML = '';
+let activeFilters = { category: [], batch: [] };
+
+function toggleFilterPanel() {
+  document.getElementById("filterPanel").classList.toggle("visible");
+}
+
+function toggleFilter(type, value) {
+  const btns = document.querySelectorAll(`#${type}Filter button`);
+  btns.forEach(btn => {
+    if (btn.textContent.toLowerCase() === value) {
+      btn.classList.toggle("active-filter");
+    }
+  });
+
+  if (activeFilters[type].includes(value)) {
+    activeFilters[type] = activeFilters[type].filter(v => v !== value);
+  } else {
+    activeFilters[type].push(value);
+  }
+
+  displayProducts();
+}
+
+function filterProducts() {
+  displayProducts();
+}
+
+function displayProducts() {
+  const list = document.getElementById("productList");
+  if (!list) return;
+  list.innerHTML = "";
+
+  const search = document.getElementById("searchInput").value.toLowerCase();
+
+  const filtered = products.filter(p => {
+    const matchesSearch = p.name.toLowerCase().includes(search);
+    const matchesCategory = activeFilters.category.length === 0 || activeFilters.category.includes(p.category);
+    const matchesBatch = activeFilters.batch.length === 0 || activeFilters.batch.includes(p.batch);
+    return matchesSearch && matchesCategory && matchesBatch;
+  });
+
   filtered.forEach(p => {
-    container.innerHTML += `
-      <div class="product">
-        <img src="${p.image}" alt="${p.name}">
-        <h3>${p.name}</h3>
-        <p>${p.description}</p>
-        <strong>${p.price} zł</strong>
-      </div>
+    const el = document.createElement("div");
+    el.className = "product";
+    el.innerHTML = `
+      <img src="${p.image}" />
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+      <span class="price">${p.price}</span>
+      <a href="#" class="link-btn">Kup</a>
     `;
+    list.appendChild(el);
   });
 }
 
-function toggleFilters() {
-  document.getElementById('filters').classList.toggle('hidden');
+function login() {
+  const login = document.getElementById("adminLogin").value;
+  const pass = document.getElementById("adminPassword").value;
+
+  if (login === "YungMati" && pass === "vawjej-fetfuq-gIqwy5") {
+    document.getElementById("loginForm").classList.add("hidden");
+    document.getElementById("adminPanel").classList.remove("hidden");
+    renderAdminProducts();
+  } else {
+    alert("Zły login lub hasło");
+  }
 }
 
-loadProducts();
-<script>
-  const correctLogin = "admin";
-  const correctPassword = "yung123";
+function renderAdminProducts() {
+  const list = document.getElementById("adminProductList");
+  if (!list) return;
+  list.innerHTML = "";
 
-  function checkLogin() {
-    const login = document.getElementById("login").value;
-    const password = document.getElementById("password").value;
-    if (login === correctLogin && password === correctPassword) {
-      document.getElementById("loginBox").style.display = "none";
-      document.getElementById("adminPanel").classList.remove("hidden");
-    } else {
-      alert("Nieprawidłowy login lub hasło!");
-    }
-  }
-</script>
+  products.forEach((p, i) => {
+    const el = document.createElement("div");
+    el.className = "product";
+    el.innerHTML = `
+      <img src="${p.image}" />
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+      <span class="price">${p.price}</span>
+      <button class="delete-btn" onclick="deleteProduct(${i})">Usuń</button>
+    `;
+    list.appendChild(el);
+  });
+}
+
+function deleteProduct(index) {
+  products.splice(index, 1);
+  renderAdminProducts();
+  displayProducts();
+}
+
+window.onload = () => {
+  displayProducts();
+};
