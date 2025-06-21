@@ -23,3 +23,18 @@ function toggleFilters() {
 }
 
 loadProducts();
+<script>
+  const correctLogin = "admin";
+  const correctPassword = "yung123";
+
+  function checkLogin() {
+    const login = document.getElementById("login").value;
+    const password = document.getElementById("password").value;
+    if (login === correctLogin && password === correctPassword) {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("adminPanel").classList.remove("hidden");
+    } else {
+      alert("Nieprawidłowy login lub hasło!");
+    }
+  }
+</script>
