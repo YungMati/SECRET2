@@ -12,11 +12,27 @@ body {
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(0,0,0,0.6);
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
   cursor: pointer;
 }
 
 .logo:hover {
   text-decoration: underline;
+}
+
+#searchInput {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background: #222;
+  color: white;
+  width: 50%;
+  margin-left: 20px;
 }
 
 .product-list {
@@ -54,6 +70,18 @@ body {
   margin-top: 5px;
 }
 
+.link-btn {
+  margin-top: 8px;
+  padding: 6px;
+  background: red;
+  color: white;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .admin-panel {
   padding: 30px;
   max-width: 400px;
@@ -84,4 +112,44 @@ body {
 
 .hidden {
   display: none;
+}
+
+.filter-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background: red;
+  border-radius: 50%;
+  box-shadow: 0 0 10px red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.filter-btn .bar {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 2px 0;
+  border-radius: 3px;
+}
+
+.filter-panel {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  background: #1a1a1a;
+  padding: 20px;
+  border-right: 2px solid red;
+  display: none;
+  z-index: 998;
+}
+
+.filter-panel.visible {
+  display: block;
 }
