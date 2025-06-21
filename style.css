@@ -56,38 +56,34 @@ body {
   box-shadow: 0 0 0 2px red;
 }
 
-/* UKŁAD PRODUKTÓW */
+/* UKŁAD PRODUKTÓW - 2 KOLUMNY ZAWSZE */
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* Twarde 2 kolumny */
   gap: 15px;
   padding: 15px;
   width: 100%;
 }
 
+/* OPTYMALIZACJA DLA MAŁYCH EKRANÓW */
+@media (max-width: 350px) {
+  .product-list {
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .product {
+    padding: 10px;
+  }
+}
+
+/* ZAPEWNIENIE ŻE PRODUKTY SIĘ NIE ROZCIĄGAJĄ */
 .product {
-  background: #222;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: all 0.3s;
-  display: flex;
-  flex-direction: column;
-}
-
-.product:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(255,0,0,0.2);
-}
-
-.product img {
   width: 100%;
-  border-radius: 8px;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  margin-bottom: 10px;
-  background: #333;
+  max-width: 100%;
+  min-width: 0; /* Naprawia problemy z overflow */
 }
+
 
 .product h3 {
   font-size: 16px;
