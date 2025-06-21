@@ -8,14 +8,13 @@
 </head>
 <body>
   <div class="admin-login" id="loginBox">
-  <h2>Panel logowania</h2>
-  <input type="text" id="login" placeholder="Login" />
-  <input type="password" id="password" placeholder="Hasło" />
-  <button onclick="checkLogin()">Zaloguj</button>
-</div>
-<div class="admin-panel hidden" id="adminPanel">
-  <!-- tutaj dalej cały panel admina -->
-</div>
+    <h2>Panel logowania</h2>
+    <input type="text" id="login" placeholder="Login" />
+    <input type="password" id="password" placeholder="Hasło" />
+    <button onclick="checkLogin()">Zaloguj</button>
+  </div>
+  
+  <div class="admin-panel hidden" id="adminPanel">
     <h2>Dodaj produkt</h2>
     <input type="text" id="name" placeholder="Nazwa produktu" />
     <input type="text" id="desc" placeholder="Opis produktu" />
@@ -41,15 +40,18 @@
   </div>
 
   <script>
-    const haslo = "admin123"; // ← tutaj możesz zmienić swoje hasło
+    const correctLogin = "admin";
+    const correctPassword = "yung123";
 
-    function checkPassword() {
-      const wpisane = document.getElementById("password").value;
-      if (wpisane === haslo) {
-        document.getElementById("loginPanel").classList.add("hidden");
-        document.getElementById("mainPanel").classList.remove("hidden");
+    function checkLogin() {
+      const login = document.getElementById("login").value;
+      const password = document.getElementById("password").value;
+      if (login === correctLogin && password === correctPassword) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("adminPanel").classList.remove("hidden");
+        renderAdminProducts();
       } else {
-        alert("Niepoprawne hasło.");
+        alert("Nieprawidłowy login lub hasło!");
       }
     }
 
@@ -75,7 +77,7 @@
           const newProduct = { name, desc, price, batch, category, link, image };
           products.push(newProduct);
           localStorage.setItem("products", JSON.stringify(products));
-          location.reload();
+          renderAdminProducts();
         })
         .catch(() => alert("Nie udało się pobrać zdjęcia."));
     }
@@ -83,7 +85,7 @@
     function deleteProduct(index) {
       products.splice(index, 1);
       localStorage.setItem("products", JSON.stringify(products));
-      location.reload();
+      renderAdminProducts();
     }
 
     function renderAdminProducts() {
@@ -96,8 +98,6 @@
         </div>
       `).join('');
     }
-
-    renderAdminProducts();
   </script>
 </body>
 </html>
