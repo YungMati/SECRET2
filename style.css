@@ -153,3 +153,26 @@ body {
 .filter-panel.visible {
   display: block;
 }
+.admin-panel .product {
+  background: #2c2c2c;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px red;
+}
+
+.admin-panel .product img {
+  width: 100%;
+  max-width: 120px;
+  border-radius: 5px;
+}
+
+.admin-panel .product button {
+  margin-top: 10px;
+  background: red;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
