@@ -38,22 +38,24 @@ body {
 .product-list {
   display: flex;
   flex-wrap: wrap;
-  padding: 20px;
   gap: 15px;
   justify-content: center;
+  padding: 20px;
 }
 
 .product {
-  width: 48%;
-  min-width: 150px;
+  flex: 1 1 45%;
   background: #222;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 10px rgba(255, 0, 0, 0.2);
+  max-width: 45%;
 }
+
 @media (min-width: 768px) {
   .product {
-    width: 30%;
+    flex: 1 1 30%;
+    max-width: 30%;
   }
 }
 
