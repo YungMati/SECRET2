@@ -7,13 +7,15 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="loginPanel" class="admin-panel">
-    <h2>Zaloguj się</h2>
-    <input type="password" id="password" placeholder="Hasło admina">
-    <button onclick="checkPassword()">Zaloguj</button>
-  </div>
-
-  <div id="mainPanel" class="admin-panel hidden">
+  <div class="admin-login" id="loginBox">
+  <h2>Panel logowania</h2>
+  <input type="text" id="login" placeholder="Login" />
+  <input type="password" id="password" placeholder="Hasło" />
+  <button onclick="checkLogin()">Zaloguj</button>
+</div>
+<div class="admin-panel hidden" id="adminPanel">
+  <!-- tutaj dalej cały panel admina -->
+</div>
     <h2>Dodaj produkt</h2>
     <input type="text" id="name" placeholder="Nazwa produktu" />
     <input type="text" id="desc" placeholder="Opis produktu" />
