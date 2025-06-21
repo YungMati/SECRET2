@@ -138,3 +138,15 @@ body {
   font-weight: bold;
   box-shadow: 0 0 10px red;
 }
+.logo-img {
+  height: 40px;
+  cursor: pointer;
+}
+
+.shop-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 10px;
+  color: white;
+  flex-grow: 1;
+}
