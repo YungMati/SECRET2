@@ -43,14 +43,21 @@ body {
   justify-content: center;
 }
 
+/* Każdy produkt będzie miał 50% szerokości minus odstęp, czyli 2 kolumny na małych ekranach */
 .product {
-  width: 160px;
+  width: calc(50% - 15px);
   background: #222;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 10px rgba(255,0,0,0.2);
 }
 
+/* Na większych ekranach (>768px) zwiększamy do 3 kolumn */
+@media (min-width: 768px) {
+  .product {
+    width: calc(33.333% - 15px);
+  }
+}
 .product img {
   width: 100%;
   border-radius: 5px;
