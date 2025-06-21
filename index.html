@@ -22,11 +22,22 @@
 
   <div class="filter-panel" id="filters">
     <h3>Filtry</h3>
-    <select id="batchFilter">
-      <option value="">Wszystkie</option>
-      <option value="best">Best</option>
-      <option value="budżet">Budżet</option>
-    </select>
+
+    <label>Batch:</label>
+    <button onclick="setFilter('batch', 'best')">Best</button>
+    <button onclick="setFilter('batch', 'budżet')">Budżet</button>
+    
+    <label>Kategoria:</label>
+    <button onclick="setFilter('category', 'Shoes')">Shoes</button>
+    <button onclick="setFilter('category', 'Socks')">Socks</button>
+    <button onclick="setFilter('category', 'Pants')">Pants</button>
+    <button onclick="setFilter('category', 'Shirts')">Shirts</button>
+    <button onclick="setFilter('category', 'Jackets')">Jackets</button>
+    
+    <label>Cena:</label>
+    <input type="number" id="minPrice" placeholder="Min">
+    <input type="number" id="maxPrice" placeholder="Max">
+
     <button onclick="applyFilters()">Zatwierdź</button>
   </div>
 
@@ -36,6 +47,7 @@
     let allProducts = JSON.parse(localStorage.getItem("products") || "[]");
     const container = document.getElementById("productList");
     const searchInput = document.getElementById("searchInput");
+    let activeFilters = {};
 
     function createProductCard(prod) {
       return `
@@ -54,12 +66,30 @@
     }
 
     function applyFilters() {
-      const batch = document.getElementById("batchFilter").value;
       let filtered = [...allProducts];
-      if (batch) filtered = filtered.filter(p => p.batch === batch);
+
       const query = searchInput.value.toLowerCase();
       if (query) filtered = filtered.filter(p => p.name.toLowerCase().includes(query));
+
+      if (activeFilters.batch) {
+        filtered = filtered.filter(p => p.batch === activeFilters.batch);
+      }
+
+      if (activeFilters.category) {
+        filtered = filtered.filter(p => p.category === activeFilters.category);
+      }
+
+      const min = parseFloat(document.getElementById('minPrice').value);
+      const max = parseFloat(document.getElementById('maxPrice').value);
+      if (!isNaN(min)) filtered = filtered.filter(p => parseFloat(p.price) >= min);
+      if (!isNaN(max)) filtered = filtered.filter(p => parseFloat(p.price) <= max);
+
       renderProducts(filtered);
+    }
+
+    function setFilter(type, value) {
+      activeFilters[type] = value;
+      applyFilters();
     }
 
     function toggleFilters() {
@@ -67,7 +97,6 @@
     }
 
     searchInput.addEventListener("input", applyFilters);
-
     renderProducts(allProducts);
   </script>
 </body>
