@@ -7,7 +7,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="admin-panel">
+  <div id="loginPanel" class="admin-panel">
+    <h2>Zaloguj się</h2>
+    <input type="password" id="password" placeholder="Hasło admina">
+    <button onclick="checkPassword()">Zaloguj</button>
+  </div>
+
+  <div id="mainPanel" class="admin-panel hidden">
     <h2>Dodaj produkt</h2>
     <input type="text" id="name" placeholder="Nazwa produktu" />
     <input type="text" id="desc" placeholder="Opis produktu" />
@@ -33,6 +39,18 @@
   </div>
 
   <script>
+    const haslo = "admin123"; // ← tutaj możesz zmienić swoje hasło
+
+    function checkPassword() {
+      const wpisane = document.getElementById("password").value;
+      if (wpisane === haslo) {
+        document.getElementById("loginPanel").classList.add("hidden");
+        document.getElementById("mainPanel").classList.remove("hidden");
+      } else {
+        alert("Niepoprawne hasło.");
+      }
+    }
+
     const products = JSON.parse(localStorage.getItem("products") || "[]");
     const list = document.getElementById("adminProductList");
 
@@ -41,8 +59,8 @@
       const desc = document.getElementById("desc").value;
       const price = document.getElementById("price").value;
       const batch = document.getElementById("batch").value;
-      const link = document.getElementById("link").value;
       const category = document.getElementById("category").value;
+      const link = document.getElementById("link").value;
 
       if (!name || !desc || !price || !link) return alert("Uzupełnij wszystkie pola");
 
