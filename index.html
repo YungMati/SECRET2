@@ -54,7 +54,9 @@
     <button class="apply-btn" onclick="applyFilters()">Zatwierdź</button>
   </div>
 
-  <div class="product-list" id="productList"></div>
+  <div class="product-list" id="productList">
+    <!-- Produkty będą renderowane tutaj -->
+  </div>
 
   <script>
     let allProducts = JSON.parse(localStorage.getItem("products") || "[]");
@@ -66,7 +68,7 @@
 
     function toggleFilterSection(section) {
       const options = document.getElementById(`${section}-options`);
-      const arrow = document.querySelector(`#${section}-options`).previousElementSibling.querySelector('.arrow');
+      const arrow = options.previousElementSibling.querySelector('.arrow');
       options.classList.toggle("visible");
       arrow.textContent = options.classList.contains("visible") ? "▲" : "▼";
     }
@@ -77,19 +79,17 @@
 
     function applyFilters() {
       let filtered = [...allProducts];
+      const query = document.getElementById("searchInput").value.toLowerCase();
 
       if (activeFilters.batch) {
         filtered = filtered.filter(p => p.batch === activeFilters.batch);
       }
-
       if (activeFilters.category) {
         filtered = filtered.filter(p => p.category === activeFilters.category);
       }
-
-      const query = document.getElementById("searchInput").value.toLowerCase();
       if (query) {
-        filtered = filtered.filter(p =>
-          p.name.toLowerCase().includes(query) ||
+        filtered = filtered.filter(p => 
+          p.name.toLowerCase().includes(query) || 
           p.desc.toLowerCase().includes(query)
         );
       }
