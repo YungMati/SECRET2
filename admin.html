@@ -1,62 +1,80 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel Admina - YUNG R3PS</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="admin-login" id="loginBox">
     <h2>Panel logowania</h2>
-    <input type="text" id="login" placeholder="Login" />
-    <input type="password" id="password" placeholder="Hasło" />
+    <input type="text" id="login" placeholder="Login">
+    <input type="password" id="password" placeholder="Hasło">
     <button onclick="checkLogin()">Zaloguj</button>
   </div>
   
   <div class="admin-panel hidden" id="adminPanel">
-    <h2>Dodaj produkt</h2>
-    <input type="text" id="name" placeholder="Nazwa produktu" />
-    <input type="text" id="desc" placeholder="Opis produktu" />
-    <input type="number" id="price" placeholder="Cena (PLN)" />
-    <select id="batch">
-      <option value="best">Best</option>
-      <option value="budżet">Budżet</option>
-    </select>
-    <select id="category">
-      <option value="shoes">Shoes</option>
-      <option value="socks">Socks</option>
-      <option value="pants">Pants</option>
-      <option value="jackets">Jackets</option>
-      <option value="t-shirts">T-Shirts</option>
-      <option value="hoodies">Hoodies</option>
-      <option value="shorts">Shorts</option>
-      <option value="accessories">Accessories</option>
-    </select>
-    <input type="text" id="link" placeholder="Link do aukcji" />
-    <button onclick="addProduct()">Dodaj</button>
+    <div class="admin-header">
+      <button class="back-btn" onclick="window.location.href='index.html'">← Powrót do sklepu</button>
+      <h2>Dodaj produkt</h2>
+    </div>
+    
+    <div class="admin-form">
+      <input type="text" id="name" placeholder="Nazwa produktu">
+      <input type="text" id="desc" placeholder="Opis produktu">
+      <input type="number" id="price" placeholder="Cena (PLN)">
+      
+      <div class="form-grid">
+        <select id="batch">
+          <option value="best">Best</option>
+          <option value="budżet">Budżet</option>
+        </select>
+        
+        <select id="category">
+          <option value="shoes">Shoes</option>
+          <option value="socks">Socks</option>
+          <option value="pants">Pants</option>
+          <option value="jackets">Jackets</option>
+          <option value="t-shirts">T-Shirts</option>
+          <option value="hoodies">Hoodies</option>
+          <option value="shorts">Shorts</option>
+          <option value="accessories">Accessories</option>
+        </select>
+      </div>
+      
+      <input type="text" id="link" placeholder="Link do produktu">
+      <input type="text" id="imageUrl" placeholder="Link do zdjęcia (opcjonalnie)">
+      <button class="add-btn" onclick="addProduct()">Dodaj produkt</button>
+    </div>
+    
     <hr>
-    <div id="adminProductList"></div>
+    
+    <div class="admin-products" id="adminProductList"></div>
   </div>
 
   <script>
-    const correctLogin = "admin";
-    const correctPassword = "yung123";
+    // Dane logowania
+    const ADMIN_CREDENTIALS = {
+      login: "admin",
+      password: "yung123"
+    };
 
     function checkLogin() {
       const login = document.getElementById("login").value;
       const password = document.getElementById("password").value;
-      if (login === correctLogin && password === correctPassword) {
+      
+      if(login === ADMIN_CREDENTIALS.login && password === ADMIN_CREDENTIALS.password) {
         document.getElementById("loginBox").style.display = "none";
         document.getElementById("adminPanel").classList.remove("hidden");
         renderAdminProducts();
       } else {
-        alert("Nieprawidłowy login lub hasło!");
+        alert("Nieprawidłowe dane logowania!");
       }
     }
 
-    const products = JSON.parse(localStorage.getItem("products") || "[]");
-    const list = document.getElementById("adminProductList");
+    // Zarządzanie produktami
+    let products = JSON.parse(localStorage.getItem("products") || "[]");
 
     function addProduct() {
       const name = document.getElementById("name").value;
@@ -65,38 +83,70 @@
       const batch = document.getElementById("batch").value;
       const category = document.getElementById("category").value;
       const link = document.getElementById("link").value;
+      const imageUrl = document.getElementById("imageUrl").value;
 
-      if (!name || !desc || !price || !link) return alert("Uzupełnij wszystkie pola");
+      // Walidacja
+      if(!name || !desc || !price || !link) {
+        return alert("Wypełnij wymagane pola!");
+      }
 
-      fetch(link)
-        .then(res => res.text())
-        .then(html => {
-          const imgMatch = html.match(/<img[^>]+src="([^">]+)"/);
-          const image = imgMatch ? imgMatch[1] : "";
+      // Dodanie produktu
+      const newProduct = {
+        name, 
+        desc,
+        price,
+        batch,
+        category,
+        link,
+        image: imageUrl || null
+      };
 
-          const newProduct = { name, desc, price, batch, category, link, image };
-          products.push(newProduct);
-          localStorage.setItem("products", JSON.stringify(products));
-          renderAdminProducts();
-        })
-        .catch(() => alert("Nie udało się pobrać zdjęcia."));
-    }
-
-    function deleteProduct(index) {
-      products.splice(index, 1);
-      localStorage.setItem("products", JSON.stringify(products));
+      products.push(newProduct);
+      saveProducts();
+      clearForm();
       renderAdminProducts();
     }
 
+    function deleteProduct(index) {
+      if(confirm("Czy na pewno chcesz usunąć ten produkt?")) {
+        products.splice(index, 1);
+        saveProducts();
+        renderAdminProducts();
+      }
+    }
+
+    function saveProducts() {
+      localStorage.setItem("products", JSON.stringify(products));
+    }
+
+    function clearForm() {
+      document.getElementById("name").value = "";
+      document.getElementById("desc").value = "";
+      document.getElementById("price").value = "";
+      document.getElementById("link").value = "";
+      document.getElementById("imageUrl").value = "";
+    }
+
     function renderAdminProducts() {
-      list.innerHTML = products.map((p, i) => `
-        <div class="product">
-          <img src="${p.image}" alt="produkt">
-          <h4>${p.name}</h4>
-          <p>${p.price} PLN | ${p.batch} | ${p.category}</p>
-          <button onclick="deleteProduct(${i})">Usuń</button>
+      const container = document.getElementById("adminProductList");
+      container.innerHTML = products.map((product, index) => `
+        <div class="admin-product">
+          <div class="product-image">
+            ${product.image ? `<img src="${product.image}" alt="${product.name}">` : '<div class="no-image">Brak zdjęcia</div>'}
+          </div>
+          <div class="product-details">
+            <h3>${product.name}</h3>
+            <p>${product.desc}</p>
+            <div class="product-meta">
+              <span class="price">${product.price} PLN</span>
+              <span class="batch">${product.batch}</span>
+              <span class="category">${product.category}</span>
+            </div>
+            <a href="${product.link}" target="_blank">Link do produktu</a>
+          </div>
+          <button class="delete-btn" onclick="deleteProduct(${index})">Usuń</button>
         </div>
-      `).join('');
+      `).join("");
     }
   </script>
 </body>
