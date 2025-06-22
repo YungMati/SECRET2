@@ -1,3 +1,10 @@
+body {
+  background: #111;
+  color: white;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -19,6 +26,46 @@ header input {
   border-radius: 5px;
   width: 50%;
   max-width: 250px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product {
+  background: #1a1a1a;
+  border: 1px solid #ff3333;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.product:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 8px #ff3333aa;
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product button {
+  background: #ff3333;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
 }
 
 #filterToggle {
@@ -44,4 +91,32 @@ header input {
   height: 4px;
   background: white;
   border-radius: 2px;
+}
+
+#filterSidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #222;
+  color: white;
+  width: 200px;
+  height: 100%;
+  padding: 20px;
+  border-right: 2px solid #ff3333;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+}
+
+#filterSidebar.show {
+  transform: translateX(0);
+}
+
+#filterSidebar label {
+  display: block;
+  margin: 6px 0;
+}
+
+.hidden {
+  display: none;
 }
