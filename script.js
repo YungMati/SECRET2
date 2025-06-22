@@ -1,28 +1,60 @@
-document.getElementById('filterToggle').addEventListener('click', () => {
-  const filters = document.getElementById('filters');
-  filters.classList.toggle('visible');
-});
-
-const productList = document.getElementById('productList');
+const container = document.getElementById("productsContainer");
+const searchInput = document.getElementById("searchInput");
+const filterToggle = document.getElementById("filterToggle");
+const filterSidebar = document.getElementById("filterSidebar");
 
 async function fetchProducts() {
-  const res = await fetch('https://secret-3y8t.onrender.com');
-  const products = await res.json();
+  const res = await fetch("https://yungr3ps-backend.onrender.com/products"); // ZMIEŃ jeśli inny
+  const data = await res.json();
+  return data;
+}
 
-  products.forEach(prod => {
-    const div = document.createElement('div');
-    div.className = 'product';
-    div.innerHTML = `
-      <img src="${prod.image}" alt="${prod.name}" />
-      <div class="info">
-        <h2>${prod.name}</h2>
-        <div class="meta">${prod.batch} | ${prod.category}</div>
-        <p>${prod.description}</p>
-        <a href="${prod.link}" target="_blank">LINK</a>
-      </div>
+function renderProducts(products) {
+  container.innerHTML = "";
+  products.forEach((p) => {
+    const box = document.createElement("div");
+    box.className = "product";
+    box.innerHTML = `
+      <img src="${p.image}" alt="${p.name}" />
+      <h3>${p.name}</h3>
+      <p><b>Batch:</b> ${p.batch}</p>
+      <p><b>Category:</b> ${p.category}</p>
+      <p>${p.description}</p>
+      <a href="${p.link}" target="_blank"><button>LINK</button></a>
     `;
-    productList.appendChild(div);
+    container.appendChild(box);
   });
 }
 
-fetchProducts();
+function applyFilters(products) {
+  const search = searchInput.value.toLowerCase();
+  const selectedBatch = Array.from(document.querySelectorAll(".batch-filter:checked")).map(el => el.value);
+  const selectedCat = Array.from(document.querySelectorAll(".category-filter:checked")).map(el => el.value);
+
+  return products.filter(p =>
+    p.name.toLowerCase().includes(search) &&
+    (selectedBatch.length === 0 || selectedBatch.includes(p.batch)) &&
+    (selectedCat.length === 0 || selectedCat.includes(p.category))
+  );
+}
+
+searchInput.addEventListener("input", async () => {
+  const all = await fetchProducts();
+  renderProducts(applyFilters(all));
+});
+
+document.querySelectorAll("input[type='checkbox']").forEach(cb => {
+  cb.addEventListener("change", async () => {
+    const all = await fetchProducts();
+    renderProducts(applyFilters(all));
+  });
+});
+
+filterToggle.addEventListener("click", () => {
+  filterSidebar.classList.toggle("show");
+});
+
+window.addEventListener("load", async () => {
+  const products = await fetchProducts();
+  renderProducts(products);
+});
