@@ -1,236 +1,116 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff;
-  color: #333;
+/* Reset i podstawy */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
+body {
+    background-color: #f5f5f5;
+}
+
+/* Górny pasek */
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #cc0000;
-  padding: 10px 20px;
+    background-color: #000;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  height: 40px;
-  cursor: pointer;
+    height: 40px;
+    cursor: pointer;
 }
 
-#searchInput {
-  padding: 8px 10px;
-  border-radius: 4px;
-  border: none;
-  width: 200px;
+.search-container input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    width: 200px;
 }
 
-.filter-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #cc0000;
-  color: #fff;
-  border: none;
-  font-size: 24px;
-  border-radius: 50%;
-  padding: 10px 15px;
-  cursor: pointer;
-  z-index: 999;
-  transition: background-color 0.2s;
+/* Produkty */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-.filter-toggle:hover {
-  background-color: #990000;
+.product {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
 }
 
-.filter-panel {
-  position: fixed;
-  left: -300px;
-  top: 0;
-  width: 280px;
-  height: 100%;
-  background-color: #f8f8f8;
-  border-right: 3px solid #cc0000;
-  padding: 20px;
-  box-shadow: 3px 0 5px rgba(0,0,0,0.1);
-  transition: left 0.3s ease-in-out;
-  overflow-y: auto;
-  z-index: 998;
+.product:hover {
+    transform: translateY(-5px);
 }
 
-.filter-panel.active {
-  left: 0;
-}
-
-.filter-group {
-  margin-bottom: 20px;
-}
-
-.filter-group h4 {
-  margin: 0 0 10px;
-  color: #cc0000;
-}
-
-.button-group button {
-  background-color: #cc0000;
-  color: #fff;
-  border: none;
-  margin: 5px 5px 0 0;
-  padding: 7px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.button-group button.active {
-  background-color: #800000;
-}
-
-.button-group button:hover {
-  background-color: #a00000;
-}
-
-#applyFilters {
-  background-color: #cc0000;
-  color: white;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-#applyFilters:hover {
-  background-color: #990000;
-}
-
-main#productGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  margin-left: 0;
-  transition: margin-left 0.3s ease-in-out;
-}
-
-.filter-panel.active + main#productGrid {
-  margin-left: 280px;
-}
-
-.product-card {
-  background-color: #fff;
-  border: 2px solid #cc0000;
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.product-card h3 {
-  font-size: 16px;
-  margin: 5px 0;
-}
-
-.product-card p {
-  font-size: 14px;
-  margin: 5px 0;
-}
-
-.product-card a {
-  display: inline-block;
-  margin-top: 10px;
-  background-color: #cc0000;
-  color: #fff;
-  padding: 6px 10px;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.product-card a:hover {
-  background-color: #990000;
-}
-
-input[type="number"] {
-  width: 100%;
-  padding: 7px;
-  margin-bottom: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Admin Panel Styles */
-
-.admin-login {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  border: 2px solid #cc0000;
-  border-radius: 10px;
-  background-color: #f8f8f8;
-}
-
-.admin-login h2, .admin-login h3 {
-  text-align: center;
-  color: #cc0000;
-}
-
-.admin-login form {
-  display: flex;
-  flex-direction: column;
-}
-
-.admin-login input,
-.admin-login textarea {
-  margin-bottom: 12px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.admin-login button {
-  background-color: #cc0000;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.admin-login button:hover {
-  background-color: #990000;
-}
-
-/* Responsive – 2 produkty w kolumnie na telefonie */
-
-@media (max-width: 768px) {
-  main#productGrid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 10px;
-  }
-
-  .filter-panel {
+.product img {
     width: 100%;
-    left: -100%;
-  }
+    height: 200px;
+    object-fit: cover;
+}
 
-  .filter-panel.active {
-    left: 0;
-  }
+.product h3 {
+    padding: 10px;
+    font-size: 16px;
+}
 
-  .filter-panel.active + main#productGrid {
-    margin-left: 0;
-  }
+.product p {
+    padding: 0 10px 10px;
+    color: #e53935;
+    font-weight: bold;
+}
+
+.product a {
+    display: block;
+    padding: 10px;
+    background: #000;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Przycisk filtru */
+.filter-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.burger-line {
+    width: 60%;
+    height: 2px;
+    background: white;
+    margin: 3px 0;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .products-container {
+        grid-template-columns: 1fr;
+    }
 }
