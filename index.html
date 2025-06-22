@@ -1,46 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YUNG R3PS</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog produktów</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo" class="logo" onclick="window.location.href='admin.html'" />
-    <input type="text" id="searchInput" placeholder="Search products..." />
-  </header>
+    <!-- Górny pasek -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo" id="adminLogin">
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Wyszukaj produkt..." id="searchInput">
+        </div>
+    </header>
 
-  <button id="filterToggle" class="filter-toggle">&#9776;</button>
-  <aside id="filterPanel" class="filter-panel">
-    <h3>Filter by:</h3>
-    <div class="filter-group">
-      <h4>Category</h4>
-      <div class="button-group" id="categoryFilters">
-        <button data-category="T-Shirts">T-Shirts</button>
-        <button data-category="Hoodies">Hoodies</button>
-        <button data-category="Pants">Pants</button>
-        <button data-category="Accessories">Accessories</button>
-      </div>
+    <!-- Filtry (ukryte domyślnie) -->
+    <div class="filters-panel" id="filtersPanel">
+        <h3>Filtry</h3>
+        <div class="filter-group">
+            <label>Batch:</label>
+            <select id="batchFilter">
+                <option value="all">Wszystkie</option>
+                <option value="best">Best</option>
+                <option value="budget">Budget</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Kategoria:</label>
+            <select id="categoryFilter">
+                <option value="all">Wszystkie</option>
+                <option value="belts">Belts</option>
+                <option value="electronics">Electronics</option>
+                <!-- Pozostałe kategorie -->
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Cena:</label>
+            <input type="number" id="priceMin" placeholder="Od">
+            <input type="number" id="priceMax" placeholder="Do">
+        </div>
+        <button id="applyFilters">Zastosuj</button>
     </div>
-    <div class="filter-group">
-      <h4>Batch</h4>
-      <div class="button-group" id="batchFilters">
-        <button data-batch="best">Best</button>
-        <button data-batch="budget">Budget</button>
-      </div>
-    </div>
-    <div class="filter-group">
-      <h4>Price</h4>
-      <input type="number" id="minPrice" placeholder="Min" />
-      <input type="number" id="maxPrice" placeholder="Max" />
-    </div>
-    <button id="applyFilters">Apply Filters</button>
-  </aside>
 
-  <main id="productGrid"></main>
+    <!-- Produkty -->
+    <div class="products-container" id="productsContainer">
+        <!-- Produkty będą dodawane dynamicznie przez JS -->
+    </div>
 
-  <script src="script.js"></script>
+    <!-- Przycisk filtru (burger) -->
+    <div class="filter-button" id="filterButton">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
