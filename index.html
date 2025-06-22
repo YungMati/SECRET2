@@ -2,37 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YUNG R3PS</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo" class="logo" />
-    <input type="text" id="searchInput" placeholder="Search products..." />
+    <img src="logo.png" alt="Logo" class="logo" onclick="window.location.href='admin.html'"/>
+    <input type="text" id="searchInput" placeholder="Search..."/>
   </header>
 
-  <button id="filterToggle">☰</button>
+  <div id="filterToggle" onclick="toggleFilters()">☰</div>
 
   <aside id="filterPanel">
     <h3>Category</h3>
-    <div class="filter-group" data-type="category">
-      <button>T-Shirts</button>
-      <button>Hoodies</button>
-      <button>Pants</button>
-      <button>Accessories</button>
-    </div>
+    <div class="filter-group" id="categoryFilter"></div>
+
     <h3>Batch</h3>
-    <div class="filter-group" data-type="batch">
-      <button>best</button>
-      <button>budget</button>
-    </div>
-    <h3>Price</h3>
-    <div class="price-range">
-      <input type="number" id="minPrice" placeholder="Min" />
-      <input type="number" id="maxPrice" placeholder="Max" />
-    </div>
-    <button id="applyFilters">Apply</button>
+    <div class="filter-group" id="batchFilter"></div>
+
+    <h3>Price Range</h3>
+    <input type="number" id="minPrice" placeholder="Min" />
+    <input type="number" id="maxPrice" placeholder="Max" />
+
+    <button onclick="applyFilters()">Apply Filters</button>
   </aside>
 
   <main id="productContainer"></main>
