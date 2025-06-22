@@ -4,7 +4,7 @@ const filterToggle = document.getElementById("filterToggle");
 const filterSidebar = document.getElementById("filterSidebar");
 
 async function fetchProducts() {
-  const res = await fetch("https://yungr3ps-backend.onrender.com/products"); // ZMIEŃ jeśli inny
+  const res = await fetch("https://secret-3y8t.onrender.com"); // ZMIEŃ jeśli inny
   const data = await res.json();
   return data;
 }
