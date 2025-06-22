@@ -1,46 +1,43 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Panel Admina</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
-        </div>
-    </header>
-    <main>
-        <h1>Dodaj Produkt</h1>
-        <form id="productForm">
-            <input type="text" id="productName" placeholder="Nazwa produktu" required>
-            <input type="url" id="productLink" placeholder="Link do produktu" required>
-            <input type="url" id="imageLink" placeholder="Link do zdjęcia" required>
-            <select id="batch">
-                <option value="best">Best</option>
-                <option value="budget">Budget</option>
-            </select>
-            <select id="category">
-                <option value="belts">Belts</option>
-                <option value="electronics">Electronics</option>
-                <option value="headwear">Headwear</option>
-                <option value="hoodies">Hoodies</option>
-                <option value="jackets">Jackets</option>
-                <option value="jewelry">Jewelry</option>
-                <option value="others">Others</option>
-                <option value="pants">Pants</option>
-                <option value="sets">Sets</option>
-                <option value="shoes">Shoes</option>
-                <option value="tees">Tees</option>
-                <option value="shorts">Shorts</option>
-                <option value="accessories">Accessories</option>
-            </select>
-            <input type="number" id="price" placeholder="Cena" required>
-            <button type="submit">Dodaj Produkt</button>
-        </form>
-    </main>
-    <script src="js/script.js"></script>
+  <h2>Add Product</h2>
+  <form id="product-form">
+    <input type="text" placeholder="Name" name="name" required />
+    <input type="number" placeholder="Price" name="price" required />
+    <input type="text" placeholder="Image URL" name="image" required />
+    <select name="category">
+      <option value="accessories">Accessories</option>
+      <option value="tshirts">T-Shirts</option>
+      <option value="pants">Pants</option>
+      <option value="electronics">Electronics</option>
+      <option value="socks">Socks</option>
+      <option value="caps">Caps</option>
+    </select>
+    <select name="batch">
+      <option value="best">Best</option>
+      <option value="budget">Budget</option>
+    </select>
+    <button type="submit">Add Product</button>
+  </form>
+
+  <script>
+    document.getElementById('product-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      const res = await fetch('https://your-backend-url.onrender.com/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      alert('Product added!');
+    };
+  </script>
 </body>
 </html>
