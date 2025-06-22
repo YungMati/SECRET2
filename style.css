@@ -1,239 +1,64 @@
-/* ===== RESET & OGÓLNE STYLE ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
 body {
-    background-color: #f5f5f5;
-    color: #333;
-    line-height: 1.6;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button, input, select {
-    outline: none;
-    border: none;
-}
-
-/* ===== HEADER (wspólny dla index i admin) ===== */
 header {
-    background-color: #000;
-    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 10px;
+    background-color: #222;
 }
 
-.logo {
-    height: 40px;
-    cursor: pointer;
+.logo img {
+    height: 50px;
 }
 
-.search-container input {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    width: 200px;
-    background-color: #333;
-    color: white;
+.search input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
 }
 
-/* ===== STRONA GŁÓWNA (index.html) ===== */
-.products-container {
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 20px;
 }
 
-.product {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.product:hover {
-    transform: translateY(-5px);
-}
-
-.product img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.product-info {
-    padding: 1rem;
-}
-
-.product-info h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.product-info p {
-    color: #e53935;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.product-info a {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: #000;
-    color: white;
+.product-grid div {
+    background-color: #333;
+    padding: 10px;
     border-radius: 5px;
-    font-size: 0.9rem;
 }
 
-/* ===== PANEL ADMINA (admin.html) ===== */
-.admin-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.admin-container h2 {
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #000;
-}
-
-.btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: #000;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s ease;
-}
-
-.btn:hover {
-    background: #333;
-}
-
-/* ===== FILTRY (index.html) ===== */
-.filters-panel {
+.filter-button {
     position: fixed;
-    top: 0;
-    right: -300px;
-    width: 300px;
-    height: 100%;
-    background: white;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    transition: right 0.3s ease;
-    z-index: 999;
-}
-
-.filters-panel.active {
-    right: 0;
-}
-
-.filter-group {
-    margin-bottom: 1.5rem;
-}
-
-.filter-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.filter-group input,
-.filter-group select {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-/* ===== PRZYCISK BURGER (index.html) ===== */
-.burger-btn {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 20px;
+    right: 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
     width: 50px;
     height: 50px;
-    background: #000;
-    border-radius: 50%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 1000;
 }
 
-.burger-line {
-    width: 60%;
-    height: 2px;
-    background: white;
-    margin: 3px 0;
-}
-
-/* ===== RESPONSYWNOŚĆ ===== */
-@media (max-width: 768px) {
-    .products-container {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        flex-direction: column;
-        padding: 1rem;
-    }
-
-    .search-container {
-        margin-top: 1rem;
-    }
-
-    .products-container {
-        grid-template-columns: 1fr;
-    }
-
-    .admin-container {
-        padding: 1rem;
-    }
+.filters {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #222;
+    padding: 20px;
+    width: 250px;
+    height: 100%;
+    overflow-y: auto;
 }
