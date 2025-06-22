@@ -1,34 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YungR3ps</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>China Import Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo" class="logo"/>
-    <input type="text" id="search" placeholder="Search products..." />
-    <button id="filter-toggle">&#9776;</button>
-  </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="search-bar">
+            <input type="text" placeholder="Wyszukaj produkty...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
 
-  <aside id="filters">
-    <h3>Batch</h3>
-    <label><input type="checkbox" id="best"> Best</label>
-    <label><input type="checkbox" id="budget"> Budget</label>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Products Grid -->
+        <div class="products-container">
+            <!-- Przykładowe produkty - w rzeczywistości będą ładowane z backendu -->
+            <div class="product-card">
+                <div class="product-batch best">BEST</div>
+                <div class="product-category">Electronics</div>
+                <img src="https://via.placeholder.com/300x200?text=Product+Image" alt="Product" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Smart Watch AMOLED</h3>
+                    <p class="product-description">Najnowszy model smartwatcha z wyświetlaczem AMOLED i GPS</p>
+                    <a href="#" class="product-link">LINK</a>
+                </div>
+            </div>
 
-    <h3>Categories</h3>
-    <label><input type="checkbox" class="category" value="Accessories"> Accessories</label>
-    <label><input type="checkbox" class="category" value="T-Shirts"> T-Shirts</label>
-    <label><input type="checkbox" class="category" value="Pants"> Pants</label>
-    <label><input type="checkbox" class="category" value="Electronics"> Electronics</label>
-    <label><input type="checkbox" class="category" value="Socks"> Socks</label>
-    <label><input type="checkbox" class="category" value="Caps"> Caps</label>
-  </aside>
+            <div class="product-card">
+                <div class="product-batch budget">BUDGET</div>
+                <div class="product-category">T-shirts</div>
+                <img src="https://via.placeholder.com/300x200?text=Product+Image" alt="Product" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Bawełniana koszulka</h3>
+                    <p class="product-description">100% bawełny, dostępne w wielu kolorach</p>
+                    <a href="#" class="product-link">LINK</a>
+                </div>
+            </div>
+        </div>
 
-  <main id="products"></main>
+        <!-- Filter Button -->
+        <div class="filter-toggle" id="filterToggle">
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
 
-  <script src="script.js"></script>
+        <!-- Filters Panel -->
+        <div class="filters-panel" id="filtersPanel">
+            <div class="filters-header">
+                <h3>Filtry</h3>
+                <button class="close-filters" id="closeFilters">&times;</button>
+            </div>
+            
+            <div class="filter-group">
+                <h4>Batch</h4>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="batch" value="best" checked>
+                    <span class="checkmark"></span>
+                    Best
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="batch" value="budget" checked>
+                    <span class="checkmark"></span>
+                    Budget
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Kategorie</h4>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="category" value="accessories" checked>
+                    <span class="checkmark"></span>
+                    Akcesoria
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="category" value="shoes" checked>
+                    <span class="checkmark"></span>
+                    Buty
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="category" value="belts" checked>
+                    <span class="checkmark"></span>
+                    Paski
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="category" value="hats" checked>
+                    <span class="checkmark"></span>
+                    Czapki
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="category" value="tshirts" checked>
+                    <span class="checkmark"></span>
+                    Koszulki
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="category" value="pants" checked>
+                    <span class="checkmark"></span>
+                    Spodnie
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="category" value="shorts" checked>
+                    <span class="checkmark"></span>
+                    Spodenki
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="category" value="underwear" checked>
+                    <span class="checkmark"></span>
+                    Bielizna
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" name="category" value="electronics" checked>
+                    <span class="checkmark"></span>
+                    Elektronika
+                </label>
+            </div>
+
+            <button class="apply-filters" id="applyFilters">Zastosuj filtry</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
