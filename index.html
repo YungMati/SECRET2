@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YungR3ps Drops</title>
+  <title>YungR3ps</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,24 +12,23 @@
     <input type="text" id="searchInput" placeholder="Search products..." />
   </header>
 
-  <div id="filters" class="filters hidden">
+  <div id="filterSidebar" class="hidden">
     <h3>Batch</h3>
-    <label><input type="checkbox" value="best" /> Best</label>
-    <label><input type="checkbox" value="budget" /> Budget</label>
-
+    <label><input type="checkbox" value="best" class="batch-filter" /> Best</label>
+    <label><input type="checkbox" value="budget" class="batch-filter" /> Budget</label>
     <h3>Category</h3>
-    <label><input type="checkbox" value="accessories" /> Accessories</label>
-    <label><input type="checkbox" value="shoes" /> Shoes</label>
-    <label><input type="checkbox" value="belts" /> Belts</label>
-    <label><input type="checkbox" value="caps" /> Caps</label>
-    <label><input type="checkbox" value="t-shirts" /> T-Shirts</label>
-    <label><input type="checkbox" value="pants" /> Pants</label>
-    <label><input type="checkbox" value="shorts" /> Shorts</label>
-    <label><input type="checkbox" value="underwear" /> Underwear</label>
-    <label><input type="checkbox" value="electronics" /> Electronics</label>
+    <label><input type="checkbox" value="accessories" class="category-filter" /> Accessories</label>
+    <label><input type="checkbox" value="shoes" class="category-filter" /> Shoes</label>
+    <label><input type="checkbox" value="belts" class="category-filter" /> Belts</label>
+    <label><input type="checkbox" value="caps" class="category-filter" /> Caps</label>
+    <label><input type="checkbox" value="t-shirts" class="category-filter" /> T-Shirts</label>
+    <label><input type="checkbox" value="pants" class="category-filter" /> Pants</label>
+    <label><input type="checkbox" value="shorts" class="category-filter" /> Shorts</label>
+    <label><input type="checkbox" value="underwear" class="category-filter" /> Underwear</label>
+    <label><input type="checkbox" value="electronics" class="category-filter" /> Electronics</label>
   </div>
 
-  <main id="productList"></main>
+  <main id="productsContainer"></main>
 
   <button id="filterToggle">
     <div></div>
@@ -37,6 +36,6 @@
     <div></div>
   </button>
 
-  <script src="scripts.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
