@@ -3,35 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel</title>
+  <title>Admin Login</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="admin">
-  <div class="login" id="loginScreen">
-    <h2>Login</h2>
-    <input id="username" placeholder="Username" />
-    <input id="password" type="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-  </div>
+<body>
+  <main class="admin-login">
+    <h2>Admin Panel</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
 
-  <div class="admin-panel" id="adminPanel" style="display:none;">
-    <h2>Add Product</h2>
-    <input id="name" placeholder="Product name" />
-    <input id="image" placeholder="Image URL" />
-    <input id="price" placeholder="Price" type="number"/>
-    <input id="description" placeholder="Description" />
-    <select id="batch">
-      <option>Best</option>
-      <option>Budget</option>
-    </select>
-    <select id="category">
-      <option>Shirts</option>
-      <option>Hoodies</option>
-      <option>Pants</option>
-      <option>Accessories</option>
-    </select>
-    <button onclick="addProduct()">Add</button>
-  </div>
+    <section id="adminPanel" style="display:none;">
+      <h3>Add Product</h3>
+      <form id="addProductForm">
+        <input type="text" id="name" placeholder="Product Name" required />
+        <input type="text" id="image" placeholder="Image URL" required />
+        <input type="number" id="price" placeholder="Price" required />
+        <input type="text" id="category" placeholder="Category (e.g. T-Shirts)" required />
+        <input type="text" id="batch" placeholder="Batch (best/budget)" required />
+        <textarea id="description" placeholder="Description"></textarea>
+        <button type="submit">Add Product</button>
+      </form>
+    </section>
+  </main>
 
   <script src="admin.js"></script>
 </body>
