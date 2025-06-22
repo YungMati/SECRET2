@@ -1,64 +1,50 @@
 body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+  font-family: sans-serif;
+  margin: 0;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #222;
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  background: #000;
 }
 
-.logo img {
-    height: 50px;
+#logo {
+  height: 40px;
+  cursor: pointer;
 }
 
-.search input {
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
+#search {
+  margin-left: 1em;
+  padding: 0.5em;
+  border: none;
+  border-radius: 20px;
+  background: #222;
+  color: white;
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-    padding: 20px;
+#filters {
+  display: none;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
 }
 
-.product-grid div {
-    background-color: #333;
-    padding: 10px;
-    border-radius: 5px;
+#filters button, #filterToggle {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5em 1em;
+  cursor: pointer;
 }
 
-.filter-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.filters {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #222;
-    padding: 20px;
-    width: 250px;
-    height: 100%;
-    overflow-y: auto;
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  padding: 10px;
 }
