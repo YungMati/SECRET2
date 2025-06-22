@@ -1,103 +1,42 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YUNG R3PS</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YUNG R3PS</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header class="header">
-        <div class="logo" onclick="location.href='admin.html'">
-            <img src="logo.png" alt="Logo">
-        </div>
-        <input type="text" id="searchInput" placeholder="Szukaj produktów...">
-    </header>
+  <header>
+    <img src="logo.png" alt="Logo" class="logo" />
+    <input type="text" id="searchInput" placeholder="Search products..." />
+  </header>
 
-    <div class="filters-btn" onclick="toggleFilters()">☰ Filtry</div>
+  <button id="filterToggle">☰</button>
 
-    <div class="filter-panel">
-        <h3>Filtry</h3>
-        
-        <div class="filter-group">
-            <label>Batch:</label>
-            <button onclick="setFilter('batch', 'best')">Best</button>
-            <button onclick="setFilter('batch', 'budżet')">Budżet</button>
-        </div>
-
-        <div class="filter-group">
-            <label>Kategoria:</label>
-            <button onclick="setFilter('category', 'shoes')">Buty</button>
-            <button onclick="setFilter('category', 'socks')">Skarpety</button>
-            <button onclick="setFilter('category', 'pants')">Spodnie</button>
-            <button onclick="setFilter('category', 'jackets')">Kurtki</button>
-            <button onclick="setFilter('category', 't-shirts')">T-shirty</button>
-            <button onclick="setFilter('category', 'hoodies')">Bluzy</button>
-            <button onclick="setFilter('category', 'shorts')">Szorty</button>
-            <button onclick="setFilter('category', 'accessories')">Akcesoria</button>
-        </div>
-
-        <button class="apply-btn" onclick="applyFilters()">Zatwierdź</button>
+  <aside id="filterPanel">
+    <h3>Category</h3>
+    <div class="filter-group" data-type="category">
+      <button>T-Shirts</button>
+      <button>Hoodies</button>
+      <button>Pants</button>
+      <button>Accessories</button>
     </div>
-
-    <div class="product-grid">
-        <!-- Produkty będą tutaj -->
+    <h3>Batch</h3>
+    <div class="filter-group" data-type="batch">
+      <button>best</button>
+      <button>budget</button>
     </div>
+    <h3>Price</h3>
+    <div class="price-range">
+      <input type="number" id="minPrice" placeholder="Min" />
+      <input type="number" id="maxPrice" placeholder="Max" />
+    </div>
+    <button id="applyFilters">Apply</button>
+  </aside>
 
-    <script>
-        // Dane produktów
-        let products = JSON.parse(localStorage.getItem("products") || "[]");
-        let activeFilters = {};
+  <main id="productContainer"></main>
 
-        // Funkcje filtrowania
-        function toggleFilters() {
-            document.querySelector('.filter-panel').classList.toggle('active');
-        }
-
-        function setFilter(type, value) {
-            activeFilters[type] = value;
-        }
-
-        function applyFilters() {
-            let filtered = [...products];
-            
-            if (activeFilters.batch) {
-                filtered = filtered.filter(p => p.batch === activeFilters.batch);
-            }
-            
-            if (activeFilters.category) {
-                filtered = filtered.filter(p => p.category === activeFilters.category);
-            }
-            
-            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
-            if (searchQuery) {
-                filtered = filtered.filter(p => 
-                    p.name.toLowerCase().includes(searchQuery) || 
-                    p.desc.toLowerCase().includes(searchQuery)
-                );
-            }
-            
-            renderProducts(filtered);
-        }
-
-        // Renderowanie produktów
-        function renderProducts(productsToRender) {
-            const grid = document.querySelector('.product-grid');
-            grid.innerHTML = productsToRender.map(product => `
-                <div class="product-card">
-                    <img src="${product.image || 'placeholder.jpg'}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p>${product.desc}</p>
-                    <span class="price">${product.price} PLN</span>
-                    <span class="badge ${product.batch}">${product.batch}</span>
-                    <a href="${product.link}" target="_blank" class="product-link">LINK</a>
-                </div>
-            `).join('');
-        }
-
-        // Inicjalizacja
-        document.getElementById('searchInput').addEventListener('input', applyFilters);
-        renderProducts(products);
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
