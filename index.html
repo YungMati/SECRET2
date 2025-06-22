@@ -2,33 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YUNG R3PS</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo" class="logo" onclick="window.location.href='admin.html'"/>
-    <input type="text" id="searchInput" placeholder="Search..."/>
+    <img src="logo.png" alt="Logo" class="logo" onclick="window.location.href='admin.html'" />
+    <input type="text" id="searchInput" placeholder="Search products..." />
   </header>
 
-  <div id="filterToggle" onclick="toggleFilters()">☰</div>
-
-  <aside id="filterPanel">
-    <h3>Category</h3>
-    <div class="filter-group" id="categoryFilter"></div>
-
-    <h3>Batch</h3>
-    <div class="filter-group" id="batchFilter"></div>
-
-    <h3>Price Range</h3>
-    <input type="number" id="minPrice" placeholder="Min" />
-    <input type="number" id="maxPrice" placeholder="Max" />
-
-    <button onclick="applyFilters()">Apply Filters</button>
+  <button id="filterToggle" class="filter-toggle">&#9776;</button>
+  <aside id="filterPanel" class="filter-panel">
+    <h3>Filter by:</h3>
+    <div class="filter-group">
+      <h4>Category</h4>
+      <div class="button-group" id="categoryFilters">
+        <button data-category="T-Shirts">T-Shirts</button>
+        <button data-category="Hoodies">Hoodies</button>
+        <button data-category="Pants">Pants</button>
+        <button data-category="Accessories">Accessories</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <h4>Batch</h4>
+      <div class="button-group" id="batchFilters">
+        <button data-batch="best">Best</button>
+        <button data-batch="budget">Budget</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <h4>Price</h4>
+      <input type="number" id="minPrice" placeholder="Min" />
+      <input type="number" id="maxPrice" placeholder="Max" />
+    </div>
+    <button id="applyFilters">Apply Filters</button>
   </aside>
 
-  <main id="productContainer"></main>
+  <main id="productGrid"></main>
 
   <script src="script.js"></script>
 </body>
