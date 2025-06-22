@@ -6,7 +6,7 @@ document.getElementById('filterToggle').addEventListener('click', () => {
 const productList = document.getElementById('productList');
 
 async function fetchProducts() {
-  const res = await fetch('https://your-backend-url.com/products');
+  const res = await fetch('https://secret-3y8t.onrender.com');
   const products = await res.json();
 
   products.forEach(prod => {
