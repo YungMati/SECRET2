@@ -1,86 +1,64 @@
-const products = [
-  {
-    name: "Black T-Shirt",
-    price: 49,
-    image: "https://via.placeholder.com/300x300",
-    category: "T-Shirts",
-    batch: "best",
-    link: "#"
-  },
-  {
-    name: "Red Hoodie",
-    price: 99,
-    image: "https://via.placeholder.com/300x300",
-    category: "Hoodies",
-    batch: "budget",
-    link: "#"
-  },
-  {
-    name: "Joggers",
-    price: 89,
-    image: "https://via.placeholder.com/300x300",
-    category: "Pants",
-    batch: "best",
-    link: "#"
-  },
-  {
-    name: "Cap",
-    price: 39,
-    image: "https://via.placeholder.com/300x300",
-    category: "Accessories",
-    batch: "budget",
-    link: "#"
-  }
-];
+let products = [];
 
-const productContainer = document.getElementById("productContainer");
+fetch('/data.json')
+  .then(res => res.json())
+  .then(data => {
+    products = data;
+    renderProducts(products);
+    generateFilters();
+  });
 
-function displayProducts(data) {
-  productContainer.innerHTML = "";
-  data.forEach(product => {
-    productContainer.innerHTML += `
+function renderProducts(list) {
+  const container = document.getElementById("productContainer");
+  container.innerHTML = "";
+  list.forEach(p => {
+    container.innerHTML += `
       <div class="product">
-        <img src="${product.image}" alt="${product.name}" />
-        <div class="info">
-          <h4>${product.name}</h4>
-          <p>$${product.price}</p>
-        </div>
-        <a href="${product.link}">Link</a>
-      </div>
-    `;
+        <img src="${p.image}" alt="${p.name}"/>
+        <h4>${p.name}</h4>
+        <p>${p.description}</p>
+        <p><b>${p.price} zł</b></p>
+        <a href="${p.link || '#'}" target="_blank">Link</a>
+      </div>`;
   });
 }
 
-displayProducts(products);
+function generateFilters() {
+  const cats = [...new Set(products.map(p => p.category))];
+  const batches = [...new Set(products.map(p => p.batch))];
 
-// Filters
-document.getElementById("filterToggle").addEventListener("click", () => {
-  document.getElementById("filterPanel").classList.toggle("open");
-});
+  document.getElementById("categoryFilter").innerHTML = cats.map(c => 
+    `<button onclick="toggleFilter(this, 'category')">${c}</button>`).join('');
 
-document.querySelectorAll(".filter-group button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    btn.classList.toggle("active");
-  });
-});
+  document.getElementById("batchFilter").innerHTML = batches.map(b => 
+    `<button onclick="toggleFilter(this, 'batch')">${b}</button>`).join('');
+}
 
-document.getElementById("applyFilters").addEventListener("click", () => {
-  const activeCategories = [...document.querySelectorAll('[data-type="category"] button.active')].map(b => b.textContent);
-  const activeBatches = [...document.querySelectorAll('[data-type="batch"] button.active')].map(b => b.textContent);
-  const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
-  const maxPrice = parseFloat(document.getElementById("maxPrice").value) || Infinity;
-  const search = document.getElementById("searchInput").value.toLowerCase();
+let activeFilters = { category: [], batch: [] };
+
+function toggleFilter(btn, type) {
+  btn.classList.toggle('active');
+  const value = btn.textContent;
+  if (activeFilters[type].includes(value)) {
+    activeFilters[type] = activeFilters[type].filter(v => v !== value);
+  } else {
+    activeFilters[type].push(value);
+  }
+}
+
+function applyFilters() {
+  const min = parseFloat(document.getElementById('minPrice').value) || 0;
+  const max = parseFloat(document.getElementById('maxPrice').value) || Infinity;
 
   const filtered = products.filter(p =>
-    (activeCategories.length === 0 || activeCategories.includes(p.category)) &&
-    (activeBatches.length === 0 || activeBatches.includes(p.batch)) &&
-    (p.price >= minPrice && p.price <= maxPrice) &&
-    (p.name.toLowerCase().includes(search))
+    (!activeFilters.category.length || activeFilters.category.includes(p.category)) &&
+    (!activeFilters.batch.length || activeFilters.batch.includes(p.batch)) &&
+    p.price >= min && p.price <= max
   );
+  renderProducts(filtered);
+}
 
-  displayProducts(filtered);
-});
-
-document.getElementById("searchInput").addEventListener("input", () => {
-  document.getElementById("applyFilters").click();
-});
+function toggleFilters() {
+  const panel = document.getElementById("filterPanel");
+  panel.style.display = panel.style.display === "flex" ? "none" : "flex";
+}
