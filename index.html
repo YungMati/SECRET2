@@ -3,60 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog produktów</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Katalog Produktów</title>
 </head>
 <body>
-    <!-- Górny pasek -->
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo" class="logo" id="adminLogin">
+        <div class="logo">
+            <a href="admin.html"><img src="images/logo.png" alt="Logo"></a>
         </div>
-        <div class="search-container">
-            <input type="text" placeholder="Wyszukaj produkt..." id="searchInput">
+        <div class="search">
+            <input type="text" placeholder="Szukaj...">
         </div>
     </header>
-
-    <!-- Filtry (ukryte domyślnie) -->
-    <div class="filters-panel" id="filtersPanel">
+    <main>
+        <div class="product-grid">
+            <!-- Produkty będą tutaj dynamicznie dodawane -->
+        </div>
+    </main>
+    <div class="filter-button" onclick="toggleFilters()">
+        &#9776; <!-- Ikona hamburgera -->
+    </div>
+    <div class="filters" id="filters">
         <h3>Filtry</h3>
-        <div class="filter-group">
-            <label>Batch:</label>
-            <select id="batchFilter">
-                <option value="all">Wszystkie</option>
-                <option value="best">Best</option>
-                <option value="budget">Budget</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label>Kategoria:</label>
-            <select id="categoryFilter">
-                <option value="all">Wszystkie</option>
-                <option value="belts">Belts</option>
-                <option value="electronics">Electronics</option>
-                <!-- Pozostałe kategorie -->
-            </select>
-        </div>
-        <div class="filter-group">
-            <label>Cena:</label>
-            <input type="number" id="priceMin" placeholder="Od">
-            <input type="number" id="priceMax" placeholder="Do">
-        </div>
-        <button id="applyFilters">Zastosuj</button>
+        <label for="batch">Batch:</label>
+        <select id="batch">
+            <option value="best">Best</option>
+            <option value="budget">Budget</option>
+        </select>
+        <label for="category">Kategoria:</label>
+        <select id="category">
+            <option value="belts">Belts</option>
+            <option value="electronics">Electronics</option>
+            <option value="headwear">Headwear</option>
+            <option value="hoodies">Hoodies</option>
+            <option value="jackets">Jackets</option>
+            <option value="jewelry">Jewelry</option>
+            <option value="others">Others</option>
+            <option value="pants">Pants</option>
+            <option value="sets">Sets</option>
+            <option value="shoes">Shoes</option>
+            <option value="tees">Tees</option>
+            <option value="shorts">Shorts</option>
+            <option value="accessories">Accessories</option>
+        </select>
+        <label for="price">Cena od - do:</label>
+        <input type="number" id="priceMin" placeholder="Min">
+        <input type="number" id="priceMax" placeholder="Max">
+        <button onclick="applyFilters()">Zastosuj filtry</button>
     </div>
-
-    <!-- Produkty -->
-    <div class="products-container" id="productsContainer">
-        <!-- Produkty będą dodawane dynamicznie przez JS -->
-    </div>
-
-    <!-- Przycisk filtru (burger) -->
-    <div class="filter-button" id="filterButton">
-        <div class="burger-line"></div>
-        <div class="burger-line"></div>
-        <div class="burger-line"></div>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
