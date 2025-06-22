@@ -3,52 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Panel Admina</title>
-    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <div class="admin-login" id="adminLoginForm">
-        <h2>Logowanie</h2>
-        <input type="password" id="adminPassword" placeholder="Hasło">
-        <button id="loginButton">Zaloguj</button>
-    </div>
-
-    <div class="admin-panel" id="adminPanel" style="display:none;">
-        <h2>Dodaj nowy produkt</h2>
-        <div class="form-group">
-            <label>Nazwa produktu:</label>
-            <input type="text" id="productName">
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
         </div>
-        <div class="form-group">
-            <label>Link do produktu:</label>
-            <input type="text" id="productLink">
-        </div>
-        <div class="form-group">
-            <label>Link do zdjęcia:</label>
-            <input type="text" id="productImage">
-        </div>
-        <div class="form-group">
-            <label>Batch:</label>
-            <select id="productBatch">
+    </header>
+    <main>
+        <h1>Dodaj Produkt</h1>
+        <form id="productForm">
+            <input type="text" id="productName" placeholder="Nazwa produktu" required>
+            <input type="url" id="productLink" placeholder="Link do produktu" required>
+            <input type="url" id="imageLink" placeholder="Link do zdjęcia" required>
+            <select id="batch">
                 <option value="best">Best</option>
                 <option value="budget">Budget</option>
             </select>
-        </div>
-        <div class="form-group">
-            <label>Kategoria:</label>
-            <select id="productCategory">
+            <select id="category">
                 <option value="belts">Belts</option>
                 <option value="electronics">Electronics</option>
-                <!-- Pozostałe kategorie -->
+                <option value="headwear">Headwear</option>
+                <option value="hoodies">Hoodies</option>
+                <option value="jackets">Jackets</option>
+                <option value="jewelry">Jewelry</option>
+                <option value="others">Others</option>
+                <option value="pants">Pants</option>
+                <option value="sets">Sets</option>
+                <option value="shoes">Shoes</option>
+                <option value="tees">Tees</option>
+                <option value="shorts">Shorts</option>
+                <option value="accessories">Accessories</option>
             </select>
-        </div>
-        <div class="form-group">
-            <label>Cena:</label>
-            <input type="number" id="productPrice">
-        </div>
-        <button id="addProductButton">Dodaj produkt</button>
-    </div>
-
-    <script src="admin.js"></script>
+            <input type="number" id="price" placeholder="Cena" required>
+            <button type="submit">Dodaj Produkt</button>
+        </form>
+    </main>
+    <script src="js/script.js"></script>
 </body>
 </html>
