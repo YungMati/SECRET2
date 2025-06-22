@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Store</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>YungR3ps Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <img src="logo.png" id="logo" alt="Logo">
-    <input type="text" placeholder="Search by name..." id="search">
+    <img src="logo.png" alt="Logo" id="logo" />
+    <input type="text" placeholder="Search..." id="search">
   </header>
 
-  <div id="filters">
-    <button data-filter="all">All</button>
-    <button data-filter="best">⭐ Best</button>
-    <button data-filter="budget">💰 Budget</button>
-    <button data-category="accessories">Accessories</button>
-    <button data-category="tshirts">T-Shirts</button>
-    <button data-category="pants">Pants</button>
-    <button data-category="electronics">Electronics</button>
-    <button data-category="socks">Socks</button>
-    <button data-category="caps">Caps</button>
-  </div>
+  <aside id="filters" class="hidden">
+    <h3>Batch</h3>
+    <label><input type="checkbox"> Best</label><br>
+    <label><input type="checkbox"> Budget</label><br>
+    <h3>Categories</h3>
+    <label><input type="checkbox"> Accessories</label><br>
+    <label><input type="checkbox"> T-Shirts</label><br>
+    <label><input type="checkbox"> Pants</label><br>
+    <label><input type="checkbox"> Electronics</label><br>
+    <label><input type="checkbox"> Socks</label><br>
+    <label><input type="checkbox"> Caps</label>
+  </aside>
 
-  <div id="product-list"></div>
+  <main>
+    <h1>Welcome to YungR3ps</h1>
+  </main>
 
-  <button id="filterToggle">☰</button>
+  <button id="burger" onclick="toggleFilters()">☰</button>
 
-  <script src="app.js"></script>
+  <script>
+    document.getElementById("logo").addEventListener("click", () => {
+      window.location.href = "admin.html";
+    });
+
+    function toggleFilters() {
+      document.getElementById("filters").classList.toggle("hidden");
+    }
+  </script>
 </body>
 </html>
