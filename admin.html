@@ -1,34 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Login</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admina</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-  <main class="admin-login">
-    <h2>Admin Panel</h2>
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Username" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
+    <div class="admin-login" id="adminLoginForm">
+        <h2>Logowanie</h2>
+        <input type="password" id="adminPassword" placeholder="Hasło">
+        <button id="loginButton">Zaloguj</button>
+    </div>
 
-    <section id="adminPanel" style="display:none;">
-      <h3>Add Product</h3>
-      <form id="addProductForm">
-        <input type="text" id="name" placeholder="Product Name" required />
-        <input type="text" id="image" placeholder="Image URL" required />
-        <input type="number" id="price" placeholder="Price" required />
-        <input type="text" id="category" placeholder="Category (e.g. T-Shirts)" required />
-        <input type="text" id="batch" placeholder="Batch (best/budget)" required />
-        <textarea id="description" placeholder="Description"></textarea>
-        <button type="submit">Add Product</button>
-      </form>
-    </section>
-  </main>
+    <div class="admin-panel" id="adminPanel" style="display:none;">
+        <h2>Dodaj nowy produkt</h2>
+        <div class="form-group">
+            <label>Nazwa produktu:</label>
+            <input type="text" id="productName">
+        </div>
+        <div class="form-group">
+            <label>Link do produktu:</label>
+            <input type="text" id="productLink">
+        </div>
+        <div class="form-group">
+            <label>Link do zdjęcia:</label>
+            <input type="text" id="productImage">
+        </div>
+        <div class="form-group">
+            <label>Batch:</label>
+            <select id="productBatch">
+                <option value="best">Best</option>
+                <option value="budget">Budget</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Kategoria:</label>
+            <select id="productCategory">
+                <option value="belts">Belts</option>
+                <option value="electronics">Electronics</option>
+                <!-- Pozostałe kategorie -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Cena:</label>
+            <input type="number" id="productPrice">
+        </div>
+        <button id="addProductButton">Dodaj produkt</button>
+    </div>
 
-  <script src="admin.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>
