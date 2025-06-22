@@ -1,64 +1,98 @@
 let products = [];
+let filteredProducts = [];
+let selectedCategories = [];
+let selectedBatches = [];
+let minPrice = 0;
+let maxPrice = Infinity;
 
-fetch('/data.json')
+// DOM Elements
+const filterPanel = document.getElementById("filterPanel");
+const filterToggle = document.getElementById("filterToggle");
+const applyFiltersBtn = document.getElementById("applyFilters");
+const searchInput = document.getElementById("searchInput");
+const productGrid = document.getElementById("productGrid");
+const categoryButtons = document.querySelectorAll(".category-filter");
+const batchButtons = document.querySelectorAll(".batch-filter");
+const minPriceInput = document.getElementById("minPrice");
+const maxPriceInput = document.getElementById("maxPrice");
+
+filterToggle.addEventListener("click", () => {
+  filterPanel.classList.toggle("active");
+});
+
+categoryButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.classList.toggle("active");
+    const category = btn.getAttribute("data-category");
+    if (selectedCategories.includes(category)) {
+      selectedCategories = selectedCategories.filter(c => c !== category);
+    } else {
+      selectedCategories.push(category);
+    }
+  });
+});
+
+batchButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.classList.toggle("active");
+    const batch = btn.getAttribute("data-batch");
+    if (selectedBatches.includes(batch)) {
+      selectedBatches = selectedBatches.filter(b => b !== batch);
+    } else {
+      selectedBatches.push(batch);
+    }
+  });
+});
+
+applyFiltersBtn.addEventListener("click", () => {
+  minPrice = parseFloat(minPriceInput.value) || 0;
+  maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+  applyFilters();
+  filterPanel.classList.remove("active");
+});
+
+searchInput.addEventListener("input", () => {
+  applyFilters();
+});
+
+function applyFilters() {
+  const searchText = searchInput.value.toLowerCase();
+
+  filteredProducts = products.filter(product => {
+    const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+    const matchBatch = selectedBatches.length === 0 || selectedBatches.includes(product.batch);
+    const matchPrice = product.price >= minPrice && product.price <= maxPrice;
+    const matchSearch = product.name.toLowerCase().includes(searchText);
+    return matchCategory && matchBatch && matchPrice && matchSearch;
+  });
+
+  renderProducts(filteredProducts);
+}
+
+function renderProducts(list) {
+  productGrid.innerHTML = "";
+  list.forEach(product => {
+    const div = document.createElement("div");
+    div.className = "product-card";
+    div.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+      <p><strong>${product.price} zł</strong></p>
+      <a href="${product.link}" target="_blank">Link</a>
+    `;
+    productGrid.appendChild(div);
+  });
+}
+
+// Load products from data.json
+fetch("/data.json")
   .then(res => res.json())
   .then(data => {
     products = data;
-    renderProducts(products);
-    generateFilters();
+    filteredProducts = data;
+    renderProducts(data);
+  })
+  .catch(err => {
+    console.error("Błąd wczytywania danych:", err);
   });
-
-function renderProducts(list) {
-  const container = document.getElementById("productContainer");
-  container.innerHTML = "";
-  list.forEach(p => {
-    container.innerHTML += `
-      <div class="product">
-        <img src="${p.image}" alt="${p.name}"/>
-        <h4>${p.name}</h4>
-        <p>${p.description}</p>
-        <p><b>${p.price} zł</b></p>
-        <a href="${p.link || '#'}" target="_blank">Link</a>
-      </div>`;
-  });
-}
-
-function generateFilters() {
-  const cats = [...new Set(products.map(p => p.category))];
-  const batches = [...new Set(products.map(p => p.batch))];
-
-  document.getElementById("categoryFilter").innerHTML = cats.map(c => 
-    `<button onclick="toggleFilter(this, 'category')">${c}</button>`).join('');
-
-  document.getElementById("batchFilter").innerHTML = batches.map(b => 
-    `<button onclick="toggleFilter(this, 'batch')">${b}</button>`).join('');
-}
-
-let activeFilters = { category: [], batch: [] };
-
-function toggleFilter(btn, type) {
-  btn.classList.toggle('active');
-  const value = btn.textContent;
-  if (activeFilters[type].includes(value)) {
-    activeFilters[type] = activeFilters[type].filter(v => v !== value);
-  } else {
-    activeFilters[type].push(value);
-  }
-}
-
-function applyFilters() {
-  const min = parseFloat(document.getElementById('minPrice').value) || 0;
-  const max = parseFloat(document.getElementById('maxPrice').value) || Infinity;
-
-  const filtered = products.filter(p =>
-    (!activeFilters.category.length || activeFilters.category.includes(p.category)) &&
-    (!activeFilters.batch.length || activeFilters.batch.includes(p.batch)) &&
-    p.price >= min && p.price <= max
-  );
-  renderProducts(filtered);
-}
-
-function toggleFilters() {
-  const panel = document.getElementById("filterPanel");
-  panel.style.display = panel.style.display === "flex" ? "none" : "flex";
-}
