@@ -1,38 +1,43 @@
-document.getElementById('loginForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  if (username === 'YungMati' && password === 'vawjej-fetfuq-gIqwy5') {
-    document.getElementById('loginForm').style.display = 'none';
-    document.getElementById('adminPanel').style.display = 'block';
-  } else {
-    alert('Invalid credentials');
-  }
-});
-
-document.getElementById('addProductForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const product = {
-    name: document.getElementById('name').value,
-    image: document.getElementById('image').value,
-    price: parseFloat(document.getElementById('price').value),
-    category: document.getElementById('category').value,
-    batch: document.getElementById('batch').value,
-    description: document.getElementById('description').value
-  };
-
-  fetch('/add-product', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(product)
-  }).then(res => {
-    if (res.ok) {
-      alert('Product added!');
-      document.getElementById('addProductForm').reset();
-    } else {
-      alert('Error adding product');
-    }
-  });
+document.addEventListener('DOMContentLoaded', function() {
+    const ADMIN_PASSWORD = "twoje_haslo"; // Zmień to!
+    const loginForm = document.getElementById('adminLoginForm');
+    const adminPanel = document.getElementById('adminPanel');
+    const loginButton = document.getElementById('loginButton');
+    const addProductButton = document.getElementById('addProductButton');
+    
+    // Logowanie
+    loginButton.addEventListener('click', () => {
+        const password = document.getElementById('adminPassword').value;
+        if (password === ADMIN_PASSWORD) {
+            loginForm.style.display = 'none';
+            adminPanel.style.display = 'block';
+        } else {
+            alert('Nieprawidłowe hasło!');
+        }
+    });
+    
+    // Dodawanie produktu
+    addProductButton.addEventListener('click', () => {
+        const newProduct = {
+            name: document.getElementById('productName').value,
+            link: document.getElementById('productLink').value,
+            image: document.getElementById('productImage').value,
+            batch: document.getElementById('productBatch').value,
+            category: document.getElementById('productCategory').value,
+            price: document.getElementById('productPrice').value
+        };
+        
+        fetch('products.json')
+            .then(response => response.json())
+            .then(products => {
+                products.push(newProduct);
+                return fetch('products.json', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(products)
+                });
+            })
+            .then(() => alert('Produkt dodany!'))
+            .catch(error => console.error('Error:', error));
+    });
 });
