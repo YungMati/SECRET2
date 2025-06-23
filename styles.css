@@ -1,122 +1,121 @@
 body {
-  background: #111;
-  color: white;
   margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #000;
-  padding: 10px 15px;
-  border-bottom: 1px solid #ff3333;
-}
-
-.logo {
-  height: 40px;
-}
-
-header input {
-  background: #222;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0a0a0a;
   color: white;
-  border: 1px solid #ff3333;
-  padding: 8px 12px;
-  border-radius: 5px;
-  width: 50%;
-  max-width: 250px;
 }
 
-main {
+#product-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  transition: all 0.3s ease;
 }
 
 .product {
-  background: #1a1a1a;
-  border: 1px solid #ff3333;
-  border-radius: 8px;
-  overflow: hidden;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  transition: 0.3s;
+  background: #111;
+  border: 1px solid #ff0033;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.2s;
 }
 
 .product:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 8px #ff3333aa;
+  transform: scale(1.05);
+  border-color: #ff1a4d;
 }
 
 .product img {
   width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
-.product button {
-  background: #ff3333;
+.product .price {
+  color: #ff0033;
+  font-weight: bold;
+}
+
+.product .tag {
+  font-size: 0.8rem;
+  background: #ff0033;
   color: white;
-  border: none;
-  padding: 8px;
+  padding: 2px 8px;
   border-radius: 4px;
-  cursor: pointer;
-  text-transform: uppercase;
+  margin: 4px;
+  display: inline-block;
 }
 
-#filterToggle {
+.product a {
+  display: inline-block;
+  margin-top: 10px;
+  background: #ff0033;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+#burger {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #ff3333;
-  border: none;
-  width: 55px;
-  height: 55px;
+  background: #ff0033;
+  padding: 12px;
   border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
+  cursor: pointer;
   z-index: 1000;
+}
+
+#burger div {
+  width: 20px;
+  height: 2px;
+  background: white;
+  margin: 4px 0;
+}
+
+#filter-panel {
+  position: fixed;
+  left: -300px;
+  top: 0;
+  height: 100%;
+  width: 260px;
+  background: #1a1a1a;
+  border-right: 2px solid #ff0033;
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+#filter-panel h2 {
+  color: #ff0033;
+  margin-top: 0;
+}
+
+#filter-panel button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 6px;
+  background: none;
+  color: white;
+  border: 1px solid #ff0033;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-#filterToggle div {
-  width: 28px;
-  height: 4px;
-  background: white;
-  border-radius: 2px;
-}
-
-#filterSidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #222;
+#filter-panel input {
+  width: 48%;
+  padding: 5px;
+  margin: 4px 1%;
+  background: #111;
   color: white;
-  width: 200px;
-  height: 100%;
-  padding: 20px;
-  border-right: 2px solid #ff3333;
-  z-index: 999;
-  transform: translateX(-100%);
-  transition: transform 0.3s;
+  border: 1px solid #ff0033;
+  border-radius: 6px;
 }
 
-#filterSidebar.show {
-  transform: translateX(0);
-}
-
-#filterSidebar label {
-  display: block;
-  margin: 6px 0;
-}
-
-.hidden {
-  display: none;
+#filter-panel.show {
+  left: 0;
 }
