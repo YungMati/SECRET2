@@ -204,7 +204,7 @@ const products = [
     price: 9.36,
     image: "https://img.alicdn.com/imgextra/i2/2211872109715/O1CN01qGrXy12LdWZB0itZ1_!!2211872109715.jpg",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fitem.taobao.com%252Fitem.htm%253Fid%253D689047427915&refcode=yungr3ps"
-  },
+  }
 ];
 
 
