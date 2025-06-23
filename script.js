@@ -112,7 +112,7 @@ const products = [
   {
     name: "VIRALOWA BLUZA Z KOMINIARKĄ",
     batch: "best",
-    category: "hoodie",
+    category: "hoodies",
     price: 22.48,
     image: "https://cbu01.alicdn.com/img/ibank/O1CN01L5WvUZ20xaCtYkdcv_!!3247256916-0-cib.jpg",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F859632289526.html&affcode=yungr3ps"
@@ -136,7 +136,7 @@ const products = [
   {
     name: "BLUZA DENIM TEARS",
     batch: "best",
-    category: "hoodie",
+    category: "hoodies",
     price: 166.47,
     image: "https://img.alicdn.com/bao/uploaded/i4/2217868191481/O1CN01fXbhZH1MoLWnUwQz5_!!2217868191481.jpg",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fm.intl.taobao.com%2Fdetail%2Fdetail.html%3Fft%3Dt%26id%3D794384453885&affcode=yungr3ps"
