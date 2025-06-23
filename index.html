@@ -1,53 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Product Catalog</title>
+  <title>Katalog YUNG R3PS</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
+
+<header>
   <div class="logo-container">
-    <img src="logo.png" alt="Logo">
-    <input type="text" id="searchInput" placeholder="Szukaj produktu...">
+    <img src="logo.png" alt="Logo" />
+    <input type="text" id="searchInput" placeholder="Szukaj produktu..." />
   </div>
 </header>
-  <div id="filter-panel">
-    <h2>Filters</h2>
-    <div>
-      <h3>Batch</h3>
-      <button onclick="filterBatch('best')">Best</button>
-      <button onclick="filterBatch('budget')">Budget</button>
-      <button onclick="filterBatch('random')">Random</button>
-    </div>
-    <div>
-      <h3>Category</h3>
-      <button onclick="filterCategory('accessories')">Accessories</button>
-      <button onclick="filterCategory('technology')">Technology</button>
-      <button onclick="filterCategory('shoes')">Shoes</button>
-      <button onclick="filterCategory('pants')">Pants</button>
-      <button onclick="filterCategory('shorts')">Shorts</button>
-      <button onclick="filterCategory('shirts')">Shirts</button>
-      <button onclick="filterCategory('hoodies')">Hoodies</button>
-      <button onclick="filterCategory('underwear')">Underwear</button>
-      <button onclick="filterCategory('hats')">Hats</button>
-      <button onclick="filterCategory('belts')">Belts</button>
-    </div>
-    <div>
-      <h3>Price (PLN)</h3>
-      <input type="number" id="minPrice" placeholder="Min" />
-      <input type="number" id="maxPrice" placeholder="Max" />
-      <button onclick="applyPriceFilter()">Apply</button>
-    </div>
-  </div>
 
-  <div id="product-container"></div>
+<div class="product-container" id="product-container">
+  <!-- Produkty będą wczytywane dynamicznie -->
+</div>
 
-  <div id="burger" onclick="toggleFilter()">
-    <div></div><div></div><div></div>
-  </div>
+<div id="filter-button" onclick="togglePanel()">☰</div>
 
-  <script src="products.js"></script>
+<div id="filter-panel">
+  <h3>Batch</h3>
+  <button data-filter="batch" data-value="best" onclick="toggleFilter('batch','best')">Best</button>
+  <button data-filter="batch" data-value="budget" onclick="toggleFilter('batch','budget')">Budget</button>
+  <button data-filter="batch" data-value="random" onclick="toggleFilter('batch','random')">Random</button>
+
+  <h3>Category</h3>
+  <button data-filter="category" data-value="accessories" onclick="toggleFilter('category','accessories')">Accessories</button>
+  <button data-filter="category" data-value="technology" onclick="toggleFilter('category','technology')">Technology</button>
+  <button data-filter="category" data-value="shoes" onclick="toggleFilter('category','shoes')">Shoes</button>
+  <button data-filter="category" data-value="trousers" onclick="toggleFilter('category','trousers')">Trousers</button>
+  <button data-filter="category" data-value="shorts" onclick="toggleFilter('category','shorts')">Shorts</button>
+  <button data-filter="category" data-value="shirts" onclick="toggleFilter('category','shirts')">Shirts</button>
+  <button data-filter="category" data-value="hoodies" onclick="toggleFilter('category','hoodies')">Hoodies</button>
+  <button data-filter="category" data-value="underwear" onclick="toggleFilter('category','underwear')">Underwear</button>
+  <button data-filter="category" data-value="hats" onclick="toggleFilter('category','hats')">Hats</button>
+  <button data-filter="category" data-value="belts" onclick="toggleFilter('category','belts')">Belts</button>
+
+  <h3>Price</h3>
+  <input type="number" id="priceMin" placeholder="Min" />
+  <input type="number" id="priceMax" placeholder="Max" />
+  <button onclick="applyPriceFilter()">Apply</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
