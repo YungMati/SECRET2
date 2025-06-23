@@ -3,39 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YungR3ps</title>
+  <title>Product Catalog</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo" class="logo" />
-    <input type="text" id="searchInput" placeholder="Search products..." />
-  </header>
-
-  <div id="filterSidebar" class="hidden">
-    <h3>Batch</h3>
-    <label><input type="checkbox" value="best" class="batch-filter" /> Best</label>
-    <label><input type="checkbox" value="budget" class="batch-filter" /> Budget</label>
-    <h3>Category</h3>
-    <label><input type="checkbox" value="accessories" class="category-filter" /> Accessories</label>
-    <label><input type="checkbox" value="shoes" class="category-filter" /> Shoes</label>
-    <label><input type="checkbox" value="belts" class="category-filter" /> Belts</label>
-    <label><input type="checkbox" value="caps" class="category-filter" /> Caps</label>
-    <label><input type="checkbox" value="t-shirts" class="category-filter" /> T-Shirts</label>
-    <label><input type="checkbox" value="pants" class="category-filter" /> Pants</label>
-    <label><input type="checkbox" value="shorts" class="category-filter" /> Shorts</label>
-    <label><input type="checkbox" value="underwear" class="category-filter" /> Underwear</label>
-    <label><input type="checkbox" value="electronics" class="category-filter" /> Electronics</label>
+  <div id="filter-panel">
+    <h2>Filters</h2>
+    <div>
+      <h3>Batch</h3>
+      <button onclick="filterBatch('best')">Best</button>
+      <button onclick="filterBatch('budget')">Budget</button>
+      <button onclick="filterBatch('random')">Random</button>
+    </div>
+    <div>
+      <h3>Category</h3>
+      <button onclick="filterCategory('accessories')">Accessories</button>
+      <button onclick="filterCategory('technology')">Technology</button>
+      <button onclick="filterCategory('shoes')">Shoes</button>
+      <button onclick="filterCategory('pants')">Pants</button>
+      <button onclick="filterCategory('shorts')">Shorts</button>
+      <button onclick="filterCategory('shirts')">Shirts</button>
+      <button onclick="filterCategory('hoodies')">Hoodies</button>
+      <button onclick="filterCategory('underwear')">Underwear</button>
+      <button onclick="filterCategory('hats')">Hats</button>
+      <button onclick="filterCategory('belts')">Belts</button>
+    </div>
+    <div>
+      <h3>Price (PLN)</h3>
+      <input type="number" id="minPrice" placeholder="Min" />
+      <input type="number" id="maxPrice" placeholder="Max" />
+      <button onclick="applyPriceFilter()">Apply</button>
+    </div>
   </div>
 
-  <main id="productsContainer"></main>
+  <div id="product-container"></div>
 
-  <button id="filterToggle">
-    <div></div>
-    <div></div>
-    <div></div>
-  </button>
+  <div id="burger" onclick="toggleFilter()">
+    <div></div><div></div><div></div>
+  </div>
 
-  <script src="script.js"></script>
+  <script src="products.js"></script>
 </body>
 </html>
