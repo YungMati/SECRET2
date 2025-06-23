@@ -70,9 +70,9 @@ const products = [
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7477348310&affcode=yungr3ps"
   },
   {
-    "name": "CROCS x BAPE",
-    "batch": "best",
-    "category": "shoes",
+    "name": "SPODENKI CORTEIZ",
+    "batch": "budget",
+    "category": "shorts",
     "price": 57.87,
     "image": "https://cbu01.alicdn.com/img/ibank/O1CN01sDmW0A1zbJDjVtmE0_!!2215823446732-0-cib.jpg",
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F753380910952.html&affcode=yungr3ps"
