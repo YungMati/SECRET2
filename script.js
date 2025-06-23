@@ -1,4 +1,4 @@
-let selectedFilters = {
+let selectedFilters = {More actions
   batch: [],
   category: [],
   priceMin: null,
@@ -13,12 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const products = [
-  }  
+  {
     name: "LOSOWE BAPESTY YOLO",
     batch: "random",
     category: "shoes",
     price: 40,
     image: "https://si.geilicdn.com/open1850717273-1234478995-22f700000192bc1be5ed0a22d234_1284_1531.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7291400265code=yungr3ps"
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7291400265"
   },
   {
@@ -84,14 +85,17 @@ const products = [
     category: "shirts",
     price: 50.57,
     image: "https://static.stereogum.com/uploads/2025/02/Aphex-Twin-Supreme-shirt-1739802682-1000x895.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D7441311679code=yungr3ps"
+  },
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D7441311679"
-},
+
 {
     name: "KOSZULKA CORTEIZ",
     batch: "budget",
     category: "shirts",
     price: 20.17,
     image: "https://cbu01.alicdn.com/img/ibank/O1CN01L2PAiX1zbJEXlqYZS_!!2215823446732-0-cib.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fikako.vip%252Fs2muecode=yungr3ps"
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fikako.vip%252Fs2mue"
   },
 
@@ -111,33 +115,6 @@ const products = [
     price: 3.88,
     image: "https://si.geilicdn.com/pcitem1923191567-6b3200000196fb970ad80a23057e_1280_1706.jpg?w=750&h=750&cp=1",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7474677975&affcode=yungr3ps"
-  },
-
-{
-    name: "VIRALOWA BLUZA Z KOMINIARKĄ",
-    batch: "best",
-    category: "hoodie",
-    price: 22.48,
-    image: "https://cbu01.alicdn.com/img/ibank/O1CN01L5WvUZ20xaCtYkdcv_!!3247256916-0-cib.jpg",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F859632289526.html&affcode=yungr3ps"
-  },
-
-{
-    name: "JORDAN 4 KX best budget",
-    batch: "budget",
-    category: "shoes",
-    price: 122,
-    image: "https://si.geilicdn.com/pcitem1425026222-576700000192f4021a8e0a239646-unadjust_2250_2250.png?w=750&h=750&cp=1",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D6353081514"
-  },
-
-{
-    name: "KOMINIARKA SUPREME",
-    batch: "best",
-    category: "accessories",
-    price: 39.11,
-    image: "https://si.geilicdn.com/wdseller1863579153-43ba00000194e472ea300a207569_1228_1228.jpg?w=750&h=750&cp=1",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D883481045520"
   }
 ];
 
@@ -170,12 +147,13 @@ function renderProducts() {
 }
 
 function toggleFilter(type, value) {
-  const list = selectedFilters[type];
-
-  if (list.includes(value)) {
-    selectedFilters[type] = list.filter(v => v !== value);
-  } else {
-    selectedFilters[type].push(value);
+  // dla batch i category – tylko jeden może być aktywny
+  if (type === 'batch' || type === 'category') {
+    if (selectedFilters[type].includes(value)) {
+      selectedFilters[type] = []; // odznacz jeśli kliknięto jeszcze raz
+    } else {
+      selectedFilters[type] = [value]; // wybierz tylko jeden
+    }
   }
 
   updateFilterStyles();
