@@ -148,8 +148,25 @@ const products = [
     price: 100,
     image: "https://si.geilicdn.com/pcitem1681028290-03890000019090e6e5f20a23047e_376_375.jpg",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7247449195&affcode=yungr3ps"
-  }
+  },
+  {
+    name: "Air Force",
+    batch: "best",
+    category: "shoes",
+    price: 50,
+    image: "https://si.geilicdn.com/pcitem901841077607-353c0000018e7dd0dd1b0a231418_2560_2564.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7231813766&affcode=yungr3ps"
+  },
+  {
+    name: "BALENCIAGA TRACK LED",
+    batch: "best",
+    category: "shoes",
+    price: 276,
+    image: "https://si.geilicdn.com/pcitem1854263096-6e9000000196ee98f2370a21146b_720_1086.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7433573437&affcode=yungr3ps"
+  },
 ];
+
 
 function renderProducts() {
   const container = document.getElementById('product-container');
