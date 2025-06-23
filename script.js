@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const products = [
-  {
+  }  
     name: "LOSOWE BAPESTY YOLO",
     batch: "random",
     category: "shoes",
@@ -85,7 +85,7 @@ const products = [
     price: 50.57,
     image: "https://static.stereogum.com/uploads/2025/02/Aphex-Twin-Supreme-shirt-1739802682-1000x895.jpg",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D7441311679"
-
+},
 {
     name: "KOSZULKA CORTEIZ",
     batch: "budget",
@@ -111,6 +111,33 @@ const products = [
     price: 3.88,
     image: "https://si.geilicdn.com/pcitem1923191567-6b3200000196fb970ad80a23057e_1280_1706.jpg?w=750&h=750&cp=1",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7474677975&affcode=yungr3ps"
+  },
+
+{
+    name: "VIRALOWA BLUZA Z KOMINIARKĄ",
+    batch: "best",
+    category: "hoodie",
+    price: 22.48,
+    image: "https://cbu01.alicdn.com/img/ibank/O1CN01L5WvUZ20xaCtYkdcv_!!3247256916-0-cib.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F859632289526.html&affcode=yungr3ps"
+  },
+
+{
+    name: "JORDAN 4 KX best budget",
+    batch: "budget",
+    category: "shoes",
+    price: 122,
+    image: "https://si.geilicdn.com/pcitem1425026222-576700000192f4021a8e0a239646-unadjust_2250_2250.png?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D6353081514"
+  },
+
+{
+    name: "KOMINIARKA SUPREME",
+    batch: "best",
+    category: "accessories",
+    price: 39.11,
+    image: "https://si.geilicdn.com/wdseller1863579153-43ba00000194e472ea300a207569_1228_1228.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D883481045520"
   }
 ];
 
@@ -143,19 +170,18 @@ function renderProducts() {
 }
 
 function toggleFilter(type, value) {
-  // dla batch i category – tylko jeden może być aktywny
-  if (type === 'batch' || type === 'category') {
-    if (selectedFilters[type].includes(value)) {
-      selectedFilters[type] = []; // odznacz jeśli kliknięto jeszcze raz
-    } else {
-      selectedFilters[type] = [value]; // wybierz tylko jeden
-    }
+  const list = selectedFilters[type];
+
+  if (list.includes(value)) {
+    selectedFilters[type] = list.filter(v => v !== value);
+  } else {
+    selectedFilters[type].push(value);
   }
 
   updateFilterStyles();
   renderProducts();
 }
-  
+
 function updateFilterStyles() {
   document.querySelectorAll('[data-filter="batch"]').forEach(btn => {
     btn.style.backgroundColor = selectedFilters.batch.includes(btn.dataset.value) ? '#ff0033' : '#111';
