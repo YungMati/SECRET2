@@ -132,6 +132,22 @@ const products = [
     price: 39.11,
     image: "https://si.geilicdn.com/wdseller1863579153-43ba00000194e472ea300a207569_1228_1228.jpg?w=750&h=750&cp=1",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D883481045520"
+  },
+  {
+    name: "BLUZA DENIM TEARS",
+    batch: "best",
+    category: "hoodie",
+    price: 166.47,
+    image: "https://img.alicdn.com/bao/uploaded/i4/2217868191481/O1CN01fXbhZH1MoLWnUwQz5_!!2217868191481.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fm.intl.taobao.com%2Fdetail%2Fdetail.html%3Fft%3Dt%26id%3D794384453885&affcode=yungr3ps"
+  },
+  {
+    name: "AIR PODS",
+    batch: "best",
+    category: "technology",
+    price: 100,
+    image: "https://si.geilicdn.com/pcitem1681028290-03890000019090e6e5f20a23047e_376_375.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7247449195&affcode=yungr3ps"
   }
 ];
 
