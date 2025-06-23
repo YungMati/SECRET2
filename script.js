@@ -187,13 +187,3 @@ function togglePanel() {
   const panel = document.getElementById('filter-panel');
   panel.classList.toggle('show');
 }
-// Popup logic
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("popup").style.display = "flex";
-  }, 3000); // 3 sekundy
-
-  document.querySelector(".close-btn").addEventListener("click", () => {
-    document.getElementById("popup").style.display = "none";
-  });
-});
