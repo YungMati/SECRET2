@@ -83,7 +83,7 @@ const products = [
     batch: "best",
     category: "shirts",
     price: 50.57,
-    image: "https://photo.yupoo.com/noghost/e8d9f3fe/8f742724.jpg",
+    image: "https://static.stereogum.com/uploads/2025/02/Aphex-Twin-Supreme-shirt-1739802682-1000x895.jpg",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D7441311679"
   },
 
