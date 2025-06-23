@@ -68,6 +68,50 @@ const products = [
     price: 21.35,
     image: "https://si.geilicdn.com/open1758548380-1234478995-49cb0000019701527a730aa0834c_1600_1600.jpg?w=750&h=750&cp=1",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7477348310&affcode=vector"
+  },
+  {
+    name: "CROCS x BAPE",
+    batch: "Best",
+    category: "Shoes",
+    price: 89.89,
+    image: "https://si.geilicdn.com/wdseller507105153-6ffe000001975615196d0a2102b1_1170_1170.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D7488679329%2526wfr%253Dc%2526source%253Dgoods_home%2526ifr%253Ditemdetail%2526sfr%253Dapp"
+  },
+
+{
+    name: "KOSZULKA SUPREME",
+    batch: "best",
+    category: "shirts",
+    price: 50.57,
+    image: "https://photo.yupoo.com/noghost/e8d9f3fe/8f742724.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D7441311679"
+  },
+
+{
+    name: "KOSZULKA CORTEIZ",
+    batch: "budget",
+    category: "shirts",
+    price: 20.17,
+    image: "https://cbu01.alicdn.com/img/ibank/O1CN01L2PAiX1zbJEXlqYZS_!!2215823446732-0-cib.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fikako.vip%252Fs2mue"
+  },
+
+{
+    name: "SPODENKI CORTEIZ JEANSOWE",
+    batch: "best",
+    category: "shorts",
+    price: 57.87,
+    image: "https://cbu01.alicdn.com/img/ibank/O1CN01sDmW0A1zbJDjVtmE0_!!2215823446732-0-cib.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F753380910952.html&affcode=t8697"
+  },
+
+{
+    name: "LOSOWE SKARPETKI",
+    batch: "best",
+    category: "underwear",
+    price: 3.88,
+    image: "https://si.geilicdn.com/pcitem1923191567-6b3200000196fb970ad80a23057e_1280_1706.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7474677975&affcode=t8697"
   }
 ];
 
