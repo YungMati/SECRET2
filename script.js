@@ -176,7 +176,7 @@ const products = [
   {
     name: "SET TRAPSTARE",
     batch: "best",
-    category: ["hoodies”, “pants "],
+    category: "hoodies”, “pants ",
     price:,
     image: "https://si.geilicdn.com/wdseller163498710-23bc00000189b4c9b7180a2104c1_750_750.jpg?w=750&h=750&cp=1",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fshop1838951640.v.weidian.com%2Fitem.html%3FitemID%3D7234164467%26spider_token%3D4c5b&refcode=yungr3ps"
@@ -191,8 +191,8 @@ const products = [
   },
   {
     name: "SYNA WORLD SET",
-    batch: “best”,
-    category: ["shirts", “shorts”],
+    batch: "best",
+    category: "shirts",
     price: 137,
     image: "https://si.geilicdn.com/wdseller1274221412-092e0000019676835e820a2301b4_1284_1284.jpg?w=750&h=750&cp=1",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7457005392%26wfr%3Dc&refcode=yungr3ps"
