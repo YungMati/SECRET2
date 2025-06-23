@@ -162,34 +162,16 @@ a:hover {
   color: white;
   border-radius: 4px;
 }
-.topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #111;
-  color: #fff;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1000;
-}
-
 .sidebar {
   position: fixed;
-  top: 70px;
-  left: -250px;
+  top: 70px;          /* przesunięcie w dół o wysokość topbaru */
+  left: -250px;       /* domyślnie ukryty z lewej */
   width: 250px;
-  height: calc(100% - 70px);
+  height: calc(100% - 70px); /* wysokość na cały ekran minus topbar */
   background-color: #1a1a1a;
   padding: 20px;
   box-shadow: 0 0 10px red;
   overflow-y: auto;
   transition: left 0.3s ease;
   z-index: 999;
-}
-
-.content {
-  padding-top: 70px;
 }
