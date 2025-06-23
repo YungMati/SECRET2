@@ -46,6 +46,14 @@ const products = [
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7412950750&affcode=yungr3ps"
   },
   {
+  name: "CROCS x BAPE",
+  batch: "best",
+  category: "shoes",
+  price: 89,
+  image: "https://si.geilicdn.com/wdseller507105153-70ce000001975615196e0a2301af_1170_1170.jpg?w=750&h=750&cp=1",
+  link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7488679329%26wfr%3Dc%26source%3Dgoods_home%26ifr%3Ditemdetail%26sfr%3Dapp&refcode=yungr3ps"
+},
+  {
     "name": "KOSZULKI PIŁKARSKIE",
     "batch": "budget",
     "category": "shirts",
