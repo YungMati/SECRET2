@@ -5,25 +5,26 @@ body {
   color: white;
 }
 
+/* Grid: 2 kolumny min na każdej szerokości */
 #product-container {
   display: grid;
-  gap: 20px;
+  gap: 16px;
   padding: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   transition: all 0.3s ease;
 }
 
 .product {
   background: #111;
   border: 1px solid #ff0033;
-  padding: 15px;
+  padding: 12px;
   border-radius: 10px;
   text-align: center;
   transition: transform 0.2s;
 }
 
 .product:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   border-color: #ff1a4d;
 }
 
@@ -36,28 +37,31 @@ body {
 .product .price {
   color: #ff0033;
   font-weight: bold;
+  margin: 6px 0;
 }
 
 .product .tag {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   background: #ff0033;
   color: white;
   padding: 2px 8px;
   border-radius: 4px;
-  margin: 4px;
+  margin: 3px;
   display: inline-block;
 }
 
 .product a {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 8px;
   background: #ff0033;
   color: white;
-  padding: 6px 10px;
+  padding: 5px 10px;
   border-radius: 6px;
   text-decoration: none;
+  font-size: 0.9rem;
 }
 
+/* BURGER */
 #burger {
   position: fixed;
   bottom: 20px;
@@ -67,6 +71,7 @@ body {
   border-radius: 50%;
   cursor: pointer;
   z-index: 1000;
+  box-shadow: 0 0 12px #ff0033aa;
 }
 
 #burger div {
@@ -76,6 +81,7 @@ body {
   margin: 4px 0;
 }
 
+/* PANEL */
 #filter-panel {
   position: fixed;
   left: -300px;
@@ -87,35 +93,52 @@ body {
   padding: 20px;
   transition: left 0.3s ease;
   z-index: 999;
+  overflow-y: auto;
+}
+
+#filter-panel.show {
+  left: 0;
 }
 
 #filter-panel h2 {
   color: #ff0033;
   margin-top: 0;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #ff0033;
+  padding-bottom: 10px;
+}
+
+#filter-panel h3 {
+  margin: 18px 0 8px;
+  font-size: 1rem;
+  color: #ff5555;
 }
 
 #filter-panel button {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 6px;
-  background: none;
+  display: inline-block;
+  margin: 4px 5px 6px 0;
+  padding: 6px 10px;
+  background: #111;
   color: white;
   border: 1px solid #ff0033;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.2s;
+}
+
+#filter-panel button:hover {
+  background: #ff0033;
+  color: black;
 }
 
 #filter-panel input {
   width: 48%;
-  padding: 5px;
+  padding: 6px;
   margin: 4px 1%;
   background: #111;
   color: white;
   border: 1px solid #ff0033;
   border-radius: 6px;
-}
-
-#filter-panel.show {
-  left: 0;
+  font-size: 0.85rem;
 }
