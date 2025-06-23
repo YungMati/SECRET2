@@ -162,3 +162,16 @@ a:hover {
   color: white;
   border-radius: 4px;
 }
+.sidebar {
+  position: fixed;
+  top: 70px;          /* przesunięcie w dół o wysokość topbaru */
+  left: -250px;       /* domyślnie ukryty z lewej */
+  width: 250px;
+  height: calc(100% - 70px); /* wysokość na cały ekran minus topbar */
+  background-color: #1a1a1a;
+  padding: 20px;
+  box-shadow: 0 0 10px red;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
