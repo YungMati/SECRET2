@@ -71,8 +71,8 @@ const products = [
   },
   {
     name: "CROCS x BAPE",
-    batch: "Best",
-    category: "Shoes",
+    batch: "best",
+    category: "shoes",
     price: 89.89,
     image: "https://si.geilicdn.com/wdseller507105153-6ffe000001975615196d0a2102b1_1170_1170.jpg?w=750&h=750&cp=1",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D7488679329%2526wfr%253Dc%2526source%253Dgoods_home%2526ifr%253Ditemdetail%2526sfr%253Dapp"
