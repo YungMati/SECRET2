@@ -142,3 +142,33 @@ body {
   border-radius: 6px;
   font-size: 0.85rem;
 }
+/* NAVBAR */
+header {
+  background: #111;
+  border-bottom: 2px solid #ff0033;
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container img {
+  height: 40px;
+}
+
+.logo-container input {
+  width: 60%;
+  max-width: 300px;
+  padding: 6px 10px;
+  background: #0f0f0f;
+  border: 1px solid #ff0033;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.9rem;
+}
