@@ -14,28 +14,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const products = [
   {
-    name: "Czapka Yung",
-    category: "hats",
-    batch: "best",
-    price: 39,
-    image: "https://via.placeholder.com/200x200.png?text=Czapka",
-    link: "#"
-  },
-  {
-    name: "Bluza Flame",
-    category: "hoodies",
-    batch: "budget",
-    price: 99,
-    image: "https://via.placeholder.com/200x200.png?text=Bluza",
-    link: "#"
-  },
-  {
-    name: "Koszulka Red",
-    category: "shirts",
+    name: "LOSOWE BAPESTY YOLO",
     batch: "random",
-    price: 49,
-    image: "https://via.placeholder.com/200x200.png?text=Koszulka",
-    link: "#"
+    category: "shoes",
+    price: 40,
+    image: "https://si.geilicdn.com/open1850717273-1234478995-22f700000192bc1be5ed0a22d234_1284_1531.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7291400265"
+  },
+  {
+    name: "OKULARY CHROME HEARTS",
+    batch: "best",
+    category: "accessories",
+    price: 7.30,
+    image: "https://cbu01.alicdn.com/img/ibank/O1CN01msnXzh1d4PCpasGXB_!!2214783223682-0-cib.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F745886147107.html&affcode=zpf37"
+  },
+  {
+    name: "ASICS GEL NYC",
+    batch: "best",
+    category: "shoes",
+    price: 130,
+    image: "https://si.geilicdn.com/pcitem1598851921-07610000019667bc7e460a2304aa_4284_4284.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D4287327189&affcode=zpf37"
+  },
+  {
+    name: "AIR MAX+ DRIFT TN",
+    batch: "random",
+    category: "shoes",
+    price: 67.42,
+    image: "https://si.geilicdn.com/wdseller1845163825-4c8f00000195d535fcee0a2304aa_1179_1179.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7412950750&affcode=zpf37"
+  },
+  {
+    name: "KOSZULKI PIŁKARSKIE",
+    batch: "budget",
+    category: "shirts",
+    price: 38.77,
+    image: "https://si.geilicdn.com/open1762039621-252808396-624b000001962545e3560a23b4de_1196_1196.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7447222352&affcode=zpf37"
   }
 ];
 
