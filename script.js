@@ -68,12 +68,13 @@ function renderProducts() {
 }
 
 function toggleFilter(type, value) {
-  const list = selectedFilters[type];
-
-  if (list.includes(value)) {
-    selectedFilters[type] = list.filter(v => v !== value);
-  } else {
-    selectedFilters[type].push(value);
+  // dla batch i category – tylko jeden może być aktywny
+  if (type === 'batch' || type === 'category') {
+    if (selectedFilters[type].includes(value)) {
+      selectedFilters[type] = []; // odznacz jeśli kliknięto jeszcze raz
+    } else {
+      selectedFilters[type] = [value]; // wybierz tylko jeden
+    }
   }
 
   updateFilterStyles();
