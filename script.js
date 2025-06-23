@@ -55,16 +55,16 @@ const products = [
   },
 {
     name: "CZAPKA SEX INSTRUKTOR",
-    batch: "Best",
-    category: "Hats",
+    batch: "best",
+    category: "hats",
     price: 3.66,
     image: "https://cbu01.alicdn.com/img/ibank/O1CN01Dh3BA91y1kmWapIc5_!!2208779926519-0-cib.jpg",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fikako.vip%252F7wbru"
   },
 {
     name: "LABUBU",
-    batch: "Best",
-    category: "Accessories",
+    batch: "best",
+    category: "accessories",
     price: 21.35,
     image: "https://si.geilicdn.com/open1758548380-1234478995-49cb0000019701527a730aa0834c_1600_1600.jpg?w=750&h=750&cp=1",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7477348310&affcode=vector"
