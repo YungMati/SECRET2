@@ -165,7 +165,48 @@ const products = [
     image: "https://si.geilicdn.com/pcitem1854263096-6e9000000196ee98f2370a21146b_720_1086.jpg",
     link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7433573437&affcode=yungr3ps"
   },
+  {
+    name: "KOSZULKA BARCELONY",
+    batch: "best",
+    category: "shirts",
+    price: 36.32,
+    image: "https://kako-alosshk-pic.kakobuy.com/whg/202506/22/d97726bab49ccc0e5fab5640bb9d9d9d.jpg",
+    link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D920958840300%26spm%3Da213gs.v2success.0.0.6d254831ndd2Vw&refcode=yungr3ps”
+  },
+  {
+    name: "SET TRAPSTARE",
+    batch: "best",
+    category: ["hoodies”, “pants "],
+    price:,
+    image: "https://si.geilicdn.com/wdseller163498710-23bc00000189b4c9b7180a2104c1_750_750.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fshop1838951640.v.weidian.com%2Fitem.html%3FitemID%3D7234164467%26spider_token%3D4c5b&refcode=yungr3ps"
+  },
+  {
+    name: "JORDAN 4 GX",
+    batch: "best",
+    category: "shoes",
+    price: 257,
+    image: "https://si.geilicdn.com/pcitem1854263096-15cc00000195de646cbb0a23038e_1200_1200.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7437069740&affcode=yungr3ps"
+  },
+  {
+    name: "SYNA WORLD SET",
+    batch: “best”,
+    category: ["shirts", “shorts”],
+    price: 137,
+    image: "https://si.geilicdn.com/wdseller1274221412-092e0000019676835e820a2301b4_1284_1284.jpg?w=750&h=750&cp=1",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7457005392%26wfr%3Dc&refcode=yungr3ps"
+  },
+  {
+    name: "PASEK DIESEL",
+    batch: "best",
+    category: "belts",
+    price: 9.36,
+    image: "https://img.alicdn.com/imgextra/i2/2211872109715/O1CN01qGrXy12LdWZB0itZ1_!!2211872109715.jpg",
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fitem.taobao.com%252Fitem.htm%253Fid%253D689047427915&refcode=yungr3ps"
+  }
 ];
+
 
 
 function renderProducts() {
