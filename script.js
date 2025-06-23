@@ -19,7 +19,7 @@ const products = [
     category: "shoes",
     price: 40,
     image: "https://si.geilicdn.com/open1850717273-1234478995-22f700000192bc1be5ed0a22d234_1284_1531.jpg?w=750&h=750&cp=1",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7291400265"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7291400265code=yungr3ps"
   },
   {
     name: "OKULARY CHROME HEARTS",
@@ -27,7 +27,7 @@ const products = [
     category: "accessories",
     price: 7.30,
     image: "https://cbu01.alicdn.com/img/ibank/O1CN01msnXzh1d4PCpasGXB_!!2214783223682-0-cib.jpg",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F745886147107.html&affcode=zpf37"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F745886147107.html&affcode=yungr3ps"
   },
   {
     name: "ASICS GEL NYC",
@@ -35,7 +35,7 @@ const products = [
     category: "shoes",
     price: 130,
     image: "https://si.geilicdn.com/pcitem1598851921-07610000019667bc7e460a2304aa_4284_4284.jpg?w=750&h=750&cp=1",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D4287327189&affcode=zpf37"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D4287327189&affcode=yungr3ps"
   },
   {
     name: "AIR MAX+ DRIFT TN",
@@ -43,7 +43,7 @@ const products = [
     category: "shoes",
     price: 67.42,
     image: "https://si.geilicdn.com/wdseller1845163825-4c8f00000195d535fcee0a2304aa_1179_1179.jpg?w=750&h=750&cp=1",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7412950750&affcode=zpf37"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7412950750&affcode=yungr3ps"
   },
   {
     name: "KOSZULKI PIŁKARSKIE",
@@ -51,7 +51,7 @@ const products = [
     category: "shirts",
     price: 38.77,
     image: "https://si.geilicdn.com/open1762039621-252808396-624b000001962545e3560a23b4de_1196_1196.jpg?w=750&h=750&cp=1",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7447222352&affcode=zpf37"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7447222352&affcode=yungr3ps"
   },
 {
     name: "CZAPKA SEX INSTRUKTOR",
@@ -67,7 +67,7 @@ const products = [
     category: "accessories",
     price: 21.35,
     image: "https://si.geilicdn.com/open1758548380-1234478995-49cb0000019701527a730aa0834c_1600_1600.jpg?w=750&h=750&cp=1",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7477348310&affcode=vector"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7477348310&affcode=yungr3ps"
   },
   {
     name: "CROCS x BAPE",
@@ -84,7 +84,7 @@ const products = [
     category: "shirts",
     price: 50.57,
     image: "https://static.stereogum.com/uploads/2025/02/Aphex-Twin-Supreme-shirt-1739802682-1000x895.jpg",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D7441311679"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D7441311679code=yungr3ps"
   },
 
 {
@@ -93,7 +93,7 @@ const products = [
     category: "shirts",
     price: 20.17,
     image: "https://cbu01.alicdn.com/img/ibank/O1CN01L2PAiX1zbJEXlqYZS_!!2215823446732-0-cib.jpg",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fikako.vip%252Fs2mue"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fikako.vip%252Fs2muecode=yungr3ps"
   },
 
 {
@@ -102,7 +102,7 @@ const products = [
     category: "shorts",
     price: 57.87,
     image: "https://cbu01.alicdn.com/img/ibank/O1CN01sDmW0A1zbJDjVtmE0_!!2215823446732-0-cib.jpg",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F753380910952.html&affcode=t8697"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F753380910952.html&affcode=yungr3ps"
   },
 
 {
@@ -111,7 +111,7 @@ const products = [
     category: "underwear",
     price: 3.88,
     image: "https://si.geilicdn.com/pcitem1923191567-6b3200000196fb970ad80a23057e_1280_1706.jpg?w=750&h=750&cp=1",
-    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7474677975&affcode=t8697"
+    link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7474677975&affcode=yungr3ps"
   }
 ];
 
