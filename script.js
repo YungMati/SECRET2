@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const products = [
-  const products = [
   {
     name: "LOSOWE BAPESTY YOLO",
     batch: "random",
