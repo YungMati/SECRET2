@@ -228,9 +228,56 @@ const products = [
   price: 110,
   image: "https://si.geilicdn.com/wdseller163498710-48280000018a16082a100a231179_1170_1170.jpg?w=750&h=750&cp=1",
   link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7234156561&affcode=yungr3ps"
+},
+{
+  name: "SPODENKI JORDANA",
+  batch: "best",
+  category: "shorts",
+  price: 22,
+  image: "https://cbu01.alicdn.com/img/ibank/O1CN01flXy2k2DpsTB25IWv_!!2216443188659-0-cib.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F774249365947.html&affcode=yungr3ps"
+},
+{
+  name: "SYNA WORLD HAT",
+  batch: "best",
+  category: "hats",
+  price: 27,
+  image: "https://img.alicdn.com/bao/uploaded/i3/65389438/O1CN01xYJwqc2Jaf5hYIcdj_!!65389438.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D847608138512&affcode=yungr3ps"
+},
+{
+  name: "TORBA GYM BAPE",
+  batch: "random",
+  category: "accessories",
+  price: 28,
+  image: "https://img.alicdn.com/bao/uploaded/i4/387102390/O1CN01bAaXsb1TWfBo441FV_!!387102390.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D615113124366&affcode=yungr3ps"
+},
+{
+  name: "KOSZULKA SP5DER",
+  batch: "best",
+  category: "shirts",
+  price: 33,
+  image: "https://img.alicdn.com/imgextra/i1/2212715957798/O1CN01WlY4l327TXW9PW7at_!!2212715957798.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D823211569627&affcode=yungr3ps"
+},
+{
+  name: "REKAWICE MOTOCYKLOWE",
+  batch: "best",
+  category: "accessories",
+  price: 34,
+  image: "https://cbu01.alicdn.com/img/ibank/O1CN01hSUPNd1OM4JtRnFPH_!!2208048471690-0-cib.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F811352201820.html&affcode=yungr3ps"
+},
+{
+  name: "KOSZULKA YEEZY x GAP",
+  batch: "budget",
+  category: "shirts",
+  price: 35,
+  image: "https://global-img-cdn.1688.com/img/ibank/O1CN018L7Diq284dMJzui8i_!!2211821887879-0-cib.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F675705387207.html&affcode=yungr3ps"
 }
 ]
-
 
 
 
