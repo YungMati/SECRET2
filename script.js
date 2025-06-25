@@ -188,8 +188,49 @@ const products = [
     "price": 9.36,
     "image": "https://img.alicdn.com/imgextra/i2/2211872109715/O1CN01qGrXy12LdWZB0itZ1_!!2211872109715.jpg",
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fitem.taobao.com%252Fitem.htm%253Fid%253D689047427915&refcode=yungr3ps"
-  }
+  },
+  {
+  name: "MIHARY DISTRESSED",
+  batch: "best",
+  category: "shoes",
+  price: 208,
+  image: "https://si.geilicdn.com/pcitem1809160355-53c900000197970387210a210256_828_1104.jpg?w=750&h=750&cp=1",
+  link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7496558374&affcode=yungr3ps"
+},
+{
+  name: "SPODENKI ESSENTIALS",
+  batch: "budget",
+  category: "shorts",
+  price: 28,
+  image: "https://cbu01.alicdn.com/img/ibank/O1CN01E0P2my23mXAuyWYv0_!!2210872537298-0-cib.jpg",
+  link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F646368135305.html&affcode=vyungr3ps"
+},
+{
+  name: "SPODNIE NIKE x NOCTA",
+  batch: "best",
+  category: "pants",
+  price: 90,
+  image: "https://cbu01.alicdn.com/img/ibank/O1CN01V18fqe2Gbd3ERr0tF_!!2217753779034-0-cib.jpg",
+  link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F837019488337.html&affcode=yungr3ps"
+},
+{
+  name: "PAD PS5",
+  batch: "best",
+  category: "technology",
+  price: 72,
+  image: "https://si.geilicdn.com/wdseller1737612256-2e3a0000018e6143b47f0a813470_1290_1268.jpg?w=750&h=750&cp=1",
+  link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7228779468&affcode=yun"
+},
+{
+  name: "TRAPSTAR VEST",
+  batch: "best",
+  category: "vest",
+  price: 110,
+  image: "https://si.geilicdn.com/wdseller163498710-48280000018a16082a100a231179_1170_1170.jpg?w=750&h=750&cp=1",
+  link: "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7234156561&affcode=yungr3ps"
+}
 ]
+
 
 
 
