@@ -337,7 +337,7 @@ const products = [
   name: "LV TRAINERS",
   batch: "budget",
   category: "shoes",
-  price: 0,
+  price: 93,
   image: "https://si.geilicdn.com/open1837044609-1234478995-673e0000019295b151070a8115b5_800_800.jpg",
   link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7289320584&affcode=yungr3ps"
 },
