@@ -17,8 +17,7 @@ header {
   padding: 12px 20px;
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 1000;
 }
 
@@ -57,11 +56,7 @@ header {
   border-radius: 10px;
   text-align: center;
   transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
-
 
 .product:hover {
   transform: scale(1.05);
@@ -82,8 +77,6 @@ header {
   padding: 2px 6px;
   font-size: 0.7rem;
   border-radius: 4px;
-  max-width: fit-content;
-  white-space: nowrap;
 }
 
 .price {
@@ -98,22 +91,12 @@ a {
   padding: 4px 10px;
   border-radius: 5px;
   text-decoration: none;
-  margin-top: auto;
-  margin-bottom: 5px;
+  margin-top: 8px;
 }
-
 
 a:hover {
   background: #ff0033;
   color: #000;
-}
-
-/* PRZYCISK "LINK" W STAŁYM MIEJSCU */
-.product a.button-link {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 #filter-button {
@@ -179,7 +162,6 @@ a:hover {
   color: white;
   border-radius: 4px;
 }
-
 .topbar {
   position: fixed;
   top: 0;
@@ -210,4 +192,4 @@ a:hover {
 
 .content {
   padding-top: 70px;
-}
+}"
