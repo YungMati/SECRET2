@@ -98,7 +98,7 @@ const products = [
     "batch": "best",
     "category": "hoodies",
     "price": 22.48,
-    "image": "",
+    "image": "https://cbu01.alicdn.com/img/ibank/O1CN01L5WvUZ20xaCtYkdcv_!!3247256916-0-cib.jpg",
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F859632289526.html&affcode=yungr3ps"
   },
   {
