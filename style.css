@@ -57,12 +57,11 @@ header {
   border-radius: 10px;
   text-align: center;
   transition: transform 0.3s ease;
-  position: relative;
-  height: 420px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 
 .product:hover {
   transform: scale(1.05);
@@ -97,8 +96,10 @@ a {
   padding: 4px 10px;
   border-radius: 5px;
   text-decoration: none;
-  margin-top: 8px;
+  margin-top: auto;
+  margin-bottom: 5px;
 }
+
 
 a:hover {
   background: #ff0033;
