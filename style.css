@@ -17,7 +17,8 @@ header {
   padding: 12px 20px;
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  width: 100vw;
   z-index: 1000;
 }
 
@@ -56,6 +57,11 @@ header {
   border-radius: 10px;
   text-align: center;
   transition: transform 0.3s ease;
+  position: relative;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .product:hover {
@@ -97,6 +103,14 @@ a {
 a:hover {
   background: #ff0033;
   color: #000;
+}
+
+/* PRZYCISK "LINK" W STAŁYM MIEJSCU */
+.product a.button-link {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #filter-button {
@@ -162,6 +176,7 @@ a:hover {
   color: white;
   border-radius: 4px;
 }
+
 .topbar {
   position: fixed;
   top: 0;
