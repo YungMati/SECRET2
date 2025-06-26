@@ -276,8 +276,90 @@ const products = [
   price: 35,
   image: "https://global-img-cdn.1688.com/img/ibank/O1CN018L7Diq284dMJzui8i_!!2211821887879-0-cib.jpg",
   link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F675705387207.html&affcode=yungr3ps"
+},
+{
+  name: "KOSZULKA CHROME HEARTS",
+  batch: "budget",
+  category: "shirts",
+  price: 37,
+  image: "https://cbu01.alicdn.com/img/ibank/O1CN01LWwwbg1uzyWy7CAPb_!!2214103836109-0-cib.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F717438726908.html&affcode=yungr3ps"
+},
+{
+  name: "TORBA TRAPSTARE",
+  batch: "best",
+  category: "accessories",
+  price: 41,
+  image: "https://si.geilicdn.com/wdseller163498710-1dbd00000189b4d7a0380a20e35c_750_750.jpg.webp?w=750&h=750&cp=1",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7234154569&affcode=yungr3ps"
+},
+{
+  name: "BLUZA YEEZY x GAP",
+  batch: "budget",
+  category: "hoodies",
+  price: 117,
+  image: "https://cbu01.alicdn.com/img/ibank/O1CN01plylIk284dMw1sN4h_!!2211821887879-0-cib.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F679764990127.html&affcode=yungr3ps"
+},
+{
+  name: "KOSZULKA SYNA WORLD",
+  batch: "best",
+  category: "shirts",
+  price: 43,
+  image: "https://si.geilicdn.com/wdseller1274221412-6f2900000192fba736a60a230246_1284_1284.jpg.webp?w=750&h=750&cp=1",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7298162199&affcode=yungr3ps"
+},
+{
+  name: "JORDAN 1 low REVERSE MOCHA",
+  batch: "best",
+  category: "shoes",
+  price: 207,
+  image: "https://si.geilicdn.com/pcitem1854263096-0f440000019740d95ebd0a20e672_720_956.jpg.webp?w=750&h=750&cp=1",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7435615704&affcode=yungr3ps"
+},
+{
+  name: "CROCS McQueen",
+  batch: "best",
+  category: "shoes",
+  price: 114,
+  image: "https://si.geilicdn.com/pcitem1839532311-032c0000018fb004943b0a20e273_800_800.jpg.webp?w=750&h=750&cp=1",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7351169144&affcode=yungr3ps"
+},
+{
+  name: "LV SKATE",
+  batch: "best",
+  category: "shoes",
+  price: 262,
+  image: "https://si.geilicdn.com/wdseller901828721618-726c00000190ee7b0bc20a2396f4_810_810.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7241272735&affcode=yungr3ps"
+},
+{
+  name: "LV TRAINERS",
+  batch: "budget",
+  category: "shoes",
+  price: 0,
+  image: "https://si.geilicdn.com/open1837044609-1234478995-673e0000019295b151070a8115b5_800_800.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7289320584&affcode=yungr3ps"
+},
+{
+  name: "BOKSERKI CHROME HEARTS",
+  batch: "best",
+  category: "underwear",
+  price: 24,
+  image: "https://si.geilicdn.com/open1847561709-1234478995-7ef800000196399b2eb80aa0834c_1280_1280.jpg",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7449088244&affcode=yungr3ps"
+},
+{
+  name: "SKIETY STUSSY",
+  batch: "best",
+  category: "underwear",
+  price: 10,
+  image: "https://si.geilicdn.com/open1847561709-1234478995-29df000001963a36ec810aa08290_2560_1440.jpg.webp?w=750&h=750&cp=1",
+  link: "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7447217341&affcode=yungr3ps"
 }
 ]
+
+
 
 
 
