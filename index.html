@@ -61,5 +61,17 @@
     <a class="popup-btn" target="_blank" href="https://www.kakobuy.com/register/?affcode=YungR3ps">Zarejestruj się na Kako Buy →</a>
   </div>
 </div>
+  <script>
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  // Automatycznie pokaż po 3 sekundach (możesz zmienić czas)
+  window.onload = function() {
+    setTimeout(() => {
+      document.getElementById("popup").style.display = "flex";
+    }, 3000);
+  };
+</script>
 </body>
 </html>
