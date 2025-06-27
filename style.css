@@ -220,7 +220,7 @@ a:hover {
 }
 
 .popup-content h3 {
-  color: #00dffc;
+  color: #ff0033;
   margin-bottom: 10px;
 }
 
@@ -232,7 +232,7 @@ a:hover {
   display: inline-block;
   margin-top: 15px;
   padding: 10px 20px;
-  background-color: #00dffc;
+  background-color: #ff0033;
   color: black;
   font-weight: bold;
   border-radius: 8px;
