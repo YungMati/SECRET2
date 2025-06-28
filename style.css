@@ -193,3 +193,77 @@ a:hover {
 .content {
   padding-top: 70px;
 }"
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #111, #000);
+  color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-logo {
+  max-width: 180px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 5px red);
+}
+
+.hero-text {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.hero-buttons .btn {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  background-color: #d10000;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.hero-buttons .btn:hover {
+  background-color: #ff1f1f;
+}
+
+.hero-buttons .btn.secondary {
+  background: #333;
+  color: #fff;
+  border: 1px solid #d10000;
+}
+
+.hero-right {
+  flex: 1;
+  text-align: center;
+  min-width: 300px;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-left, .hero-right {
+    flex: none;
+  }
+}
