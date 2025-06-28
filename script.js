@@ -160,7 +160,7 @@ const products = [
   {
     "name": "LEGO FERRARI 488",
     "batch": "best",
-    "category": "akcesoria",
+    "category": "accessories",
     "price": 65,
     "image": "https://img.alicdn.com/bao/uploaded/i3/1733343981/O1CN01yxOTjK1fHLUXVMCqD_!!1733343981.jpg",
     "link": "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D637950499456&affcode=yungr3ps"
