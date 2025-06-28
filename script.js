@@ -110,6 +110,14 @@ const products = [
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%253A%252F%252Fweidian.com%252Fitem.html%253FitemID%253D6353081514"
   },
   {
+    "name": "BOKSERKI CK",
+    "batch": "random",
+    "category": "underwear",
+    "price": 53.50,
+    "image": "https://si.geilicdn.com/open1847561709-1234478995-608c0000019638dab1650a8115c2_2560_2560.jpg",
+    "link": "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7446973859&affcode=yungr3ps"
+  },
+  {
     "name": "KOMINIARKA SUPREME",
     "batch": "best",
     "category": "accessories",
@@ -124,6 +132,14 @@ const products = [
     "price": 166.47,
     "image": "https://img.alicdn.com/bao/uploaded/i4/2217868191481/O1CN01fXbhZH1MoLWnUwQz5_!!2217868191481.jpg",
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fm.intl.taobao.com%2Fdetail%2Fdetail.html%3Fft%3Dt%26id%3D794384453885&affcode=yungr3ps"
+  },
+  {
+    "name": "YZY SLIDE/RNR",
+    "batch": "best",
+    "category": "shoes",
+    "price": 65,
+    "image": "https://si.geilicdn.com/open1733523732-1234478995-6a1e0000019379c0397f0a210559_960_961.jpg",
+    "link": "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7313304348&affcode=yungr3ps"
   },
   {
     "name": "AIR PODS",
@@ -142,6 +158,14 @@ const products = [
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7231813766&affcode=yungr3ps"
   },
   {
+    "name": "LEGO FERRARI 488",
+    "batch": "best",
+    "category": "akcesoria",
+    "price": 65,
+    "image": "https://img.alicdn.com/bao/uploaded/i3/1733343981/O1CN01yxOTjK1fHLUXVMCqD_!!1733343981.jpg",
+    "link": "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D637950499456&affcode=yungr3ps"
+  },
+  {
     "name": "BALENCIAGA TRACK LED",
     "batch": "best",
     "category": "shoes",
@@ -158,6 +182,14 @@ const products = [
     "link": "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D920958840300%26spm%3Da213gs.v2success.0.0.6d254831ndd2Vw&refcode=yungr3ps"
   },
   {
+    "name": "APPLE PENCILE",
+    "batch": "best",
+    "category": "technology",
+    "price": 65,
+    "image": "https://si.geilicdn.com/wdseller1737612256-2c5d0000018e6126bf760a231447_1290_1262.jpg",
+    "link": "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7225759185&affcode=yungr3ps"
+  },
+  {
     "name": "SET TRAPSTARE",
     "batch": "best",
     "category": "set",
@@ -172,6 +204,14 @@ const products = [
     "price": 257,
     "image": "https://si.geilicdn.com/pcitem1854263096-15cc00000195de646cbb0a23038e_1200_1200.jpg",
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7437069740&affcode=yungr3ps"
+  },
+  {
+    "name": "AF1 / AF1xSUP",
+    "batch": "best",
+    "category": "shoes",
+    "price": 100,
+    "image": "https://si.geilicdn.com/pcitem901841077607-33750000018e7dd0f9ff0a22d160_2560_2564.jpg",
+    "link": "https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7231813766&affcode=yungr3ps"
   },
   {
     "name": "SYNA WORLD SET",
