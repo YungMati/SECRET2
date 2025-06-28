@@ -436,12 +436,3 @@ function togglePanel() {
   const panel = document.getElementById('filter-panel');
   panel.classList.toggle('show');
 }
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("popup").style.display = "flex";
-  }, 3000);
-});
