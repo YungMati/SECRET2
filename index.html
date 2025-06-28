@@ -16,13 +16,18 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      text-align: center;
       flex-direction: column;
     }
 
-    .logo {
-      width: 180px;
-      margin-bottom: 40px;
+    header img {
+      width: 200px;
+      margin-bottom: 30px;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
     .btn {
@@ -33,7 +38,7 @@
       border: none;
       border-radius: 8px;
       text-decoration: none;
-      cursor: pointer;
+      text-align: center;
       transition: 0.3s;
     }
 
@@ -43,7 +48,15 @@
   </style>
 </head>
 <body>
-  <img src="logo.png" alt="BESTREPS.XYZ" class="logo" />
-  <a href="store.html" class="btn">Arkusz</a>
+  <header>
+    <img src="logo.png" alt="Logo YUNG R3PS" />
+  </header>
+
+  <div class="btn-container">
+    <a href="store.html" class="btn">Arkusz</a>
+    <a href="https://discord.gg/..." class="btn">Discord</a>
+    <a href="#" class="btn">Instagram</a>
+    <!-- Dodaj więcej linków jeśli chcesz -->
+  </div>
 </body>
 </html>
