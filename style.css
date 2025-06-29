@@ -13,13 +13,14 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; /* Zapobiega poziomemu scrollowaniu na małych ekranach */
 }
 
 /* --- NAGŁÓWEK --- */
 .main-header {
   background: linear-gradient(to right, #1a1a1a, #0a0a0a); /* Delikatny gradient */
   border-bottom: 3px solid #ff0033; /* Gruby czerwony pasek */
-  padding: 15px 30px; /* Większy padding */
+  padding: 15px 30px; /* Większy padding po bokach */
   position: sticky; /* Sticky header, żeby zawsze był widoczny */
   top: 0;
   width: 100%;
@@ -121,8 +122,9 @@ body {
   width: 100%;
   max-width: 1400px; /* Maksymalna szerokość zawartości strony */
   margin: 20px auto; /* Wyśrodkowanie zawartości */
-  padding: 0 20px; /* Padding po bokach */
-  gap: 30px; /* Odstęp między panelem bocznym a siatką produktów */
+  padding: 0 20px; /* Padding po bokach dla bezpieczeństwa */
+  /* Usunięto gap, aby lepiej kontrolować odstęp gdy sidebar jest zamknięty */
+  position: relative; /* Potrzebne do pozycjonowania siatki względem wrapa */
 }
 
 .filter-panel-toggle {
@@ -153,7 +155,7 @@ body {
 .filter-sidebar {
   position: fixed; /* Zamiast absolute/fixed z top:0, fixed z left:-... */
   top: 0;
-  left: -350px; /* Większy panel, więc większy offset */
+  left: -320px; /* Dokładna szerokość panelu */
   width: 320px; /* Szerszy panel */
   height: 100%;
   background: linear-gradient(to bottom, #1a1a1a, #0a0a0a); /* Gradient tła panelu */
@@ -187,8 +189,7 @@ body {
 }
 
 .filter-sidebar button {
-  flex-basis: calc(33% - 8px); /* 3 przyciski w rzędzie, responsywnie */
-  min-width: 80px; /* Minimalna szerokość */
+  /* Flex-basis usunięty, aby gap i wrap działały naturalniej dla różnych ilości */
   padding: 10px 12px;
   background: #2a2a2a; /* Ciemniejsze tło dla nieaktywnych */
   color: #e0e0e0;
@@ -260,11 +261,13 @@ body {
 
 /* --- SIATKA PRODUKTÓW --- */
 .product-grid {
-  flex: 1; /* Pozwala siatce produktów zajmować resztę miejsca */
+  flex: 1; /* Pozwala siatce produktów zajmować resztę miejsca w content-wrapper */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Bardziej elastyczne skalowanie */
-  gap: 30px; /* Większe odstępy */
+  /* Kluczowa zmiana dla skalowalności: auto-fit i bardziej elastyczny minmax */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px; /* Ujednolicony odstęp */
   padding-bottom: 50px; /* Odstęp na dole, aby scrollowanie było wygodniejsze */
+  margin-left: 0; /* Upewniamy się, że nie ma domyślnego marginesu */
 }
 
 .product-card {
@@ -287,7 +290,7 @@ body {
 
 .product-image {
   width: 100%;
-  height: 220px; /* Stała wysokość obrazka */
+  height: 200px; /* Stała wysokość obrazka */
   object-fit: cover; /* Dopasowanie obrazka, aby wypełniał ramkę */
   border-bottom: 1px solid #333;
   transition: transform 0.3s ease;
@@ -382,22 +385,34 @@ body {
   }
 
   .content-wrapper {
-    flex-direction: column; /* Panel boczny pod zawartością na mniejszych ekranach */
+    /* Na tabletach i w dół, sidebar i siatka produktów będą obok siebie, ale z mniejszym odstępem */
+    flex-direction: row; /* Zachowaj flex-direction row dla siatki i panelu */
     padding: 0 15px;
-    margin-top: 80px; /* Większy margines dla content-wrapper */
+    margin-top: 20px; /* Margines od nagłówka */
+    /* Zdefiniuj odstęp między siatką a panelem gdy panel jest otwarty */
+    /* Gdy panel jest otwarty, jego fixed position oznacza, że nakłada się na content,
+       więc content nie musi się przestawiać, ale dla czytelności możemy dodać margines.
+       Jednak to wymagałoby JS. Skupiamy się na samym układzie siatki. */
   }
-
+  
   .filter-sidebar {
     width: 280px; /* Mniejszy panel boczny na tabletach */
+    left: -280px; /* Dostosuj pozycję ukrycia */
     box-shadow: 5px 0 15px rgba(255, 0, 51, 0.4);
   }
 
-  .filter-panel-toggle {
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    font-size: 30px;
+  .filter-sidebar.show {
+    left: 0;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Jeszcze mniejsze karty na tabletach */
+    gap: 20px;
+    margin-left: 0; /* Upewniamy się, że nie ma konfliktu marginesów */
+  }
+
+  .product-image {
+    height: 180px; /* Mniejsza wysokość obrazka */
   }
 }
 
@@ -413,13 +428,9 @@ body {
     font-size: 0.9rem;
   }
 
-  .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Jeszcze mniejsze karty na telefonach */
-    gap: 20px;
-  }
-
-  .product-image {
-    height: 180px; /* Mniejsza wysokość obrazka */
+  .content-wrapper {
+    flex-direction: column; /* Na mniejszych ekranach panel i siatka są pionowo */
+    padding: 0 10px;
   }
 
   .filter-sidebar {
@@ -428,10 +439,41 @@ body {
     border-right: none;
     border-bottom: 2px solid #ff0033; /* Ramka na dole */
     box-shadow: 0 5px 15px rgba(255, 0, 51, 0.4);
+    height: auto; /* Pozwól wysokości dostosować się do zawartości */
+    position: absolute; /* Zmień na absolute, żeby nie pchał contentu gdy jest otwarty i nie był fixed */
+    top: 0;
+    max-height: 100vh; /* Ograniczenie wysokości panelu mobilnego */
+    overflow-y: auto; /* Umożliwienie scrollowania w panelu mobilnym */
+    padding-top: 80px; /* Miejsce na header */
   }
 
   .filter-sidebar.show {
     left: 0;
+    position: fixed; /* Po otwarciu znowu fixed aby zasłonić, ale będzie na górze */
+  }
+  /* Dodaj style, aby przesunąć główną treść, gdy panel jest otwarty na mobile */
+  body.sidebar-open .content-wrapper {
+    /* To wymagałoby dodania klasy 'sidebar-open' do body przez JS */
+    /* transform: translateX(280px); */
+  }
+
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Jeszcze mniejsze min-width */
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .product-image {
+    height: 150px; /* Jeszcze mniejsza wysokość obrazka */
+  }
+
+  .filter-panel-toggle {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    font-size: 28px;
   }
 }
 
@@ -439,8 +481,15 @@ body {
   .product-grid {
     grid-template-columns: 1fr; /* Pojedyncza kolumna na bardzo małych ekranach */
     padding: 0 10px;
+    gap: 15px;
   }
   .filter-group button {
     flex-basis: calc(50% - 8px); /* 2 przyciski w rzędzie */
+  }
+  .header-logo {
+    height: 35px;
+  }
+  .site-title {
+    font-size: 1.3rem;
   }
 }
