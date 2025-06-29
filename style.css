@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #000;
+  background-color: #000; /* Upewnij się, że tło jest czarne */
   color: #fff;
   padding: 60px 10px 10px;
 }
@@ -19,6 +19,8 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
+  /* Dodane style cienia dla header */
+  box-shadow: 0 4px 10px rgba(255, 0, 51, 0.3); /* Cień z kolorem akcentu */
 }
 
 .logo-container {
@@ -29,104 +31,135 @@ header {
 
 .logo-container img {
   height: 40px;
+  /* Dodany efekt dla logo */
+  filter: drop-shadow(0 0 5px rgba(255, 0, 51, 0.5));
 }
 
 .logo-container input {
   width: 60%;
   max-width: 300px;
-  padding: 6px 10px;
+  padding: 8px 12px; /* Nieco większy padding */
   background: #0f0f0f;
   border: 1px solid #ff0033;
-  border-radius: 6px;
+  border-radius: 8px; /* Bardziej zaokrąglone rogi */
   color: white;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Nieco większa czcionka */
+  /* Dodany cień i subtelne przejście */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.logo-container input:focus {
+  border-color: #ff3366; /* Podświetlenie przy focusie */
+  box-shadow: 0 0 8px rgba(255, 51, 102, 0.6);
+  outline: none; /* Usunięcie domyślnego obrysu */
+}
+
 
 .product-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
+  gap: 25px; /* Nieco większe odstępy */
   margin-top: 20px;
 }
 
 .product {
   background: #111;
   border: 1px solid #ff0033;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 15px; /* Większy padding */
+  border-radius: 12px; /* Bardziej zaokrąglone rogi */
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Rozszerzone przejścia */
+  /* Dodany cień dla produktu */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .product:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px) scale(1.03); /* Delikatne uniesienie i powiększenie */
   border-color: #ff3366;
+  box-shadow: 0 8px 20px rgba(255, 51, 102, 0.5); /* Intensywniejszy cień na hover */
 }
 
 .product img {
   width: 100%;
-  border-radius: 8px;
-  margin-bottom: 8px;
+  border-radius: 10px; /* Bardziej zaokrąglone rogi obrazka */
+  margin-bottom: 10px;
 }
 
 .tag {
   background: #ff0033;
   color: #000;
   display: inline-block;
-  margin: 2px;
-  padding: 2px 6px;
-  font-size: 0.7rem;
-  border-radius: 4px;
+  margin: 3px; /* Większy margines */
+  padding: 4px 8px; /* Większy padding */
+  font-size: 0.8rem; /* Nieco większa czcionka */
+  border-radius: 6px; /* Bardziej zaokrąglone rogi */
+  font-weight: 600; /* Pogrubiona czcionka */
 }
 
 .price {
   font-weight: bold;
-  margin: 5px 0;
+  margin: 8px 0; /* Większy margines */
+  font-size: 1.1rem; /* Nieco większa czcionka */
+  color: #ff0033; /* Czerwony kolor dla ceny */
 }
 
 a {
   display: inline-block;
   color: #fff;
   border: 1px solid #ff0033;
-  padding: 4px 10px;
-  border-radius: 5px;
+  padding: 6px 12px; /* Większy padding */
+  border-radius: 6px; /* Bardziej zaokrąglone rogi */
   text-decoration: none;
-  margin-top: 8px;
+  margin-top: 10px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Rozszerzone przejścia */
 }
 
 a:hover {
   background: #ff0033;
   color: #000;
+  transform: translateY(-2px); /* Delikatne uniesienie */
 }
 
 #filter-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 25px; /* Nieco wyżej */
+  right: 25px; /* Nieco bardziej w prawo */
   background: #ff0033;
   color: #000;
-  width: 50px;
-  height: 50px;
+  width: 55px; /* Większy rozmiar */
+  height: 55px;
   border-radius: 50%;
   text-align: center;
-  font-size: 30px;
+  font-size: 32px; /* Większa czcionka */
   cursor: pointer;
-  line-height: 50px;
+  line-height: 55px; /* Dopasowanie do rozmiaru */
   z-index: 999;
+  /* Dodany cień i przejścia */
+  box-shadow: 0 4px 15px rgba(255, 0, 51, 0.6);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#filter-button:hover {
+  background-color: #ff3366; /* Zmiana koloru na hover */
+  transform: scale(1.1); /* Delikatne powiększenie */
+  box-shadow: 0 6px 20px rgba(255, 51, 102, 0.8);
 }
 
 #filter-panel {
   position: fixed;
   top: 0;
   left: -300px;
-  width: 260px;
+  width: 280px; /* Nieco szerszy panel */
   height: 100%;
   background: #111;
   border-right: 2px solid #ff0033;
-  padding: 20px;
+  padding: 25px; /* Większy padding */
   overflow-y: auto;
-  transition: left 0.3s ease;
+  transition: left 0.3s ease, box-shadow 0.3s ease;
   z-index: 998;
+  /* Dodany cień dla panelu */
+  box-shadow: 2px 0 10px rgba(255, 0, 51, 0.5);
 }
 
 #filter-panel.show {
@@ -135,135 +168,42 @@ a:hover {
 
 #filter-panel h3 {
   color: #ff0033;
-  margin-top: 20px;
+  margin-top: 25px; /* Większy margines */
+  margin-bottom: 10px; /* Dodany margines dolny */
+  font-size: 1.2rem; /* Większa czcionka */
 }
 
 #filter-panel button {
-  margin: 4px 2px;
-  padding: 6px 10px;
-  background: #111;
+  margin: 5px 3px; /* Większy margines */
+  padding: 8px 12px; /* Większy padding */
+  background: #1a1a1a; /* Nieco ciemniejsze tło przycisków */
   color: white;
   border: 1px solid #ff0033;
-  border-radius: 5px;
+  border-radius: 6px; /* Bardziej zaokrąglone rogi */
   cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Cień dla przycisków panelu */
 }
 
 #filter-panel button:hover {
   background: #ff0033;
   color: #000;
+  transform: translateY(-1px); /* Delikatne uniesienie */
 }
 
 #filter-panel input {
   width: 100%;
-  padding: 6px;
-  margin: 5px 0;
+  padding: 8px; /* Większy padding */
+  margin: 8px 0; /* Większy margines */
   background: #222;
   border: 1px solid #ff0033;
   color: white;
-  border-radius: 4px;
-}
-.topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #111;
-  color: #fff;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1000;
+  border-radius: 6px; /* Bardziej zaokrąglone rogi */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sidebar {
-  position: fixed;
-  top: 70px;
-  left: -250px;
-  width: 250px;
-  height: calc(100% - 70px);
-  background-color: #1a1a1a;
-  padding: 20px;
-  box-shadow: 0 0 10px red;
-  overflow-y: auto;
-  transition: left 0.3s ease;
-  z-index: 999;
-}
-
-.content {
-  padding-top: 70px;
-}"
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(to right, #111, #000);
-  color: white;
-  padding: 2rem;
-  border-radius: 20px;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.hero-left {
-  flex: 1;
-  min-width: 300px;
-}
-
-.hero-logo {
-  max-width: 180px;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 5px red);
-}
-
-.hero-text {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  color: #ccc;
-}
-
-.hero-buttons .btn {
-  display: inline-block;
-  margin-right: 1rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-  background-color: #d10000;
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.hero-buttons .btn:hover {
-  background-color: #ff1f1f;
-}
-
-.hero-buttons .btn.secondary {
-  background: #333;
-  color: #fff;
-  border: 1px solid #d10000;
-}
-
-.hero-right {
-  flex: 1;
-  text-align: center;
-  min-width: 300px;
-}
-
-.hero-image {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-}
-
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero-left, .hero-right {
-    flex: none;
-  }
+#filter-panel input:focus {
+  border-color: #ff3366;
+  box-shadow: 0 0 8px rgba(255, 51, 102, 0.6);
+  outline: none;
 }
