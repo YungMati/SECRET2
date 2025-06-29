@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Upewnia się, że treść jest wyśrodkowana pionowo */
+  padding: 20px; /* Dodaje trochę odstępu */
+}
+
+/* Nowe style dla sekcji startowej */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #111, #000);
+  color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  margin-top: 0; /* Usunięcie górnego marginesu, bo strona jest oddzielna */
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px; /* Ograniczenie szerokości hero na większych ekranach */
+  width: 100%;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-logo {
+  max-width: 180px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 5px red);
+}
+
+.hero-left h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ff0033; /* Czerwony kolor dla nagłówka */
+}
+
+.hero-text {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem; /* Zwiększony odstęp */
+  color: #ccc;
+  line-height: 1.6; /* Lepsza czytelność */
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Pozwala na zawijanie przycisków na mniejszych ekranach */
+  gap: 1rem; /* Odstęp między przyciskami */
+}
+
+.hero-buttons .btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem; /* Większe przyciski */
+  border-radius: 10px;
+  background-color: #d10000;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease; /* Dodana animacja transform */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień dla przycisków */
+}
+
+.hero-buttons .btn:hover {
+  background-color: #ff1f1f;
+  transform: translateY(-2px); /* Delikatne uniesienie przy najechaniu */
+}
+
+.hero-buttons .btn.secondary {
+  background: #333;
+  color: #fff;
+  border: 1px solid #d10000;
+}
+
+.hero-buttons .btn.secondary:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+.hero-buttons .btn.tertiary { /* Nowy styl dla przycisku "Arkusz" */
+  background: #007bff; /* Kolor niebieski dla odróżnienia */
+  color: #fff;
+  border: 1px solid #007bff;
+}
+
+.hero-buttons .btn.tertiary:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.hero-right {
+  flex: 1;
+  text-align: center;
+  min-width: 300px;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  animation: float 3s ease-in-out infinite; /* Animacja unoszenia */
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .hero-left, .hero-right {
+    flex: none;
+  }
+  .hero-buttons {
+    flex-direction: column;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+  }
+  .hero-left h1 {
+    font-size: 2rem;
+  }
+}
