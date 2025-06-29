@@ -185,6 +185,8 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 20px;
+  /* Nowa właściwość: Wyśrodkowanie grup filtrów, aby przyciski były skondensowane */
+  justify-content: flex-start; /* Zamiast space-around, aby przyciski grupowały się do lewej */
 }
 
 .filter-sidebar button {
@@ -197,8 +199,10 @@ body {
   font-size: 0.95rem; /* Domyślny rozmiar, zmienimy w mobile */
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  /* Kluczowa zmiana: nie pozwalamy przyciskom rosnąć i dajemy auto szerokość */
   flex-grow: 0;
   flex-shrink: 0;
+  width: auto; /* Pozwoli szerokości dopasować się do zawartości */
 }
 
 .filter-sidebar button:hover {
@@ -320,8 +324,7 @@ body {
   text-transform: uppercase;
   display: inline-block;
   margin: 0 2px; /* Mały odstęp między tagami */
-  /* Usunięto pozycjonowanie 'top', aby tagi były naturalnie pod obrazkiem */
-  position: static;
+  position: static; /* Upewniamy się, że nie ma pozycjonowania */
   z-index: auto;
 }
 
