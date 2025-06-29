@@ -3,64 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YUNG R3PS</title>
+  <title>YUNG R3PS - Arkusz Produktów</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
-</head>
+  </head>
 <body>
 
-<header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Logo" />
-    <input type="text" id="searchInput" placeholder="Szukaj produktu..." />
+<header class="main-header">
+  <div class="header-content">
+    <div class="logo-area">
+      <img src="logo.png" alt="YUNG R3PS Logo" class="header-logo" />
+      <h1 class="site-title">YUNG R3PS</h1>
+    </div>
+    <div class="search-area">
+      <input type="text" id="searchInput" placeholder="Szukaj produktu..." />
+    </div>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-btn">Strona Główna</a>
+      <a href="twoj_link_do_rejestracji.html" class="nav-btn">Zarejestruj się</a>
+      <a href="https://discord.com/invite/kakobuy" class="nav-btn" target="_blank">Discord</a>
+    </nav>
   </div>
 </header>
 
-<div class="hero">
-  <div class="hero-left">
-    <img src="logo.png" alt="YUNG R3PS Logo" class="hero-logo">
-    <h1>Najlepsza Polska Strona dla Community Repów</h1>
-    <p class="hero-text">Witaj w YUNG R3PS! Tutaj znajdziesz **najlepsze itemki** i dołączysz do kwitnącej społeczności repów. Odkryj unikalne przedmioty i skorzystaj z wyjątkowych ofert.</p>
-    <div class="hero-buttons">
-      <a href="twoj_link_do_rejestracji.html" class="btn">Zarejestruj się</a>
-      <a href="https://discord.com/invite/kakobuy" class="btn secondary" target="_blank">Discord Kako Buy</a>
+<main class="content-wrapper">
+  <div class="filter-panel-toggle" id="filter-button" onclick="togglePanel()">
+    <span>☰</span> </div>
+
+  <aside class="filter-sidebar" id="filter-panel">
+    <h3>Batch</h3>
+    <div class="filter-group">
+      <button data-filter="batch" data-value="best" onclick="toggleFilter('batch','best')">Best</button>
+      <button data-filter="batch" data-value="budget" onclick="toggleFilter('batch','budget')">Budget</button>
+      <button data-filter="batch" data-value="random" onclick="toggleFilter('batch','random')">Random</button>
     </div>
-  </div>
-  <div class="hero-right">
-    <img src="hero-image.png" alt="Przykładowy produkt" class="hero-image">
-  </div>
-</div>
 
-<div class="product-container" id="product-container">
-  </div>
+    <h3>Category</h3>
+    <div class="filter-group category-group">
+      <button data-filter="category" data-value="accessories" onclick="toggleFilter('category','accessories')">Accessories</button>
+      <button data-filter="category" data-value="technology" onclick="toggleFilter('category','technology')">Technology</button>
+      <button data-filter="category" data-value="shoes" onclick="toggleFilter('category','shoes')">Shoes</button>
+      <button data-filter="category" data-value="pants" onclick="toggleFilter('category','pants')">Pants</button>
+      <button data-filter="category" data-value="shorts" onclick="toggleFilter('category','shorts')">Shorts</button>
+      <button data-filter="category" data-value="shirts" onclick="toggleFilter('category','shirts')">Shirts</button>
+      <button data-filter="category" data-value="hoodies" onclick="toggleFilter('category','hoodies')">Hoodies</button>
+      <button data-filter="category" data-value="underwear" onclick="toggleFilter('category','underwear')">Underwear</button>
+      <button data-filter="category" data-value="hats" onclick="toggleFilter('category','hats')">Hats</button>
+      <button data-filter="category" data-value="belts" onclick="toggleFilter('category','belts')">Belts</button>
+      <button data-filter="category" data-value="set" onclick="toggleFilter('category','set')">Set</button>
+      <button data-filter="category" data-value="vest" onclick="toggleFilter('category','vest')">Vest</button>
+    </div>
+    
+    <h3>Price</h3>
+    <div class="price-filter-group">
+      <input type="number" id="priceMin" placeholder="Min" />
+      <input type="number" id="priceMax" placeholder="Max" />
+      <button onclick="applyPriceFilter()">Apply</button>
+    </div>
+  </aside>
 
-<div id="filter-button" onclick="togglePanel()">☰</div>
-
-<div id="filter-panel">
-  <h3>Batch</h3>
-  <button data-filter="batch" data-value="best" onclick="toggleFilter('batch','best')">Best</button>
-  <button data-filter="batch" data-value="budget" onclick="toggleFilter('batch','budget')">Budget</button>
-  <button data-filter="batch" data-value="random" onclick="toggleFilter('batch','random')">Random</button>
-
-  <h3>Category</h3>
-  <button data-filter="category" data-value="accessories" onclick="toggleFilter('category','accessories')">Accessories</button>
-  <button data-filter="category" data-value="technology" onclick="toggleFilter('category','technology')">Technology</button>
-  <button data-filter="category" data-value="shoes" onclick="toggleFilter('category','shoes')">Shoes</button>
-  <button data-filter="category" data-value="pants" onclick="toggleFilter('category','pants')">Pants</button>
-  <button data-filter="category" data-value="shorts" onclick="toggleFilter('category','shorts')">Shorts</button>
-  <button data-filter="category" data-value="shirts" onclick="toggleFilter('category','shirts')">Shirts</button>
-  <button data-filter="category" data-value="hoodies" onclick="toggleFilter('category','hoodies')">Hoodies</button>
-  <button data-filter="category" data-value="underwear" onclick="toggleFilter('category','underwear')">Underwear</button>
-  <button data-filter="category" data-value="hats" onclick="toggleFilter('category','hats')">Hats</button>
-  <button data-filter="category" data-value="belts" onclick="toggleFilter('category','belts')">Belts</button>
-  <button data-filter="category" data-value="set" onclick="toggleFilter('category','set')">Set</button>
-  <button data-filter="category" data-value="vest" onclick="toggleFilter('category','vest')">Vest</button>
-  
-  <h3>Price</h3>
-  <input type="number" id="priceMin" placeholder="Min" />
-  <input type="number" id="priceMax" placeholder="Max" />
-  <button onclick="applyPriceFilter()">Apply</button>
-</div>
+  <section class="product-grid" id="product-container">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x200?text=Product+Image" alt="Przykładowy Produkt" class="product-image">
+      <div class="product-info">
+        <h4 class="product-name">Super Hoodie Red</h4>
+        <div class="product-tags">
+          <span class="tag">Hoodie</span>
+          <span class="tag">Best</span>
+        </div>
+        <p class="product-price">¥199.00</p>
+        <a href="#" class="view-details-btn">Zobacz Detale</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x200?text=Product+Image" alt="Przykładowy Produkt" class="product-image">
+      <div class="product-info">
+        <h4 class="product-name">Cool Sneakers XYZ</h4>
+        <div class="product-tags">
+          <span class="tag">Shoes</span>
+          <span class="tag">Budget</span>
+        </div>
+        <p class="product-price">¥99.00</p>
+        <a href="#" class="view-details-btn">Zobacz Detale</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x200?text=Product+Image" alt="Przykładowy Produkt" class="product-image">
+      <div class="product-info">
+        <h4 class="product-name">Tech Gadget Pro</h4>
+        <div class="product-tags">
+          <span class="tag">Technology</span>
+          <span class="tag">Random</span>
+        </div>
+        <p class="product-price">¥349.00</p>
+        <a href="#" class="view-details-btn">Zobacz Detale</a>
+      </div>
+    </div>
+  </section>
+</main>
 
 <script src="script.js"></script>
 </body>
