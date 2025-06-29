@@ -3,125 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YUNG R3PS</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background: #111;
-      color: white;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: #000;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #333;
-    }
-
-    header h1 {
-      color: white;
-      font-size: 1.5rem;
-      letter-spacing: 1px;
-    }
-
-    nav a {
-      margin-left: 1.5rem;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-
-    .hero img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 2rem;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-    }
-
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin-bottom: 2rem;
-      color: #ccc;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn {
-      background: #ff1a1a;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #e60000;
-    }
-
-    @media (min-width: 768px) {
-      .hero {
-        flex-direction: row;
-        justify-content: space-around;
-        text-align: left;
-      }
-
-      .hero .left {
-        max-width: 500px;
-      }
-
-      .hero img {
-        max-width: 400px;
-      }
-    }
-  </style>
+  <title>Witaj w YUNG R3PS!</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="welcome-style.css" />
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo BESTREPS.XYZ" />
-    <nav>
-      <a href="store.html">ARKUSZ</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <div class="left">
-      <h2>                                 
-        Najlepsza polska strona w community repów</h2>
-      <p>Dołącz do naszej społeczności i znajdź najlepsze itemy oraz poradniki jak zamawiać z Hoobuy i nie tylko.</p>
-      <div class="btn-group">
-        <a href="https://discord.gg/gRMWzdv2dG" class="btn">→ Discord Kako Buy</a>
-        <a href="store.html" class="btn">→ Przejdź do arkusza</a>
-      </div>
+<div class="hero">
+  <div class="hero-left">
+    <img src="logo.png" alt="YUNG R3PS Logo" class="hero-logo">
+    <h1>Najlepsza Polska Strona dla Community Repów</h1>
+    <p class="hero-text">Witaj w YUNG R3PS! Tutaj znajdziesz **najlepsze itemki** i dołączysz do kwitnącej społeczności repów. Odkryj unikalne przedmioty i skorzystaj z wyjątkowych ofert.</p>
+    <div class="hero-buttons">
+      <a href="twoj_link_do_rejestracji.html" class="btn">Zarejestruj się</a>
+      <a href="https://discord.com/invite/kakobuy" class="btn secondary" target="_blank">Discord Kako Buy</a>
+      <a href="arkusz.html" class="btn tertiary">Arkusz</a>
     </div>
-    <img src="AB737BB4-0F46-49E7-885C-D7FF40E93C78.jpeg" alt="Jak zamawiać na Hoobuy" />
-  </section>
+  </div>
+  <div class="hero-right">
+    <img src="hero-image.png" alt="Przykładowy produkt" class="hero-image">
+  </div>
+</div>
+
 </body>
 </html>
