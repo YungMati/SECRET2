@@ -118,12 +118,12 @@ body {
 /* --- GŁÓWNA TREŚĆ I PANEL FILTRA --- */
 .content-wrapper {
   display: flex;
-  flex: 1; /* Pozwala na rozciągnięcie na całą dostępną wysokość */
+  flex: 1;
   width: 100%;
-  max-width: 1400px; /* Maksymalna szerokość zawartości strony */
-  margin: 20px auto; /* Wyśrodkowanie zawartości */
-  padding: 0 20px; /* Padding po bokach dla bezpieczeństwa */
-  position: relative; /* Potrzebne do pozycjonowania siatki względem wrapa */
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 0 20px;
+  position: relative;
 }
 
 .filter-panel-toggle {
@@ -154,8 +154,8 @@ body {
 .filter-sidebar {
   position: fixed;
   top: 0;
-  left: -320px; /* Dokładna szerokość panelu */
-  width: 320px; /* Szerszy panel */
+  left: -320px;
+  width: 320px;
   height: 100%;
   background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
   border-right: 2px solid #ff0033;
@@ -258,17 +258,18 @@ body {
 }
 
 /* --- SIATKA PRODUKTÓW --- */
+/* Zmiany tutaj, aby dopasować do generowanego HTML z script.js */
 .product-grid {
-  flex: 1; /* Pozwala siatce produktów zajmować resztę miejsca */
+  flex: 1;
   display: grid;
-  /* Kluczowa zmiana: minmax(auto, 1fr) i dostosowanie min-width w media queries */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Optymalny rozmiar bazowy */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Domyślna szerokość na desktop */
   gap: 25px;
   padding-bottom: 50px;
-  justify-content: center; /* Wyśrodkowanie siatki jeśli nie wypełnia całej szerokości */
+  justify-content: center;
 }
 
-.product-card {
+/* Selektor .product odpowiada za całą kartę produktu generowaną przez JS */
+.product { /* Zmieniono z .product-card na .product */
   background: #1a1a1a;
   border: 1px solid #333;
   border-radius: 15px;
@@ -280,49 +281,34 @@ body {
   flex-direction: column;
 }
 
-.product-card:hover {
+.product:hover {
   transform: translateY(-8px) scale(1.02);
   border-color: #ff0033;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 0, 51, 0.6);
 }
 
-.product-image {
+.product img { /* Selektor dla obrazka wewnątrz .product */
   width: 100%;
-  /* Kluczowa zmiana: aspect-ratio zamiast stałej wysokości dla skalowalności obrazu */
   aspect-ratio: 1 / 1; /* Obraz zawsze kwadratowy */
   object-fit: cover;
   border-bottom: 1px solid #333;
   transition: transform 0.3s ease;
 }
 
-.product-card:hover .product-image {
+.product:hover img { /* Zmieniono z .product-card:hover .product-image */
   transform: scale(1.05);
 }
 
-.product-info {
-  padding: 15px; /* Domyślny padding dla informacji o produkcie */
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.product-name {
+/* Domyślne style dla wewnętrznych elementów .product, jeśli nie mają dedykowanych divów */
+.product h3 { /* Nazwa produktu generowana jest jako h3 */
   font-size: 1.15rem;
   color: #ff0033;
-  margin-bottom: 8px;
+  margin: 15px 15px 8px; /* Padding od góry, po bokach i odstęp od tagów */
   font-weight: 600;
 }
 
-.product-tags {
-  margin-bottom: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5px;
-}
-
-.tag {
+/* Styl dla tagów generowanych jako div z klasą .tag */
+.product .tag { /* Selektor dla tagów wewnątrz .product */
   background: #ff0033;
   color: #0d0d0d;
   padding: 4px 10px;
@@ -330,20 +316,25 @@ body {
   font-size: 0.8rem;
   font-weight: 500;
   text-transform: uppercase;
+  display: inline-block; /* Aby tagi były obok siebie */
+  margin: 0 2px 5px; /* Mały odstęp między tagami */
 }
 
-.product-price {
+/* Kontener na tagi, jeśli chcesz je grupować */
+/* Niestety, JS nie generuje DIV dla tagów, więc będą bezpośrednio w .product.
+   Można je wyśrodkować poprzez text-align: center; na .product. */
+
+.product p.price { /* Selektor dla ceny */
   font-size: 1.4rem;
   font-weight: bold;
   color: #00ff00;
-  margin-top: auto;
-  margin-bottom: 15px;
+  margin: auto 15px 15px; /* Margin od góry auto, aby wypchnąć na dół, boki 15px, dół 15px */
 }
 
-.view-details-btn {
-  display: block;
+.product a { /* Selektor dla linku "Link" */
+  display: block; /* Aby link był przyciskiem na całą szerokość */
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 15px; /* Wyśrodkowanie przycisku i odstęp od dołu karty */
   padding: 10px 15px;
   background: #ff0033;
   color: #0d0d0d;
@@ -355,12 +346,13 @@ body {
   box-shadow: 0 4px 12px rgba(255, 0, 51, 0.4);
 }
 
-.view-details-btn:hover {
+.product a:hover {
   background: #ff3366;
   color: #fff;
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 6px 18px rgba(255, 51, 102, 0.6);
 }
+
 
 /* --- RESPONSYWNOŚĆ --- */
 
@@ -395,7 +387,7 @@ body {
   .content-wrapper {
     padding: 0 15px;
     margin-top: 20px;
-    flex-direction: row; /* Zachowaj kolumny, ale daj więcej miejsca na grid */
+    flex-direction: row;
   }
   
   .filter-sidebar {
@@ -405,22 +397,31 @@ body {
   }
 
   .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Zmniejsz min-width dla tabletów */
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Zmniejsz min-width dla tabletów */
+    gap: 15px; /* Mniejsze odstępy */
   }
 
-  .product-info {
-    padding: 12px; /* Mniejszy padding na tabletach */
+  .product img {
+    /* aspect-ratio już skaluje, nie potrzeba height */
   }
-  .product-name {
+
+  .product h3 {
     font-size: 1.05rem;
+    margin: 12px 12px 6px; /* Mniejszy padding */
   }
-  .product-price {
+  .product .tag {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    margin: 0 2px 3px;
+  }
+  .product p.price {
     font-size: 1.2rem;
+    margin: auto 12px 12px;
   }
-  .view-details-btn {
+  .product a {
     padding: 8px 12px;
     font-size: 0.9rem;
+    margin: 0 auto 12px;
   }
 }
 
@@ -443,8 +444,8 @@ body {
   }
 
   .filter-sidebar {
-    width: 100%; /* Panel boczny na całą szerokość ekranu mobilnego */
-    left: -100%; /* Ukrycie poza ekranem */
+    width: 100%;
+    left: -100%;
     border-right: none;
     border-bottom: 2px solid #ff0033;
     box-shadow: 0 5px 15px rgba(255, 0, 51, 0.4);
@@ -454,6 +455,8 @@ body {
     max-height: 100vh;
     overflow-y: auto;
     padding-top: 80px; /* Miejsce na header */
+    padding-left: 15px; /* Dodatkowe paddingi dla panelu mobilnego */
+    padding-right: 15px;
   }
 
   .filter-sidebar.show {
@@ -461,23 +464,27 @@ body {
   }
   
   .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Mniejszy min-width dla telefonów poziomo */
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Jeszcze mniejszy min-width dla telefonów poziomo */
+    gap: 10px; /* Mniejsze odstępy */
     padding: 10px;
   }
 
-  .product-info {
-    padding: 10px; /* Mniejszy padding na telefonach */
+  .product h3 {
+    font-size: 0.95rem;
+    margin: 10px 10px 5px;
   }
-  .product-name {
-    font-size: 1rem;
+  .product .tag {
+    font-size: 0.7rem;
+    padding: 2px 6px;
   }
-  .product-price {
-    font-size: 1.1rem;
+  .product p.price {
+    font-size: 1.05rem;
+    margin: auto 10px 10px;
   }
-  .view-details-btn {
-    padding: 7px 10px;
-    font-size: 0.85rem;
+  .product a {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    margin: 0 auto 10px;
   }
 
   .filter-panel-toggle {
@@ -494,7 +501,7 @@ body {
   .product-grid {
     grid-template-columns: 1fr; /* Pojedyncza kolumna na bardzo małych ekranach */
     padding: 0 10px;
-    gap: 15px;
+    gap: 15px; /* Zachowaj większy odstęp między produktami w pojedynczej kolumnie */
   }
   .filter-group button {
     flex-basis: calc(50% - 8px); /* 2 przyciski w rzędzie dla filtrów */
@@ -507,17 +514,21 @@ body {
   .site-title {
     font-size: 1.3rem;
   }
-  .product-info {
-    padding: 8px; /* Bardzo mały padding na najmniejszych ekranach */
+  .product h3 {
+    font-size: 0.9rem;
+    margin: 8px 8px 4px;
   }
-  .product-name {
-    font-size: 0.95rem;
+  .product .tag {
+    font-size: 0.65rem;
+    padding: 2px 5px;
   }
-  .product-price {
+  .product p.price {
     font-size: 1rem;
+    margin: auto 8px 8px;
   }
-  .view-details-btn {
-    padding: 6px 8px;
-    font-size: 0.8rem;
+  .product a {
+    padding: 5px 8px;
+    font-size: 0.75rem;
+    margin: 0 auto 8px;
   }
 }
