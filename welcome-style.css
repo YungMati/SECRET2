@@ -78,14 +78,17 @@ body {
   transform: translateY(-2px); /* Delikatne uniesienie przy najechaniu */
 }
 
+/* Zmienione style dla przycisku Discord Kako Buy */
 .hero-buttons .btn.secondary {
-  background: #333;
-  color: #fff;
-  border: 1px solid #d10000;
+  background-color: white; /* Cała biała */
+  color: #d10000;         /* Czerwony tekst */
+  border: none;           /* Bez ramki */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Zachowujemy cień dla estetyki */
 }
 
 .hero-buttons .btn.secondary:hover {
-  background: #444;
+  background-color: #f0f0f0; /* Lekko ciemniejszy biały przy najechaniu */
+  color: #ff1f1f;           /* Czerwony tekst przy najechaniu */
   transform: translateY(-2px);
 }
 
