@@ -153,7 +153,7 @@ body {
 
 .filter-sidebar {
   position: fixed;
-  top: 0;
+  top: 0; /* Domyślnie z góry, ale zmienimy to dla mobile */
   left: -320px;
   width: 320px;
   height: 100%;
@@ -188,15 +188,18 @@ body {
 }
 
 .filter-sidebar button {
-  padding: 10px 12px;
+  /* Zmienione: mniejszy padding, aby było bliżej tekstu */
+  padding: 6px 8px; /* Zmniejszony padding */
   background: #2a2a2a;
   color: #e0e0e0;
   border: 1px solid #4a4a4a;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.95rem; /* Domyślny rozmiar, zmienimy w mobile */
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .filter-sidebar button:hover {
@@ -258,7 +261,6 @@ body {
 }
 
 /* --- SIATKA PRODUKTÓW --- */
-/* Zmiany tutaj, aby dopasować do generowanego HTML z script.js */
 .product-grid {
   flex: 1;
   display: grid;
@@ -269,7 +271,7 @@ body {
 }
 
 /* Selektor .product odpowiada za całą kartę produktu generowaną przez JS */
-.product { /* Zmieniono z .product-card na .product */
+.product {
   background: #1a1a1a;
   border: 1px solid #333;
   border-radius: 15px;
@@ -287,7 +289,7 @@ body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 0, 51, 0.6);
 }
 
-.product img { /* Selektor dla obrazka wewnątrz .product */
+.product img {
   width: 100%;
   aspect-ratio: 1 / 1; /* Obraz zawsze kwadratowy */
   object-fit: cover;
@@ -295,46 +297,55 @@ body {
   transition: transform 0.3s ease;
 }
 
-.product:hover img { /* Zmieniono z .product-card:hover .product-image */
+.product:hover img {
   transform: scale(1.05);
 }
 
-/* Domyślne style dla wewnętrznych elementów .product, jeśli nie mają dedykowanych divów */
-.product h3 { /* Nazwa produktu generowana jest jako h3 */
+/* Zmienione: dodany padding-top do h3, aby tagi były niżej i nie nachodziły na obrazek */
+.product h3 {
   font-size: 1.15rem;
   color: #ff0033;
-  margin: 15px 15px 8px; /* Padding od góry, po bokach i odstęp od tagów */
+  /* Zmienione, aby dać więcej miejsca na tagi pod obrazkiem */
+  margin: 10px 15px 8px; /* Odstęp od góry (dla tagów), po bokach i od dołu */
   font-weight: 600;
 }
 
 /* Styl dla tagów generowanych jako div z klasą .tag */
-.product .tag { /* Selektor dla tagów wewnątrz .product */
+.product .tag {
   background: #ff0033;
   color: #0d0d0d;
-  padding: 4px 10px;
+  /* Zmienione: mniejszy padding dla tagów, aby były bliżej tekstu */
+  padding: 3px 8px;
   border-radius: 5px;
   font-size: 0.8rem;
   font-weight: 500;
   text-transform: uppercase;
-  display: inline-block; /* Aby tagi były obok siebie */
-  margin: 0 2px 5px; /* Mały odstęp między tagami */
+  display: inline-block;
+  margin: 0 2px 0; /* Mały odstęp między tagami */
+  position: relative; /* Pozwala na pozycjonowanie */
+  top: -15px; /* Przesunięcie tagów w górę, aby znalazły się na obrazku */
+  z-index: 2; /* Upewnia się, że są nad obrazkiem */
+}
+/* Kontener dla tagów - aby je ładnie wyśrodkować i obniżyć */
+/* Dodałem DIV do JS, aby można było lepiej kontrolować układ tagów */
+.product .tag-container {
+  text-align: center;
+  margin-top: -10px; /* Przesuwa tagi lekko w górę, by były bliżej obrazka */
+  margin-bottom: 5px; /* Odstęp między tagami a nazwą produktu */
 }
 
-/* Kontener na tagi, jeśli chcesz je grupować */
-/* Niestety, JS nie generuje DIV dla tagów, więc będą bezpośrednio w .product.
-   Można je wyśrodkować poprzez text-align: center; na .product. */
-
-.product p.price { /* Selektor dla ceny */
+/* Zmienione: Kwota ma mieć kolor biały */
+.product p.price {
   font-size: 1.4rem;
   font-weight: bold;
-  color: #00ff00;
-  margin: auto 15px 15px; /* Margin od góry auto, aby wypchnąć na dół, boki 15px, dół 15px */
+  color: #ffffff; /* Biały kolor dla ceny */
+  margin: auto 15px 15px;
 }
 
-.product a { /* Selektor dla linku "Link" */
-  display: block; /* Aby link był przyciskiem na całą szerokość */
+.product a {
+  display: block;
   width: 90%;
-  margin: 0 auto 15px; /* Wyśrodkowanie przycisku i odstęp od dołu karty */
+  margin: 0 auto 15px;
   padding: 10px 15px;
   background: #ff0033;
   color: #0d0d0d;
@@ -398,21 +409,17 @@ body {
 
   .product-grid {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Zmniejsz min-width dla tabletów */
-    gap: 15px; /* Mniejsze odstępy */
-  }
-
-  .product img {
-    /* aspect-ratio już skaluje, nie potrzeba height */
+    gap: 20px;
   }
 
   .product h3 {
     font-size: 1.05rem;
-    margin: 12px 12px 6px; /* Mniejszy padding */
+    margin: 10px 12px 6px;
   }
   .product .tag {
     font-size: 0.75rem;
-    padding: 3px 8px;
-    margin: 0 2px 3px;
+    padding: 2px 7px;
+    top: -10px; /* Dopasowanie pozycji tagów na tabletach */
   }
   .product p.price {
     font-size: 1.2rem;
@@ -425,8 +432,17 @@ body {
   }
 }
 
-/* Telefony poziomo i małe tablety - 481px do 768px */
-@media (max-width: 768px) {
+/* Telefony poziomo i małe tablety (od 577px do 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Optymalnie 2-3 kolumny */
+    gap: 15px;
+  }
+}
+
+
+/* Telefony pionowo (do 576px) */
+@media (max-width: 576px) {
   .main-header {
     padding: 10px 15px;
   }
@@ -439,43 +455,49 @@ body {
   }
 
   .content-wrapper {
-    flex-direction: column; /* Na telefonach panel i siatka są pionowo */
+    flex-direction: column;
     padding: 0 10px;
   }
 
+  /* PANEL FILTRA NA TELEFONIE (wysuwa się z dołu) */
   .filter-sidebar {
-    width: 100%;
-    left: -100%;
+    width: 90%; /* Nie zasłania całej szerokości */
+    left: 5%; /* Wyśrodkowanie panelu */
+    right: 5%;
+    max-width: 400px; /* Ograniczenie szerokości na bardzo dużych telefonach */
+    top: auto; /* Z góry auto */
+    bottom: -100%; /* Domyślne ukrycie na dole */
+    height: auto; /* Wysokość dopasowana do zawartości */
+    max-height: 70vh; /* Maksymalna wysokość - zasłania ~70% ekranu */
     border-right: none;
-    border-bottom: 2px solid #ff0033;
-    box-shadow: 0 5px 15px rgba(255, 0, 51, 0.4);
-    height: auto;
-    position: fixed; /* Zawsze fixed na mobile, aby zasłonić, ale zawsze top:0 */
-    top: 0;
-    max-height: 100vh;
-    overflow-y: auto;
-    padding-top: 80px; /* Miejsce na header */
-    padding-left: 15px; /* Dodatkowe paddingi dla panelu mobilnego */
-    padding-right: 15px;
+    border-top: 2px solid #ff0033; /* Ramka na górze, bo wysuwa się z dołu */
+    box-shadow: 0 -5px 15px rgba(255, 0, 51, 0.4); /* Cień od dołu */
+    transition: bottom 0.4s ease-out, box-shadow 0.4s ease; /* Przejście z dołu */
+    padding-top: 20px; /* Mniejszy padding góry */
+    padding-bottom: 20px; /* Padding na dole */
   }
 
   .filter-sidebar.show {
-    left: 0;
+    bottom: 0; /* Wysuwa się na dół ekranu */
+    left: 5%; /* Zachowuje wyśrodkowanie */
+    right: 5%;
   }
   
   .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Jeszcze mniejszy min-width dla telefonów poziomo */
-    gap: 10px; /* Mniejsze odstępy */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dwa produkty w kolumnie na telefonach */
+    gap: 15px;
     padding: 10px;
   }
 
   .product h3 {
     font-size: 0.95rem;
-    margin: 10px 10px 5px;
+    margin: 8px 10px 5px;
+    padding-top: 8px; /* Dopasowanie paddingu */
   }
   .product .tag {
-    font-size: 0.7rem;
-    padding: 2px 6px;
+    font-size: 0.65rem; /* Mniejszy tekst filtrów */
+    padding: 2px 5px;
+    top: -10px; /* Przesunięcie tagów niżej, aby nie nachodziły na obrazek */
   }
   .product p.price {
     font-size: 1.05rem;
@@ -494,33 +516,28 @@ body {
     height: 45px;
     font-size: 28px;
   }
+
+  .filter-sidebar button { /* Mniejszy tekst w filtrach */
+    font-size: 0.8rem;
+    padding: 5px 7px;
+  }
 }
 
-/* Telefony pionowo - 480px i mniejsze */
-@media (max-width: 480px) {
+/* Bardzo małe telefony - do 360px (opcjonalnie, jeśli chcesz 1 kolumnę) */
+@media (max-width: 360px) {
   .product-grid {
-    grid-template-columns: 1fr; /* Pojedyncza kolumna na bardzo małych ekranach */
-    padding: 0 10px;
-    gap: 15px; /* Zachowaj większy odstęp między produktami w pojedynczej kolumnie */
-  }
-  .filter-group button {
-    flex-basis: calc(50% - 8px); /* 2 przyciski w rzędzie dla filtrów */
-    font-size: 0.8rem;
-    padding: 8px;
-  }
-  .header-logo {
-    height: 35px;
-  }
-  .site-title {
-    font-size: 1.3rem;
+    grid-template-columns: 1fr; /* 1 kolumna na najmniejszych telefonach */
+    gap: 15px;
   }
   .product h3 {
     font-size: 0.9rem;
     margin: 8px 8px 4px;
+    padding-top: 8px;
   }
   .product .tag {
-    font-size: 0.65rem;
-    padding: 2px 5px;
+    font-size: 0.6rem;
+    padding: 1px 4px;
+    top: -8px;
   }
   .product p.price {
     font-size: 1rem;
