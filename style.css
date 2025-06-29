@@ -188,7 +188,6 @@ body {
 }
 
 .filter-sidebar button {
-  /* Zmienione: mniejszy padding, aby było bliżej tekstu */
   padding: 6px 8px; /* Zmniejszony padding */
   background: #2a2a2a;
   color: #e0e0e0;
@@ -301,37 +300,29 @@ body {
   transform: scale(1.05);
 }
 
-/* Zmienione: dodany padding-top do h3, aby tagi były niżej i nie nachodziły na obrazek */
-.product h3 {
-  font-size: 1.15rem;
-  color: #ff0033;
-  /* Zmienione, aby dać więcej miejsca na tagi pod obrazkiem */
-  margin: 10px 15px 8px; /* Odstęp od góry (dla tagów), po bokach i od dołu */
-  font-weight: 600;
+/* Styl dla kontenera tagów */
+.product .tag-container {
+  text-align: center;
+  /* Zmienione: Obniżenie kontenera tagów pod obrazek */
+  margin-top: 5px; /* Odstęp od obrazka */
+  margin-bottom: 10px; /* Odstęp od nazwy produktu */
 }
 
 /* Styl dla tagów generowanych jako div z klasą .tag */
 .product .tag {
   background: #ff0033;
   color: #0d0d0d;
-  /* Zmienione: mniejszy padding dla tagów, aby były bliżej tekstu */
-  padding: 3px 8px;
+  /* Zmienione: mniejszy padding dla tagów, aby były bliżej tekstu (kilka pikseli za tekst) */
+  padding: 3px 6px; /* Zmniejszony padding poziomy */
   border-radius: 5px;
-  font-size: 0.8rem;
+  font-size: 0.8rem; /* Domyślny rozmiar, zmienimy w mobile */
   font-weight: 500;
   text-transform: uppercase;
   display: inline-block;
-  margin: 0 2px 0; /* Mały odstęp między tagami */
-  position: relative; /* Pozwala na pozycjonowanie */
-  top: -15px; /* Przesunięcie tagów w górę, aby znalazły się na obrazku */
-  z-index: 2; /* Upewnia się, że są nad obrazkiem */
-}
-/* Kontener dla tagów - aby je ładnie wyśrodkować i obniżyć */
-/* Dodałem DIV do JS, aby można było lepiej kontrolować układ tagów */
-.product .tag-container {
-  text-align: center;
-  margin-top: -10px; /* Przesuwa tagi lekko w górę, by były bliżej obrazka */
-  margin-bottom: 5px; /* Odstęp między tagami a nazwą produktu */
+  margin: 0 2px; /* Mały odstęp między tagami */
+  /* Usunięto pozycjonowanie 'top', aby tagi były naturalnie pod obrazkiem */
+  position: static;
+  z-index: auto;
 }
 
 /* Zmienione: Kwota ma mieć kolor biały */
@@ -340,6 +331,13 @@ body {
   font-weight: bold;
   color: #ffffff; /* Biały kolor dla ceny */
   margin: auto 15px 15px;
+}
+
+.product h3 {
+  font-size: 1.15rem;
+  color: #ff0033;
+  margin: 0 15px 8px; /* Odstęp od dołu */
+  font-weight: 600;
 }
 
 .product a {
@@ -414,12 +412,15 @@ body {
 
   .product h3 {
     font-size: 1.05rem;
-    margin: 10px 12px 6px;
+    margin: 0 12px 6px;
   }
   .product .tag {
     font-size: 0.75rem;
-    padding: 2px 7px;
-    top: -10px; /* Dopasowanie pozycji tagów na tabletach */
+    padding: 2px 5px; /* Dopasowanie paddingu */
+  }
+  .product .tag-container {
+    margin-top: 5px;
+    margin-bottom: 8px;
   }
   .product p.price {
     font-size: 1.2rem;
@@ -491,13 +492,15 @@ body {
 
   .product h3 {
     font-size: 0.95rem;
-    margin: 8px 10px 5px;
-    padding-top: 8px; /* Dopasowanie paddingu */
+    margin: 0 10px 5px;
   }
   .product .tag {
     font-size: 0.65rem; /* Mniejszy tekst filtrów */
-    padding: 2px 5px;
-    top: -10px; /* Przesunięcie tagów niżej, aby nie nachodziły na obrazek */
+    padding: 2px 4px; /* Bardziej zmniejszony padding poziomy */
+  }
+  .product .tag-container {
+    margin-top: 5px;
+    margin-bottom: 8px;
   }
   .product p.price {
     font-size: 1.05rem;
@@ -531,13 +534,15 @@ body {
   }
   .product h3 {
     font-size: 0.9rem;
-    margin: 8px 8px 4px;
-    padding-top: 8px;
+    margin: 0 8px 4px;
   }
   .product .tag {
     font-size: 0.6rem;
-    padding: 1px 4px;
-    top: -8px;
+    padding: 1px 3px; /* Jeszcze mniejszy padding poziomy */
+  }
+  .product .tag-container {
+    margin-top: 3px;
+    margin-bottom: 6px;
   }
   .product p.price {
     font-size: 1rem;
