@@ -205,7 +205,6 @@ const products = [
     "image": "https://si.geilicdn.com/pcitem1854263096-15cc00000195de646cbb0a23038e_1200_1200.jpg",
     "link": "https://m.kakobuy.com/pages/goods-detail/goods-detail?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7437069740&affcode=yungr3ps"
   },
-  [
   {
     "name": "KOSZULKI PIŁKARSKIE",
     "batch": "budget",
